@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_29_223142) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_29_224720) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,38 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_223142) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "player_characters", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.boolean "retired", default: false
+    t.string "name"
+    t.string "alias"
+    t.text "look"
+    t.integer "heritage"
+    t.text "heritage_description"
+    t.integer "background"
+    t.text "background_description"
+    t.integer "vice"
+    t.text "vice_description"
+    t.integer "stress", default: 0
+    t.jsonb "trauma", default: []
+    t.jsonb "harm", default: {"1"=>[], "2"=>[], "3"=>[]}
+    t.boolean "armor", default: false
+    t.boolean "heavy", default: false
+    t.boolean "special", default: false
+    t.integer "playbook_xp", default: 0
+    t.integer "insight_xp", default: 0
+    t.integer "prowess_xp", default: 0
+    t.integer "resolve_xp", default: 0
+    t.integer "coin", default: 0
+    t.integer "stash", default: 0
+    t.integer "load", default: 5
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_player_characters_on_game_id"
+    t.index ["user_id"], name: "index_player_characters_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,4 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_223142) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "player_characters", "games"
+  add_foreign_key "player_characters", "users"
 end
