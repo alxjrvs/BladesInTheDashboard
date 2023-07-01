@@ -3,6 +3,8 @@
 class PlayerCharacter < ApplicationRecord
   belongs_to :user
   belongs_to :game
+  has_one :playbook, dependent: :destroy
+  accepts_nested_attributes_for :playbook
 
   enum heritage: %i[
     akoros
