@@ -1,5 +1,5 @@
 class DashboardController < AuthenticatedController
   def index
-    # @game = Game.first
+    @game = Game.first
   end
 end
