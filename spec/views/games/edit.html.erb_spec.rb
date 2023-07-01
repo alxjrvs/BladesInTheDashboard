@@ -9,7 +9,7 @@ RSpec.describe 'games/edit', type: :view do
     )
   end
 
-  before(:each) do
+  before do
     assign(:game, game)
   end
 

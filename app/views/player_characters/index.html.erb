@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>player_characters</h1>
+
+<div id="player_characters">
+  <% @player_characters.each do |player_character| %>
+    <%= render player_character %>
+    <p>
+      <%= link_to "Show this player_character", player_character %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New player_character", new_game_player_character_path(@game) %>

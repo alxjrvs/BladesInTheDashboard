@@ -12,44 +12,11 @@ class PlayerCharacter < ApplicationRecord
 
   after_create :set_playbook_defaults
 
-  enum heritage: %i[
-    akoros
-    dagger_isles
-    iruvia
-    severos
-    skovlan
-    tycheros
-  ]
-  enum background: %i[
-    academic
-    labor
-    law
-    trade
-    military
-    noble
-    underworld
-  ]
-  enum vice: %i[
-    faith
-    gambling
-    luxury
-    obligation
-    pleasure
-    stupor
-    weird
-  ]
+  enum heritage: { akoros: 0, dagger_isles: 1, iruvia: 2, severos: 3, skovlan: 4, tycheros: 5 }
+  enum background: { academic: 0, labor: 1, law: 2, trade: 3, military: 4, noble: 5, underworld: 6 }
+  enum vice: { faith: 0, gambling: 1, luxury: 2, obligation: 3, pleasure: 4, stupor: 5, weird: 6 }
 
-  enum trauma: %i[
-    cold
-    haunted
-    obsessed
-    paranoid
-    reckless
-    soft
-    unstable
-    vicious
-
-  ]
+  enum trauma: { cold: 0, haunted: 1, obsessed: 2, paranoid: 3, reckless: 4, soft: 5, unstable: 6, vicious: 7 }
   enum load: { light: 2, normal: 5, heavy: 6 }
 
   DEFAULT_ITEMS = {

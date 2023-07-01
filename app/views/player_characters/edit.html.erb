@@ -1,0 +1,10 @@
+<h1>Editing player_character</h1>
+
+<%= render "form", player_character: @player_character, game: @game %>
+
+<br>
+
+<div>
+  <%= link_to "Show this player character", @player_character %> |
+  <%= link_to "Back to player characters", game_player_characters_path(@game) %>
+</div>

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'games/index', type: :view do
-  before(:each) do
+  before do
     assign(:games, [
              Game.create!(
                name: 'Name'

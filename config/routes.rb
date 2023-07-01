@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :games do
-    resources :player_characters, only: %i[show]
+  resources :games, only: %i[index show] do
+    resources :player_characters, only: %i[index new create edit show]
   end
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
   root 'games#index'
 end
