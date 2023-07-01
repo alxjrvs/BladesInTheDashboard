@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
-ruby '3.1.2'
+ruby File.read('.tool-versions').split("\n").find { |x| x.include? 'ruby'}.split(' ').last
+
 gem 'rails', '~> 7.0.4'
 gem 'propshaft'
 gem 'pg', '~> 1.1'
