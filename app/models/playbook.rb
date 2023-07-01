@@ -3,6 +3,8 @@
 class Playbook < ApplicationRecord
   belongs_to :player_character
 
+  after_create :create_playbook
+
   enum playbook: {
     hound: {
       name: 'Hound',
