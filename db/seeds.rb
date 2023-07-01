@@ -6,7 +6,19 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-game = FactoryBot.create :game unless Game.any?
-user = FactoryBot.create :user unless User.any?
+puts "Creating Admin...."
+admin = User.find_by(email: "funnybunny@example.com") || (FactoryBot.create :user, admin: true, email: "funnybunny@example.com", password: "password")
+puts "Admin Created: #{admin.email}"
 
-FactoryBot.create :player_character, user:, game: unless user.player_characters.any?
+puts "Creating Game..."
+game = Game.find_by(name: "scoundrels") || (FactoryBot.create :game, game_master: admin, name: "scoundrels")
+puts "Game created: #{game.name}"
+
+puts "Creating Players..."
+unless game.players.any?
+  FactoryBot.create_list :player_character, 3, { game: }
+  game.player_characters.each do |character|
+    puts "Player created: #{character.user.email} is #{character.name}"
+  end
+end
+puts "Done!"
