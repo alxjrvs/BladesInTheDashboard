@@ -1,4 +1,9 @@
+# frozen_string_literal: true
+
 class PlayerCharacter < ApplicationRecord
+  belongs_to :user
+  belongs_to :game
+
   enum heritage: %i[
     akoros
     dagger_isles

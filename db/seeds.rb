@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+game = FactoryBot.create :game unless Game.any?
+user = FactoryBot.create :user unless User.any?
+
+FactoryBot.create :player_character, user:, game: unless user.player_characters.any?

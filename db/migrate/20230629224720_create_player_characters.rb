@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePlayerCharacters < ActiveRecord::Migration[7.0]
   def change
     create_table :player_characters do |t|
