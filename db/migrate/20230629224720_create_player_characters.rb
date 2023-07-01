@@ -5,9 +5,10 @@ class CreatePlayerCharacters < ActiveRecord::Migration[7.0]
     create_table :player_characters do |t|
       t.belongs_to :user, null: false, foreign_key: true
       t.belongs_to :game, null: false, foreign_key: true
+      t.integer :playbook_id, foreign_key: true, null: false
       t.boolean :retired, default: false
       t.string :name
-      t.string :alias
+      t.string :nickname
       t.text :look
       t.integer :heritage
       t.text :heritage_description
@@ -16,8 +17,6 @@ class CreatePlayerCharacters < ActiveRecord::Migration[7.0]
       t.integer :vice
       t.text :vice_description
       t.integer :stress, default: 0
-      t.jsonb :trauma, default: PlayerCharacter::EMPTY_TRAUMA
-      t.jsonb :harm, default: PlayerCharacter::EMPTY_HARM
       t.boolean :armor, default: false
       t.boolean :heavy, default: false
       t.boolean :special, default: false
@@ -28,11 +27,17 @@ class CreatePlayerCharacters < ActiveRecord::Migration[7.0]
       t.integer :coin, default: 0
       t.integer :stash, default: 0
       t.integer :load, default: PlayerCharacter.loads[:normal]
-      t.jsonb :playbook_items, default: {}
-      t.jsonb :items, default: PlayerCharacter::EMPTY_ITEMS
-      t.jsonb :contacts, default: {}
-      t.jsonb :special_abilities, default: {}
-      t.integer :playbook_id
+      t.integer :hunt, default: 0
+      t.integer :study, default: 0
+      t.integer :survey, default: 0
+      t.integer :tinker, default: 0
+      t.integer :finesse, default: 0
+      t.integer :prowl, default: 0
+      t.integer :wreck, default: 0
+      t.integer :attune, default: 0
+      t.integer :command, default: 0
+      t.integer :consort, default: 0
+      t.integer :sway, default: 0
 
       t.timestamps
     end

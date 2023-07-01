@@ -2,10 +2,15 @@
 
 class Playbook
   include StaticAssociation
-
   attr_accessor :name, :description, :items, :special_abilities, :contacts
 
-  record id: :hound do |p|
+  def create_assets(player_character)
+    create_special_abilities(player_character)
+    create_items(player_character)
+    create_contacts(player_character)
+  end
+
+  record id: 0 do |p|
     p.name = 'Hound'
     p.description = 'A deadly sharpshooter and tracker'
     p.items = {
@@ -49,5 +54,25 @@ class Playbook
         rival: false
       }
     }
+  end
+
+  private
+
+  def create_special_abilities(player_character)
+    special_abilities.each_key do |ability_key|
+      SpecialAbility.create(special_abilities[ability_key].merge({ playbook_id: id, player_character: }))
+    end
+  end
+
+  def create_items(player_character)
+    items.each_key do |item_key|
+      Item.create(items[item_key].merge({ playbook_id: id, player_character: }))
+    end
+  end
+
+  def create_contacts(player_character)
+    contacts.each_key do |contact_key|
+      Contact.create(contacts[contact_key].merge({ playbook_id: id, player_character: }))
+    end
   end
 end

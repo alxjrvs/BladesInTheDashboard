@@ -5,7 +5,7 @@ FactoryBot.define do
     user
     game
 
-    playbook { Playbook.first }
+    playbook_id { 0 }
     retired { Faker::Coin.flip }
     name { Faker::Name.name }
     nickname { Faker::Name.initials }
@@ -17,8 +17,6 @@ FactoryBot.define do
     vice { PlayerCharacter.vices.keys.sample }
     vice_description { Faker::Lorem.sentence }
     stress { Faker::Number.within(range: 0..9) }
-    trauma { [] }
-    harm { { '1' => [], '2' => [], '3' => [] } }
     armor { Faker::Coin.flip }
     heavy { Faker::Coin.flip }
     special { Faker::Coin.flip }
