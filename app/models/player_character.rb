@@ -6,6 +6,8 @@ class PlayerCharacter < ApplicationRecord
   has_one :playbook, dependent: :destroy
   accepts_nested_attributes_for :playbook
 
+  after_create :create_playbook
+
   enum heritage: %i[
     akoros
     dagger_isles
@@ -45,4 +47,10 @@ class PlayerCharacter < ApplicationRecord
 
   ]
   enum load: { light: 2, normal: 5, heavy: 6 }
+
+  private
+
+  def create_playbook
+    Playbook.create(player_character: self)
+  end
 end

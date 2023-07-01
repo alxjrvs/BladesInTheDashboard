@@ -24,9 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_024454) do
 
   create_table "playbooks", force: :cascade do |t|
     t.bigint "player_character_id", null: false
-    t.integer "playbook"
-    t.string "name"
-    t.text "description"
+    t.string "playbook_name", default: "hound", null: false
     t.jsonb "items"
     t.jsonb "contacts"
     t.jsonb "special_abilities"

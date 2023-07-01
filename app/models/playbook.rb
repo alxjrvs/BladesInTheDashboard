@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 class Playbook < ApplicationRecord
-  belongs_to :player_character
-
-  after_create :create_playbook
-
-  enum playbook: {
+  PLAYBOOK_LIST = %i[hound].freeze
+  PLAYBOOKS = {
     hound: {
       name: 'Hound',
       description: 'A deadly sharpshooter and tracker',
@@ -51,4 +48,22 @@ class Playbook < ApplicationRecord
       }
     }
   }
+
+  belongs_to :player_character
+  after_create :set_playbook_defaults
+
+  delegate :name, :description, to: :playbook
+
+  def playbook
+    PLAYBOOKS[playbook_name.to_sym]
+  end
+  private
+
+  def set_playbook_defaults
+    update(
+      items: playbook[:items],
+      contacts: playbook[:contacts],
+      special_abilities: playbook[:special_abilities]
+    )
+  end
 end
