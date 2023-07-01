@@ -9,7 +9,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts 'Creating Admin....'
-admin = User.find_by(email: 'funnybunny@example.com') || (FactoryBot.create :user, admin: true, email: 'funnybunny@example.com', password: 'password')
+admin = User.find_by(email: 'funnybunny@example.com') || (FactoryBot.create :user, admin: true,
+                                                                                   email: 'funnybunny@example.com', password: 'password')
 puts "Admin Created: #{admin.email}"
 
 puts 'Creating Game...'

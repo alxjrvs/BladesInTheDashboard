@@ -1,12 +1,27 @@
 # frozen_string_literal: true
 
 class PlayerCharacter < ApplicationRecord
+  extend StaticAssociation::AssociationHelpers
+
+  EMPTY_HARM = { '1' => [], '2' => [], '3' => [] }.freeze
+  EMPTY_ITEMS = {
+    a_blade_or_two: {
+      name: 'A Blade or Two',
+      cost: 1,
+      points: 0
+    },
+    a_large_weapon: {
+      name: 'A Large Weapon',
+      cost: 1,
+      points: 0
+    }
+  }.freeze
+
   belongs_to :user
   belongs_to :game
-  has_one :playbook, dependent: :destroy
-  accepts_nested_attributes_for :playbook
+  belongs_to_static :playbook
 
-  after_create :create_playbook
+  after_create :set_playbook_defaults
 
   enum heritage: %i[
     akoros
@@ -35,6 +50,7 @@ class PlayerCharacter < ApplicationRecord
     weird
   ]
 
+  EMPTY_TRAUMA = [].freeze
   enum trauma: %i[
     cold
     haunted
@@ -50,7 +66,14 @@ class PlayerCharacter < ApplicationRecord
 
   private
 
-  def create_playbook
-    Playbook.create(player_character: self)
+  def set_playbook_defaults
+    playbook = Playbook.first
+
+    update(
+      playbook:,
+      playbook_items: playbook.items,
+      contacts: playbook.contacts,
+      special_abilities: playbook.special_abilities
+    )
   end
 end

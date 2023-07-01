@@ -42,3 +42,5 @@ gem 'rubocop', '~> 1.53'
 gem 'faker', '~> 3.2'
 
 gem 'pry-rails', '~> 0.3.9'
+
+gem 'static_association', '~> 0.1.0'

@@ -16,8 +16,8 @@ class CreatePlayerCharacters < ActiveRecord::Migration[7.0]
       t.integer :vice
       t.text :vice_description
       t.integer :stress, default: 0
-      t.jsonb :trauma, default: []
-      t.jsonb :harm, default: { 1 => [], 2 => [], 3 => [] }
+      t.jsonb :trauma, default: PlayerCharacter::EMPTY_TRAUMA
+      t.jsonb :harm, default: PlayerCharacter::EMPTY_HARM
       t.boolean :armor, default: false
       t.boolean :heavy, default: false
       t.boolean :special, default: false
@@ -28,6 +28,11 @@ class CreatePlayerCharacters < ActiveRecord::Migration[7.0]
       t.integer :coin, default: 0
       t.integer :stash, default: 0
       t.integer :load, default: PlayerCharacter.loads[:normal]
+      t.jsonb :playbook_items, default: {}
+      t.jsonb :items, default: PlayerCharacter::EMPTY_ITEMS
+      t.jsonb :contacts, default: {}
+      t.jsonb :special_abilities, default: {}
+      t.integer :playbook_id
 
       t.timestamps
     end
