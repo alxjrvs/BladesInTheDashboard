@@ -12,7 +12,7 @@ FactoryBot.define do
     heritage { PlayerCharacter.heritages.keys.sample }
     heritage_description { Faker::Lorem.sentence }
     background { PlayerCharacter.backgrounds.keys.sample }
-    background_description {Faker::Lorem.sentence }
+    background_description { Faker::Lorem.sentence }
     vice { PlayerCharacter.vices.keys.sample }
     vice_description { Faker::Lorem.sentence }
     stress { Faker::Number.within(range: 0..9) }

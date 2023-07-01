@@ -39,6 +39,6 @@ gem 'factory_bot_rails', '~> 6.2'
 
 gem 'rubocop', '~> 1.53'
 
-gem "faker", "~> 3.2"
+gem 'faker', '~> 3.2'
 
-gem "pry-rails", "~> 0.3.9"
+gem 'pry-rails', '~> 0.3.9'
