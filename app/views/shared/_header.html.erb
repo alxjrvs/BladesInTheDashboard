@@ -1,5 +1,12 @@
 <div id="header">
-  <%= link_to "Blades in the Dashboard", root_path, class: "logo" %>
+  <%= link_to root_path, class: 'logo' do %>
+    <h2>BladesInTheDashboard</h2>
+  <% end %>
+
+
+  <%- if @game %>
+    <%= link_to "- #{@game.name}", game_path(@game) %>
+  <% end %>
 
   <%- if notice %>
     <p class="notice"><%= notice %></p>

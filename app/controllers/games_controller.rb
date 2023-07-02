@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GamesController < AuthenticatedController
-  before_action :set_game, only: %i[show edit update destroy]
+  before_action :set_game, only: %i[show edit update destroy join]
 
   # GET /games or /games.json
   def index
@@ -10,6 +10,17 @@ class GamesController < AuthenticatedController
 
   # GET /games/1 or /games/1.json
   def show; end
+
+  def join
+    @game.players << current_user
+    respond_to do |format|
+      if @game.save
+        format.html { redirect_to game_url(@game), notice: 'Game Joined!' }
+      else
+        format.html { render :index, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # GET /games/new
   def new

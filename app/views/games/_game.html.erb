@@ -1,6 +1,18 @@
-<div id="<%= dom_id game %>">
-  <p>
-    <strong>Name:</strong>
-    <%= game.name %>
-  </p>
+<div class="game" id="<%= dom_id game %>">
+  <div class="game-header">
+    <p class="name">
+      <%= game.name %>
+    </p>
+    <p class="DM">
+      <%= game.game_master.email %>
+    </p>
+  </div>
+
+  <div class="game-footer">
+    <%- if game.has_access?(current_user) %>
+      <%= link_to "Open",game_path(game) %>
+    <% elsif user.can_join?(current_user) %>
+      <%= link_to "Join", game_join_path(game) %>
+    <% end %>
+  </div>
 </div>
