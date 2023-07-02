@@ -1,3 +1,19 @@
-<div>
-  <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+<div id="header">
+  <%= link_to "Blades in the Dashboard", root_path, class: "logo" %>
+
+  <%- if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <%- if alert %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+
+  <div class="header-right">
+    <%- if current_user %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete  %>
+    <% else %>
+      <%= button_to "Sign up", new_user_registration_path, method: :get %>
+      <%= button_to "Log in", new_user_session_path, method: :get %>
+    <% end %>
+  </div>
 </div>
