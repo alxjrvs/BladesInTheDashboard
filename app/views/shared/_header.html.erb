@@ -5,7 +5,7 @@
 
 
   <%- if @game %>
-    <%= link_to "- #{@game.name}", game_path(@game) %>
+    <%= link_to "#{@game.name}", game_path(@game)%>
   <% end %>
 
   <%- if notice %>
@@ -16,6 +16,7 @@
   <% end %>
 
   <div class="header-right">
+    <%= yield :header_buttons %>
     <%- if current_user %>
       <%= button_to "Log out", destroy_user_session_path, method: :delete  %>
     <% else %>

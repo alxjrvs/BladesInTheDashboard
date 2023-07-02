@@ -1,5 +1,10 @@
-<%= render @game %>
-
-<div>
-  <%= link_to "Back to games", games_path %>
+<% content_for :header_buttons do %>
+  <%= button_to "Show Games", games_path, method: :get %>
+<% end %>
+<div id="dashboard">
+  <div id="main_view">
+    <%= render @game.player_characters.sample %>
+  </div>
+  <div id="side_view">
+  </div>
 </div>

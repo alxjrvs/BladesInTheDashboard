@@ -1,0 +1,12 @@
+.player-character {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  #details, #stats, #playbook {
+    flex: 1;
+    overflow-y: scroll;
+    width: 30%;
+  }
+}

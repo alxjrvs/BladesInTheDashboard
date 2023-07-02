@@ -14,24 +14,19 @@
   .logo {
     display:flex;
     justify-content: flex-start;
+
+  }
+
+  a, h2 {
     text-decoration: none;
-
-    a, h2 {
-      color: white;
-      margin: 0;
-    }
-
-    a {
-      padding-left: 10px;
-      align-self: first baseline
-    }
+    color: white;
+    margin: 0;
   }
 
   .header-right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 30%;
 
     button {
       margin-right: 15px;

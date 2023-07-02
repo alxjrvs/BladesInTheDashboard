@@ -1,5 +1,6 @@
 // Entry point for your Sass build
 
+@import 'mixins';
 @import "fonts";
 @import "globals";
 
@@ -7,3 +8,5 @@
 @import "content";
 
 @import "games";
+@import "dashboard";
+@import "player_character";

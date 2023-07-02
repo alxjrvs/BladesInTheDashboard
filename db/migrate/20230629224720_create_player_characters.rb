@@ -33,6 +33,7 @@ class CreatePlayerCharacters < ActiveRecord::Migration[7.0]
       t.integer :tinker, default: 0
       t.integer :finesse, default: 0
       t.integer :prowl, default: 0
+      t.integer :skirmish, default: 0
       t.integer :wreck, default: 0
       t.integer :attune, default: 0
       t.integer :command, default: 0

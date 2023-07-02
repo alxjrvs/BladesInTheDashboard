@@ -1,7 +1,142 @@
-<div id="<%= dom_id player_character %>">
-  <p>
-    <strong>Name:</strong>
-    <%= player_character.name %>
-  </p>
+<div class="player-character" id="<%= dom_id player_character %>">
+  <div id="details">
+    <p>
+      <strong>Name:</strong>
+      <%= player_character.name %>
+    </p>
+    <p>
+      <strong>Alias:</strong>
+      <%= player_character.nickname %>
+    </p>
+    <p>
+      <strong>Look:</strong>
+      <%= player_character.look %>
+    </p>
+    <p>
+      <strong>Heritage:</strong>
+      <%= player_character.heritage_description %>
+      (<%= player_character.heritage %>)
+    </p>
+    <p>
+      <strong>Background:</strong>
+      <%= player_character.background_description %>
+      (<%= player_character.background %>)
+    </p>
+    <p>
+      <strong>Vice/Purveyor:</strong>
+      <%= player_character.vice_description %>
+      (<%= player_character.vice %>)
+    </p>
+    <p>
+      <strong>Stress:</strong>
+      <%= player_character.stress %>
+    </p>
+    <p>
+      <strong>Trauma:</strong>
+      NOT IMPLEMENTED YET
+    </p>
+    <p>
+      <strong>Healing:</strong>
+      NOT IMPLEMENTED YET
+    </p>
+    <p>
+      <strong>Harm:</strong>
+      NOT IMPLEMENTED YET
+    </p>
+    <p>
+      <strong>Armor</strong>
+      <%= player_character.armor %>
+    </p>
+    <p>
+      <strong>Special Armor</strong>
+      <%= player_character.special %>
+    </p>
+    <p>
+      <strong>Heavy Armor</strong>
+      <%= player_character.heavy %>
+    </p>
+  </div>
 
+  <div id="playbook">
+    <p>
+      <strong>Name:</strong>
+      <%= player_character.playbook.name %>
+    </p>
+    <p>
+      <strong>Playbook XP:</strong>
+      <%= player_character.playbook_xp %>
+    </p>
+    <p>
+      <strong>Special Abilities:</strong>
+      <%= player_character.special_abilities.count %>
+      <% player_character.special_abilities.each do |ability| %>
+        <p>
+          Name: <%= ability.name %>
+          description: <%= ability.description %>
+          Cost: <%= ability.cost %>
+          points invested: <%= ability.points %>
+        </p>
+      <% end %>
+
+      <p>
+        <strong>Contacts</strong>
+        <%= player_character.contacts.count %>
+        <% player_character.contacts.each do |contact| %>
+          <p>
+            Name: <%= contact.name %>
+            rival: <%= contact.rival %>
+            friend: <%= contact.friend %>
+          </p>
+        <% end %>
+      </p>
+
+       <p>
+        <strong>Playbook items </strong>
+        <%= player_character.items.where(playbook_id: player_character.playbook ).count %>
+        <% player_character.items.where(playbook_id: player_character.playbook ).each do |item| %>
+          <p>
+            Name: <%= item.name %>
+            cost: <%= item.cost %>
+            points: <%= item.points %>
+            intrinsic: <%= item.intrinsic %>
+          </p>
+        <% end %>
+      </p>
+    </p>
+  </div>
+
+  <div id="stats">
+    <p>
+      <strong>Coin:</strong>
+      <%= player_character.coin %>
+    </p>
+    <p>
+      <strong>Stash:</strong>
+      <%= player_character.stash %>
+    </p>
+    <p>
+      <strong>Insight:</strong>
+      XP: <%= player_character.insight_xp %>
+      hunt: <%= player_character.hunt %>
+      study: <%= player_character.study %>
+      survey: <%= player_character.survey %>
+      tinker: <%= player_character.tinker %>
+    </p>
+    <p>
+      <strong>Prowess:</strong>
+      XP: <%= player_character.prowess_xp %>
+      finesse: <%= player_character.finesse %>
+      prowl: <%= player_character.prowl %>
+      skirmish: <%= player_character.skirmish %>
+      wreck: <%= player_character.wreck %>
+    </p>
+    <p>
+      <strong>Resolve:</strong>
+      XP: <%= player_character.resolve_xp %>
+      attune: <%= player_character.attune %>
+      command: <%= player_character.command %>
+      consort: <%= player_character.consort %>
+      sway: <%= player_character.sway>
+    </p>
+  </div>
 </div>
