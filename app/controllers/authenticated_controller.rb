@@ -5,6 +5,14 @@ class AuthenticatedController < ApplicationController
 
   private
 
+  def set_player_character
+    @player_character = PlayerCharacter.find(params[:player_character_id] || params[:id])
+  end
+
+  def set_game
+    @game = Game.find(params[:game_id] || params[:id])
+  end
+
   def require_admin
     return if current_user.admin?
 

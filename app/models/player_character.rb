@@ -12,6 +12,10 @@ class PlayerCharacter < ApplicationRecord
   accepts_nested_attributes_for :contacts
   has_many :special_abilities, dependent: :destroy
   accepts_nested_attributes_for :special_abilities
+  has_many :harms, dependent: :destroy
+  accepts_nested_attributes_for :harms
+  has_many :trauma, dependent: :destroy
+  accepts_nested_attributes_for :trauma
 
   after_create :set_playbook_defaults
 
@@ -20,7 +24,6 @@ class PlayerCharacter < ApplicationRecord
   enum heritage: { akoros: 0, dagger_isles: 1, iruvia: 2, severos: 3, skovlan: 4, tycheros: 5 }
   enum background: { academic: 0, labor: 1, law: 2, trade: 3, military: 4, noble: 5, underworld: 6 }
   enum vice: { faith: 0, gambling: 1, luxury: 2, obligation: 3, pleasure: 4, stupor: 5, weird: 6 }
-  enum trauma: { cold: 0, haunted: 1, obsessed: 2, paranoid: 3, reckless: 4, soft: 5, unstable: 6, vicious: 7 }
   enum load: { light: 2, normal: 5, heavy: 6 }
 
   DEFAULT_ITEMS = {
@@ -83,6 +86,16 @@ class PlayerCharacter < ApplicationRecord
 
   def set_playbook_defaults
     playbook.create_assets(self)
+
+    harms.create(label: '', level: 1)
+    harms.create(label: '', level: 1)
+    harms.create(label: '', level: 2)
+    harms.create(label: '', level: 2)
+    harms.create(label: '', level: 3)
+
+    4.times do
+      trauma.create
+    end
 
     DEFAULT_ITEMS.each_key do |item_key|
       Item.create(DEFAULT_ITEMS[item_key].merge({ playbook_id: nil, player_character: self }))

@@ -1,60 +1,102 @@
 <div class="player-character" id="<%= dom_id player_character %>">
   <div id="details">
-    <p>
-      <strong>Name:</strong>
-      <%= player_character.name %>
-    </p>
-    <p>
-      <strong>Alias:</strong>
-      <%= player_character.nickname %>
-    </p>
-    <p>
-      <strong>Look:</strong>
-      <%= player_character.look %>
-    </p>
-    <p>
-      <strong>Heritage:</strong>
-      <%= player_character.heritage_description %>
-      (<%= player_character.heritage %>)
-    </p>
-    <p>
-      <strong>Background:</strong>
-      <%= player_character.background_description %>
-      (<%= player_character.background %>)
-    </p>
-    <p>
-      <strong>Vice/Purveyor:</strong>
-      <%= player_character.vice_description %>
-      (<%= player_character.vice %>)
-    </p>
-    <p>
-      <strong>Stress:</strong>
-      <%= player_character.stress %>
-    </p>
-    <p>
+    <div class="playbook-row">
+      <p>
+        <strong>Crew:</strong>
+        <%= @game.name %>
+      </p>
+    </div>
+
+    <div class="playbook-row">
+      <%= render "shared/input_field", player_character:, field: :name, label: "Name" %>
+      <%= render "shared/input_field", player_character:, field: :nickname, label: "Alias" %>
+    </div>
+    <div class="playbook-row">
+      <%= render "shared/input_field", player_character:, field: :look, label: "Look" %>
+    </div>
+    <div class="playbook-row">
+      <%= render "shared/input_field",
+        player_character:,
+        field: :heritage_description,
+        label: 'Heritage',
+        select_field: :heritage,
+        collection: PlayerCharacter.heritages.keys
+      %>
+      <%= render "shared/input_field",
+        player_character:,
+        field: :background_description,
+        label: 'Background',
+        select_field: :background,
+        collection: PlayerCharacter.backgrounds.keys
+      %>
+    </div>
+    <div class="playbook-row">
+      <%= render "shared/input_field",
+        player_character:,
+        field: :vice_description,
+        label: 'Vice/Purveyor',
+        select_field: :vice,
+        collection: PlayerCharacter.vices.keys
+      %>
+    </div>
+    <div class="status">
+      <p>
+        <strong>Stress:</strong>
+        <%= player_character.stress %>
+      </p>
+      <%= render 'player_characters/stress', player_character: %>
       <strong>Trauma:</strong>
-      NOT IMPLEMENTED YET
-    </p>
-    <p>
-      <strong>Healing:</strong>
-      NOT IMPLEMENTED YET
-    </p>
-    <p>
-      <strong>Harm:</strong>
-      NOT IMPLEMENTED YET
-    </p>
-    <p>
-      <strong>Armor</strong>
-      <%= player_character.armor %>
-    </p>
-    <p>
-      <strong>Special Armor</strong>
-      <%= player_character.special %>
-    </p>
-    <p>
-      <strong>Heavy Armor</strong>
-      <%= player_character.heavy %>
-    </p>
+      <% player_character.trauma.each do |trauma| %>
+        <%= render 'shared/input_select', model: [game, player_character, trauma], field: :trauma, collection: Trauma.traumas.keys %>
+      <% end %>
+      <p>
+        <strong>Healing:</strong>
+        <%= render 'player_characters/healing', player_character: %>
+      </p>
+      <p>
+        <strong>Level 3 Harm:</strong>
+        <%- level_3_harm = player_character.harms.find_by(level: 3) %>
+        <%= render 'shared/input_field', model: [game, player_character, level_3_harm], field: :label %>
+      </p>
+      <p>
+        <strong>Level 2 Harm:</strong>
+        <% player_character.harms.where(level: 2).each do |level_2_harm| %>
+          <%= render 'shared/input_field', model: [game, player_character, level_2_harm], field: :label %>
+        <% end %>
+      </p>
+      <p>
+        <strong>Level 1 Harm:</strong>
+        <% player_character.harms.where(level: 1).each do |level_1_harm| %>
+          <%= render 'shared/input_field', model: [game, player_character, level_1_harm], field: :label %>
+        <% end %>
+      </p>
+      <div class="armor-container">
+        <div class='armor-row'>
+          <strong>Armor</strong>
+          <%= render "shared/input_box",
+            checked: player_character.armor,
+            player_character:,
+            field: :armor
+          %>
+        </div>
+        <div class='armor-row'>
+          <strong>Special Armor</strong>
+          <%= render "shared/input_box",
+            checked: player_character.special,
+            player_character:,
+            field: :special
+          %>
+        </div>
+        <div class='armor-row'>
+          <strong>Heavy Armor</strong>
+          <%= render "shared/input_box",
+            checked: player_character.heavy,
+            player_character:,
+            field: :heavy
+          %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="playbook">
@@ -136,7 +178,18 @@
       attune: <%= player_character.attune %>
       command: <%= player_character.command %>
       consort: <%= player_character.consort %>
-      sway: <%= player_character.sway>
+      sway: <%= player_character.sway %>
+    </p>
+      <p>
+      <strong>Default items </strong>
+      <%= player_character.items.where(playbook_id: nil ).count %>
+      <% player_character.items.where(playbook_id: nil ).each do |item| %>
+        <p>
+          Name: <%= item.name %>
+          cost: <%= item.cost %>
+          points: <%= item.points %>
+        </p>
+      <% end %>
     </p>
   </div>
 </div>

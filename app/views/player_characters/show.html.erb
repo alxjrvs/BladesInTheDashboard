@@ -1,8 +1,1 @@
 <%= render @player_character %>
-
-<div>
-  <%= link_to "Edit this player_character", edit_game_player_character_path(@game, @player_character) %> |
-  <%= link_to "Back to player_characters", game_player_characters_path(@game) %>
-
-  <%= button_to "Destroy this player_character", @player_character, method: :delete %>
-</div>

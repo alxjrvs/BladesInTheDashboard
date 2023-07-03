@@ -1,0 +1,14 @@
+<% model ||= [@game, player_character] %>
+<% label ||= nil %>
+<% select_field ||= nil %>
+
+
+<%= form_with(model: model, class: 'input') do |form| %>
+    <%= form.text_field field, onchange: 'this.form.submit()', class: 'field' %>
+    <div class="lower">
+    <%= (form.label field, label, class: 'label') if label %>
+    <% if select_field %>
+        <%= form.select select_field, collection, {}, onchange: 'this.form.submit()', class: 'inner-select'  %>
+    <% end %>
+    </div>
+<% end %>

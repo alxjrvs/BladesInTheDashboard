@@ -1,0 +1,12 @@
+<div class='stress-container'>
+  <%- 9.times do |i| %>
+    <% checked = i + 1<= player_character.stress %>
+    <% value = player_character.stress === i + 1 ? i : i + 1 %>
+    <%= render 'shared/input_box',
+      field: :stress,
+      player_character:,
+      value:,
+      checked:
+    %>
+  <% end %>
+</div>

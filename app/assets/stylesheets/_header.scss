@@ -1,6 +1,5 @@
 #header {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
   background-color: black;
@@ -12,12 +11,12 @@
   }
 
   .logo {
-    display:flex;
+    display: flex;
     justify-content: flex-start;
-
   }
 
-  a, h2 {
+  a,
+  h2 {
     text-decoration: none;
     color: white;
     margin: 0;

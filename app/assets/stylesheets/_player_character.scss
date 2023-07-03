@@ -4,9 +4,89 @@
   flex-direction: row;
   width: 100%;
 
-  #details, #stats, #playbook {
+  #details,
+  #stats,
+  #playbook {
     flex: 1;
     overflow-y: scroll;
     width: 30%;
+  }
+
+  .playbook-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .checkbox {
+    min-height: 30px;
+    min-width: 30px;
+    border: 1px solid black;
+    font-size: large;
+    background-color: white;
+  }
+
+  .input {
+    flex: 1;
+    background-color: transparent;
+    padding: 2px;
+
+    .field {
+      border: 0;
+      width: 99%;
+      border-bottom: 1px solid black;
+    }
+    .lower {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .label {
+        max-width: 49%;
+      }
+      .inner-select {
+        max-width: 49%;
+        margin-right: 0px;
+      }
+    }
+  }
+
+  .healing-container {
+    display: grid;
+    grid-template-columns: 30px 30px;
+    grid-row: auto auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  .stress-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    form {
+      margin-right: 5px;
+    }
+  }
+
+  .armor-container {
+    width: 200px;
+
+    .armor-row {
+      margin-bottom: 10px;
+      strong {
+        width: 40%;
+      }
+      form {
+        width: 40%;
+      }
+      display: flex;
+    }
+
+    form {
+      margin-right: 5px;
+    }
   }
 }

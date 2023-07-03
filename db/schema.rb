@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_01_141350) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_03_002113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_141350) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "harms", force: :cascade do |t|
+    t.bigint "player_character_id", null: false
+    t.string "label", default: ""
+    t.integer "level", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_character_id"], name: "index_harms_on_player_character_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -97,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_141350) do
     t.integer "sway", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "healing_clock", default: 0
     t.index ["game_id"], name: "index_player_characters_on_game_id"
     t.index ["user_id"], name: "index_player_characters_on_user_id"
   end
@@ -112,6 +122,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_141350) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_character_id"], name: "index_special_abilities_on_player_character_id"
+  end
+
+  create_table "traumas", force: :cascade do |t|
+    t.bigint "player_character_id", null: false
+    t.integer "trauma", default: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_character_id"], name: "index_traumas_on_player_character_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -133,4 +151,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_141350) do
   add_foreign_key "player_characters", "games"
   add_foreign_key "player_characters", "users"
   add_foreign_key "special_abilities", "player_characters"
+  add_foreign_key "traumas", "player_characters"
 end

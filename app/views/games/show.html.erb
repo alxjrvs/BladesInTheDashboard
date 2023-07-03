@@ -3,8 +3,8 @@
 <% end %>
 <div id="dashboard">
   <div id="main_view">
-    <%= render @game.player_characters.sample %>
+    <%= render @game.player_characters.first, game: @game %>
   </div>
-  <div id="side_view">
-  </div>
+  <%# <div id="side_view">
+  </div> %>
 </div>

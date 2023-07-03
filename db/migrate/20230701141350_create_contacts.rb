@@ -8,7 +8,7 @@ class CreateContacts < ActiveRecord::Migration[7.0]
       t.boolean :friend, default: false
       t.boolean :rival, default: false
       t.integer :playbook_id, foreign_key: true
-      t.belongs_to :player_character, null: false
+      t.belongs_to :player_character, null: false, foreign_key: true
 
       t.timestamps
     end

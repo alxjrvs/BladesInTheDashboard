@@ -24,6 +24,18 @@ FactoryBot.define do
     insight_xp { Faker::Number.within(range: 0..9) }
     prowess_xp { Faker::Number.within(range: 0..9) }
     resolve_xp { Faker::Number.within(range: 0..9) }
+    hunt { Faker::Number.within(range: 0..4) }
+    study { Faker::Number.within(range: 0..4) }
+    survey { Faker::Number.within(range: 0..4) }
+    tinker { Faker::Number.within(range: 0..4) }
+    finesse { Faker::Number.within(range: 0..4) }
+    prowl { Faker::Number.within(range: 0..4) }
+    skirmish { Faker::Number.within(range: 0..4) }
+    wreck { Faker::Number.within(range: 0..4) }
+    attune { Faker::Number.within(range: 0..4) }
+    command { Faker::Number.within(range: 0..4) }
+    consort { Faker::Number.within(range: 0..4) }
+    sway { Faker::Number.within(range: 0..4) }
     coin { Faker::Number.within(range: 0..3) }
     stash { Faker::Number.within(range: 0..9) }
     load { PlayerCharacter.loads.keys.sample }

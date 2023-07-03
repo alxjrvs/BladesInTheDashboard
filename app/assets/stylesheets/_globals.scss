@@ -1,10 +1,17 @@
-html, body {
+html,
+body {
   height: 100%;
   diplay: flex;
 }
 
-body, h1, h2, h3, h4, h5, h6 {
-  font-family: Zilla Slab,HelveticaNeue,Helvetica,Arial,sans-serif;
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Zilla Slab, HelveticaNeue, Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -12,10 +19,16 @@ body {
   background: #e5e5e5;
 }
 
-#header{
+form {
+  margin: 0px;
+  padding: 0px;
+}
+
+#header {
   height: 5%;
   max-height: 5%;
 }
+
 #main {
   height: 89%;
   max-height: 89%;
