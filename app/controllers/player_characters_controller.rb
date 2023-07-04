@@ -29,6 +29,41 @@ class PlayerCharactersController < AuthenticatedController
   # Use callbacks to share common setup or constraints between actions.
   # Only allow a list of trusted parameters through.
   def player_character_params
-    params.require(:player_character).permit(:stress, :armor, :special, :heavy, :name, :nickname, :look, :heritage, :heritage_description, :background, :background_description, :vice, :vice_description, :healing_clock)
+    params
+      .require(:player_character)
+      .permit(
+        :playbook_xp,
+        :insight_xp,
+        :resolve_xp,
+        :prowess_xp,
+        :stress,
+        :armor,
+        :special,
+        :heavy,
+        :name,
+        :nickname,
+        :look,
+        :heritage,
+        :heritage_description,
+        :background,
+        :background_description,
+        :vice,
+        :vice_description,
+        :healing_clock,
+        :coin,
+        :stash,
+        :hunt,
+        :study,
+        :survey,
+        :tinker,
+        :finesse,
+        :prowl,
+        :skirmish,
+        :wreck,
+        :attune,
+        :command,
+        :consort,
+        :sway
+      )
   end
 end

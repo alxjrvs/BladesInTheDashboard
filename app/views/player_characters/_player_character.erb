@@ -7,38 +7,7 @@
       <%= render 'player_characters/playbook', player_character:, game: %>
     </div>
     <div id="stats">
-      <p>
-        <strong>Coin:</strong>
-        <%= player_character.coin %>
-      </p>
-      <p>
-        <strong>Stash:</strong>
-        <%= player_character.stash %>
-      </p>
-      <p>
-        <strong>Insight:</strong>
-        XP: <%= player_character.insight_xp %>
-        hunt: <%= player_character.hunt %>
-        study: <%= player_character.study %>
-        survey: <%= player_character.survey %>
-        tinker: <%= player_character.tinker %>
-      </p>
-      <p>
-        <strong>Prowess:</strong>
-        XP: <%= player_character.prowess_xp %>
-        finesse: <%= player_character.finesse %>
-        prowl: <%= player_character.prowl %>
-        skirmish: <%= player_character.skirmish %>
-        wreck: <%= player_character.wreck %>
-      </p>
-      <p>
-        <strong>Resolve:</strong>
-        XP: <%= player_character.resolve_xp %>
-        attune: <%= player_character.attune %>
-        command: <%= player_character.command %>
-        consort: <%= player_character.consort %>
-        sway: <%= player_character.sway %>
-      </p>
+      <%= render 'player_characters/stats', player_character:, game: %>
       <p>
         <strong>Default items </strong>
         <%= player_character.items.where(playbook_id: nil ).count %>
