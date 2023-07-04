@@ -188,22 +188,29 @@
         }
       }
     }
-    .playbook-items-container {
-      flex: 1;
+  }
+  .playbook-items-container,
+  .default-items-container {
+    .item-column {
+      width: 49%;
+    }
 
-      .playbook-items-row {
+    .items-container {
+      display: flex;
+    }
+
+    .items-row {
+      display: flex;
+      width: 100%;
+      align-items: center;
+
+      .items-boxes {
         display: flex;
-        width: 100%;
-        align-items: center;
+      }
 
-        .playbook-items-boxes {
-          display: flex;
-        }
-
-        label {
-          padding-left: 5px;
-          font-size: 13px;
-        }
+      label {
+        padding-left: 5px;
+        font-size: 13px;
       }
     }
   }
@@ -277,6 +284,7 @@
   .special_abilities-container {
     padding-top: 10px;
     padding-bottom: 10px;
+    height: 450px;
     .special_ability-row {
       width: calc(100% - 5px);
       padding-left: 5px;
@@ -366,6 +374,18 @@
       width: 26px;
       height: 26px;
     }
+  }
+
+  .inline-select-label {
+    display: flex;
+
+    form {
+      background: #b7b7b7;
+    }
+  }
+
+  .xp-blocks {
+    height: 466px;
   }
 
   .xp-block {

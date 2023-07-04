@@ -49,96 +49,143 @@
           %>
   <% end %>
 </div>
-<div class="xp-block">
-  <div class="inline-xp-label">
-    <label class="full-width-label">Insight</label>
-    <%- 9.times do |i| %>
-      <% checked = i + 1<= player_character.insight_xp %>
-      <% value = player_character.insight_xp === i + 1 ? i : i + 1 %>
-      <%= render 'shared/input_box',
+<div class="xp-blocks">
+  <div class="xp-block">
+    <div class="inline-xp-label">
+      <label class="full-width-label">Insight</label>
+      <%- 9.times do |i| %>
+        <% checked = i + 1<= player_character.insight_xp %>
+        <% value = player_character.insight_xp === i + 1 ? i : i + 1 %>
+        <%= render 'shared/input_box',
             field: :insight_xp,
             player_character:,
             value:,
             checked:,
             classes: "playbook-xp-box"
           %>
-    <% end %>
-  </div>
-  <%- [:hunt, :study, :survey, :tinker].each do |skill| %>
-    <div class="skill-row">
-      <%- 4.times do |i| %>
-        <% checked = i + 1<= player_character[skill] %>
-        <% value = player_character[skill] === i + 1 ? i : i + 1 %>
-        <%= render 'shared/input_box',
+      <% end %>
+    </div>
+    <%- [:hunt, :study, :survey, :tinker].each do |skill| %>
+      <div class="skill-row">
+        <%- 4.times do |i| %>
+          <% checked = i + 1<= player_character[skill] %>
+          <% value = player_character[skill] === i + 1 ? i : i + 1 %>
+          <%= render 'shared/input_box',
             field: skill,
             player_character:,
             value:,
             checked:
           %>
-      <% end %>
-      <label><%= skill.to_s.titleize %></label>
-    </div>
-  <% end %>
-</div>
-<div class="xp-block">
-  <div class="inline-xp-label">
-    <label class="full-width-label">Prowess</label>
-    <%- 9.times do |i| %>
-      <% checked = i + 1<= player_character.prowess_xp %>
-      <% value = player_character.prowess_xp === i + 1 ? i : i + 1 %>
-      <%= render 'shared/input_box',
+        <% end %>
+        <label><%= skill.to_s.titleize %></label>
+      </div>
+    <% end %>
+  </div>
+  <div class="xp-block">
+    <div class="inline-xp-label">
+      <label class="full-width-label">Prowess</label>
+      <%- 9.times do |i| %>
+        <% checked = i + 1<= player_character.prowess_xp %>
+        <% value = player_character.prowess_xp === i + 1 ? i : i + 1 %>
+        <%= render 'shared/input_box',
             field: :prowess_xp,
             player_character:,
             value:,
             checked:,
             classes: "playbook-xp-box"
           %>
-    <% end %>
-  </div>
-  <%- [:finesse, :prowl, :skirmish, :wreck].each do |skill| %>
-    <div class="skill-row">
-      <%- 4.times do |i| %>
-        <% checked = i + 1<= player_character[skill] %>
-        <% value = player_character[skill] === i + 1 ? i : i + 1 %>
-        <%= render 'shared/input_box',
+      <% end %>
+    </div>
+    <%- [:finesse, :prowl, :skirmish, :wreck].each do |skill| %>
+      <div class="skill-row">
+        <%- 4.times do |i| %>
+          <% checked = i + 1<= player_character[skill] %>
+          <% value = player_character[skill] === i + 1 ? i : i + 1 %>
+          <%= render 'shared/input_box',
             field: skill,
             player_character:,
             value:,
             checked:
           %>
-      <% end %>
-      <label><%= skill.to_s.titleize %></label>
-    </div>
-  <% end %>
-</div>
-<div class="xp-block">
-  <div class="inline-xp-label">
-    <label class="full-width-label">Resolve</label>
-    <%- 9.times do |i| %>
-      <% checked = i + 1<= player_character.resolve_xp %>
-      <% value = player_character.resolve_xp === i + 1 ? i : i + 1 %>
-      <%= render 'shared/input_box',
+        <% end %>
+        <label><%= skill.to_s.titleize %></label>
+      </div>
+    <% end %>
+  </div>
+  <div class="xp-block">
+    <div class="inline-xp-label">
+      <label class="full-width-label">Resolve</label>
+      <%- 9.times do |i| %>
+        <% checked = i + 1<= player_character.resolve_xp %>
+        <% value = player_character.resolve_xp === i + 1 ? i : i + 1 %>
+        <%= render 'shared/input_box',
             field: :resolve_xp,
             player_character:,
             value:,
             checked:,
             classes: "playbook-xp-box"
           %>
-    <% end %>
-  </div>
-  <%- [:attune, :command, :consort, :sway].each do |skill| %>
-    <div class="skill-row">
-      <%- 4.times do |i| %>
-        <% checked = i + 1<= player_character[skill] %>
-        <% value = player_character[skill] === i + 1 ? i : i + 1 %>
-        <%= render 'shared/input_box',
+      <% end %>
+    </div>
+    <%- [:attune, :command, :consort, :sway].each do |skill| %>
+      <div class="skill-row">
+        <%- 4.times do |i| %>
+          <% checked = i + 1<= player_character[skill] %>
+          <% value = player_character[skill] === i + 1 ? i : i + 1 %>
+          <%= render 'shared/input_box',
             field: skill,
             player_character:,
             value:,
             checked:
           %>
-      <% end %>
-      <label><%= skill.to_s.titleize %></label>
-    </div>
-  <% end %>
+        <% end %>
+        <label><%= skill.to_s.titleize %></label>
+      </div>
+    <% end %>
+  </div>
 </div>
+<div class="default-items-container">
+  <div class="inline-select-label">
+    <label class="full-width-label inverted">Load</label>
+    <%= render 'shared/input_select',
+      model: player_character,
+      field: :load,
+      collection: PlayerCharacter.loads.keys
+    %>
+  </div>
+  <div class="items-container">
+    <div class="item-column">
+      <% player_character.items.where(playbook_id: nil).limit(8).offset(0).each do |item| %>
+        <div class="items-row">
+          <div class="items-boxes">
+            <% item.cost.times do %>
+              <%= render 'shared/input_box',
+                model: [game, player_character, item],
+                field: :loaded,
+                checked: item.loaded,
+                classes: "#{item.intrinsic ? 'intrinsic' : ''}}"
+              %>
+            <% end %>
+          </div>
+          <label> <%= item.name %> </label>
+        </div>
+      <% end %>
+    </div>
+    <div class="item-column">
+      <% player_character.items.where(playbook_id: nil).limit(8).offset(8).each do |item| %>
+        <div class="items-row">
+          <div class="items-boxes">
+            <% item.cost.times do %>
+              <%= render 'shared/input_box',
+                model: [game, player_character, item],
+                field: :loaded,
+                checked: item.loaded,
+                classes: "#{item.intrinsic ? 'intrinsic' : ''}}"
+              %>
+            <% end %>
+          </div>
+          <label> <%= item.name %> </label>
+        </div>
+      <% end %>
+    </div>
+  </div>

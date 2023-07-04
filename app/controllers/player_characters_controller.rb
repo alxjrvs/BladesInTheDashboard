@@ -51,6 +51,7 @@ class PlayerCharactersController < AuthenticatedController
         :vice_description,
         :healing_clock,
         :coin,
+        :load,
         :stash,
         :hunt,
         :study,

@@ -64,8 +64,8 @@
       Items
     </label>
     <% player_character.items.where(playbook_id: player_character.playbook ).each do |item| %>
-      <div class="playbook-items-row">
-        <div class="playbook-items-boxes">
+      <div class="items-row">
+        <div class="items-boxes">
           <% item.cost.times do %>
             <%= render 'shared/input_box',
                 model: [game, player_character, item],

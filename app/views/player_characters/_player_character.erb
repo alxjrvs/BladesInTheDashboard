@@ -8,17 +8,6 @@
     </div>
     <div id="stats">
       <%= render 'player_characters/stats', player_character:, game: %>
-      <p>
-        <strong>Default items </strong>
-        <%= player_character.items.where(playbook_id: nil ).count %>
-        <% player_character.items.where(playbook_id: nil ).each do |item| %>
-          <p>
-            Name: <%= item.name %>
-            cost: <%= item.cost %>
-            loaded: <%= item.loaded %>
-          </p>
-        <% end %>
-      </p>
     </div>
   </div>
 <% end %>
