@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "player-character-frame" do %>
+  <%= render @game.player_characters.first, game: @game %>
+<% end %>

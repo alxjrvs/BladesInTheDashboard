@@ -8,6 +8,8 @@ class HarmsController < AuthenticatedController
   def update
     respond_to do |format|
       if @harm.update(harm_params)
+        format.turbo_stream
+
         format.html { redirect_to game_url(@game), notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else

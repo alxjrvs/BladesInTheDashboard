@@ -1,195 +1,102 @@
-<div class="player-character" id="<%= dom_id player_character %>">
-  <div id="details">
-    <div class="playbook-row">
-      <p>
-        <strong>Crew:</strong>
-        <%= @game.name %>
-      </p>
+<%= turbo_frame_tag "player-character-frame" do %>
+  <div class="player-character" id="<%= dom_id player_character %>">
+    <div id="details">
+      <%= render 'player_characters/background_info', player_character:, game: %>
+      <%= render 'player_characters/stress_and_harm', player_character:, game: %>
     </div>
 
-    <div class="playbook-row">
-      <%= render "shared/input_field", player_character:, field: :name, label: "Name" %>
-      <%= render "shared/input_field", player_character:, field: :nickname, label: "Alias" %>
-    </div>
-    <div class="playbook-row">
-      <%= render "shared/input_field", player_character:, field: :look, label: "Look" %>
-    </div>
-    <div class="playbook-row">
-      <%= render "shared/input_field",
-        player_character:,
-        field: :heritage_description,
-        label: 'Heritage',
-        select_field: :heritage,
-        collection: PlayerCharacter.heritages.keys
-      %>
-      <%= render "shared/input_field",
-        player_character:,
-        field: :background_description,
-        label: 'Background',
-        select_field: :background,
-        collection: PlayerCharacter.backgrounds.keys
-      %>
-    </div>
-    <div class="playbook-row">
-      <%= render "shared/input_field",
-        player_character:,
-        field: :vice_description,
-        label: 'Vice/Purveyor',
-        select_field: :vice,
-        collection: PlayerCharacter.vices.keys
-      %>
-    </div>
-    <div class="status">
+    <div id="playbook">
       <p>
-        <strong>Stress:</strong>
-        <%= player_character.stress %>
-      </p>
-      <%= render 'player_characters/stress', player_character: %>
-      <strong>Trauma:</strong>
-      <% player_character.trauma.each do |trauma| %>
-        <%= render 'shared/input_select', model: [game, player_character, trauma], field: :trauma, collection: Trauma.traumas.keys %>
-      <% end %>
-      <p>
-        <strong>Healing:</strong>
-        <%= render 'player_characters/healing', player_character: %>
+        <strong>Name:</strong>
+        <%= player_character.playbook.name %>
       </p>
       <p>
-        <strong>Level 3 Harm:</strong>
-        <%- level_3_harm = player_character.harms.find_by(level: 3) %>
-        <%= render 'shared/input_field', model: [game, player_character, level_3_harm], field: :label %>
+        <strong>Playbook XP:</strong>
+        <%= player_character.playbook_xp %>
       </p>
       <p>
-        <strong>Level 2 Harm:</strong>
-        <% player_character.harms.where(level: 2).each do |level_2_harm| %>
-          <%= render 'shared/input_field', model: [game, player_character, level_2_harm], field: :label %>
-        <% end %>
-      </p>
-      <p>
-        <strong>Level 1 Harm:</strong>
-        <% player_character.harms.where(level: 1).each do |level_1_harm| %>
-          <%= render 'shared/input_field', model: [game, player_character, level_1_harm], field: :label %>
-        <% end %>
-      </p>
-      <div class="armor-container">
-        <div class='armor-row'>
-          <strong>Armor</strong>
-          <%= render "shared/input_box",
-            checked: player_character.armor,
-            player_character:,
-            field: :armor
-          %>
-        </div>
-        <div class='armor-row'>
-          <strong>Special Armor</strong>
-          <%= render "shared/input_box",
-            checked: player_character.special,
-            player_character:,
-            field: :special
-          %>
-        </div>
-        <div class='armor-row'>
-          <strong>Heavy Armor</strong>
-          <%= render "shared/input_box",
-            checked: player_character.heavy,
-            player_character:,
-            field: :heavy
-          %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="playbook">
-    <p>
-      <strong>Name:</strong>
-      <%= player_character.playbook.name %>
-    </p>
-    <p>
-      <strong>Playbook XP:</strong>
-      <%= player_character.playbook_xp %>
-    </p>
-    <p>
-      <strong>Special Abilities:</strong>
-      <%= player_character.special_abilities.count %>
-      <% player_character.special_abilities.each do |ability| %>
-        <p>
-          Name: <%= ability.name %>
-          description: <%= ability.description %>
-          Cost: <%= ability.cost %>
-          points invested: <%= ability.points %>
-        </p>
-      <% end %>
-
-      <p>
-        <strong>Contacts</strong>
-        <%= player_character.contacts.count %>
-        <% player_character.contacts.each do |contact| %>
+        <strong>Special Abilities:</strong>
+        <%= player_character.special_abilities.count %>
+        <% player_character.special_abilities.each do |ability| %>
           <p>
-            Name: <%= contact.name %>
-            rival: <%= contact.rival %>
-            friend: <%= contact.friend %>
+            Name: <%= ability.name %>
+            description: <%= ability.description %>
+            Cost: <%= ability.cost %>
+            points invested: <%= ability.points %>
           </p>
         <% end %>
-      </p>
 
-       <p>
-        <strong>Playbook items </strong>
-        <%= player_character.items.where(playbook_id: player_character.playbook ).count %>
-        <% player_character.items.where(playbook_id: player_character.playbook ).each do |item| %>
+        <p>
+          <strong>Contacts</strong>
+          <%= player_character.contacts.count %>
+          <% player_character.contacts.each do |contact| %>
+            <p>
+              Name: <%= contact.name %>
+              rival: <%= contact.rival %>
+              friend: <%= contact.friend %>
+            </p>
+          <% end %>
+        </p>
+
+        <p>
+          <strong>Playbook items </strong>
+          <%= player_character.items.where(playbook_id: player_character.playbook ).count %>
+          <% player_character.items.where(playbook_id: player_character.playbook ).each do |item| %>
+            <p>
+              Name: <%= item.name %>
+              cost: <%= item.cost %>
+              points: <%= item.points %>
+              intrinsic: <%= item.intrinsic %>
+            </p>
+          <% end %>
+        </p>
+      </p>
+    </div>
+
+    <div id="stats">
+      <p>
+        <strong>Coin:</strong>
+        <%= player_character.coin %>
+      </p>
+      <p>
+        <strong>Stash:</strong>
+        <%= player_character.stash %>
+      </p>
+      <p>
+        <strong>Insight:</strong>
+        XP: <%= player_character.insight_xp %>
+        hunt: <%= player_character.hunt %>
+        study: <%= player_character.study %>
+        survey: <%= player_character.survey %>
+        tinker: <%= player_character.tinker %>
+      </p>
+      <p>
+        <strong>Prowess:</strong>
+        XP: <%= player_character.prowess_xp %>
+        finesse: <%= player_character.finesse %>
+        prowl: <%= player_character.prowl %>
+        skirmish: <%= player_character.skirmish %>
+        wreck: <%= player_character.wreck %>
+      </p>
+      <p>
+        <strong>Resolve:</strong>
+        XP: <%= player_character.resolve_xp %>
+        attune: <%= player_character.attune %>
+        command: <%= player_character.command %>
+        consort: <%= player_character.consort %>
+        sway: <%= player_character.sway %>
+      </p>
+        <p>
+        <strong>Default items </strong>
+        <%= player_character.items.where(playbook_id: nil ).count %>
+        <% player_character.items.where(playbook_id: nil ).each do |item| %>
           <p>
             Name: <%= item.name %>
             cost: <%= item.cost %>
             points: <%= item.points %>
-            intrinsic: <%= item.intrinsic %>
           </p>
         <% end %>
       </p>
-    </p>
+    </div>
   </div>
-
-  <div id="stats">
-    <p>
-      <strong>Coin:</strong>
-      <%= player_character.coin %>
-    </p>
-    <p>
-      <strong>Stash:</strong>
-      <%= player_character.stash %>
-    </p>
-    <p>
-      <strong>Insight:</strong>
-      XP: <%= player_character.insight_xp %>
-      hunt: <%= player_character.hunt %>
-      study: <%= player_character.study %>
-      survey: <%= player_character.survey %>
-      tinker: <%= player_character.tinker %>
-    </p>
-    <p>
-      <strong>Prowess:</strong>
-      XP: <%= player_character.prowess_xp %>
-      finesse: <%= player_character.finesse %>
-      prowl: <%= player_character.prowl %>
-      skirmish: <%= player_character.skirmish %>
-      wreck: <%= player_character.wreck %>
-    </p>
-    <p>
-      <strong>Resolve:</strong>
-      XP: <%= player_character.resolve_xp %>
-      attune: <%= player_character.attune %>
-      command: <%= player_character.command %>
-      consort: <%= player_character.consort %>
-      sway: <%= player_character.sway %>
-    </p>
-      <p>
-      <strong>Default items </strong>
-      <%= player_character.items.where(playbook_id: nil ).count %>
-      <% player_character.items.where(playbook_id: nil ).each do |item| %>
-        <p>
-          Name: <%= item.name %>
-          cost: <%= item.cost %>
-          points: <%= item.points %>
-        </p>
-      <% end %>
-    </p>
-  </div>
-</div>
+<% end %>

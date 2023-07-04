@@ -1,6 +1,12 @@
 <% model ||= [@game, player_character] %>
+<% classes ||= '' %>
 
 
 <%= form_with(model: model, class: 'input') do |form| %>
-  <%= form.select field, collection, {}, onchange: 'this.form.submit()', class: 'select'  %>
+  <%= form.select field,
+    collection,
+    {},
+    onchange: 'this.form.requestSubmit()',
+    class: "select #{classes}"
+  %>
 <% end %>

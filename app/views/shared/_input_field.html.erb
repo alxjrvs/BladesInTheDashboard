@@ -4,11 +4,13 @@
 
 
 <%= form_with(model: model, class: 'input') do |form| %>
-    <%= form.text_field field, onchange: 'this.form.submit()', class: 'field' %>
-    <div class="lower">
-    <%= (form.label field, label, class: 'label') if label %>
-    <% if select_field %>
-        <%= form.select select_field, collection, {}, onchange: 'this.form.submit()', class: 'inner-select'  %>
+    <%= form.text_field field, onchange: 'this.form.requestSubmit()', class: 'field' %>
+    <% if select_field || label %>
+        <div class="lower">
+            <%= (form.label field, label, class: 'label') if label %>
+            <% if select_field %>
+            <%= form.select select_field, collection, {}, onchange: 'this.form.requestSubmit()', class: 'inner-select'  %>
+            <% end %>
+        </div>
     <% end %>
-    </div>
 <% end %>

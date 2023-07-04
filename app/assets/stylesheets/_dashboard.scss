@@ -8,17 +8,16 @@
     flex-direction: row;
   }
 
-  #main_view, #side_view {
-    background-color: #FCF5E5;
+  #main_view,
+  #side_view {
     margin: 2px;
   }
 
   #main_view {
-    background-image : url(http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=5c5c5c&density=13&opacity=62);
-    flex: 4
+    flex: 4;
   }
 
-  #side_view{
-    flex: 1
+  #side_view {
+    flex: 1;
   }
 }
