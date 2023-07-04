@@ -63,19 +63,18 @@
     <label class="full-width-label inverted">
       Items
     </label>
-    <% player_character.items.where(playbook_id: player_character.playbook ).each do |item| %>
+    <% player_character.items.playbook.each do |item| %>
       <div class="items-row">
         <div class="items-boxes">
           <% item.cost.times do %>
             <%= render 'shared/input_box',
                 model: [game, player_character, item],
                 field: :loaded,
-                checked: item.loaded,
-                classes: "#{item.intrinsic ? 'intrinsic' : ''}}"
+                checked: item.loaded
               %>
           <% end %>
         </div>
-        <label> <%= item.name %> </label>
+        <label class="<%= item.intrinsic ? 'intrinsic' : '' %>" > <%= item.name %> </label>
       </div>
     <% end %>
   </div>

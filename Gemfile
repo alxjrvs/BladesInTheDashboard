@@ -42,4 +42,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "json", "~> 2.6"
+gem 'json', '~> 2.6'

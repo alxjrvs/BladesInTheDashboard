@@ -10,7 +10,7 @@ class Playbook
     create_contacts(player_character)
   end
 
-  PLAYBOOKS = %i[hound]
+  PLAYBOOKS = %i[hound].freeze
 
   PLAYBOOKS.each.with_index do |playbook_name, i|
     playbook_data = JSON.parse(File.read("app/models/playbooks/#{playbook_name}.json"))
@@ -28,19 +28,19 @@ class Playbook
 
   def create_special_abilities(player_character)
     special_abilities.each.with_index do |ability, order|
-      SpecialAbility.create(ability.merge({order:, playbook_id: id, player_character: }))
+      SpecialAbility.create(ability.merge({ order:, playbook_id: id, player_character: }))
     end
   end
 
   def create_items(player_character)
     items.each.with_index do |item, order|
-      Item.create(item.merge({order:, playbook_id: id, player_character: }))
+      Item.create(item.merge({ order:, playbook_id: id, player_character: }))
     end
   end
 
   def create_contacts(player_character)
     contacts.each.with_index do |contact, order|
-      Contact.create(contact.merge({order:, playbook_id: id, player_character: }))
+      Contact.create(contact.merge({ order:, playbook_id: id, player_character: }))
     end
   end
 end

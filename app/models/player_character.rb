@@ -28,6 +28,10 @@ class PlayerCharacter < ApplicationRecord
 
   DEFAULT_ITEMS = JSON.parse(File.read('app/models/playbooks/default_items.json'))
 
+  def current_load
+    items.where(loaded: true, intrinsic: false).sum(:cost)
+  end
+
   private
 
   def set_playbook_defaults

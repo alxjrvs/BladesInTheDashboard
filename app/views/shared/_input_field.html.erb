@@ -1,10 +1,9 @@
-<% model ||= [@game, player_character] %>
 <% label ||= nil %>
 <% classes ||= "" %>
 <% select_field ||= nil %>
 <% disabled ||= false %>
 <% rows ||= 1 %>
-<% maxlength ||= 44 %>
+<% maxlength ||= 25 %>
 <%= form_with(model: model, class: 'input') do |form| %>
   <%= form.text_area field, disabled:, onchange: 'this.form.requestSubmit()', class: "field #{classes}", rows:, maxlength: %>
   <% if select_field || label %>

@@ -21,27 +21,30 @@
 
   select {
     font-family: "alegrya";
+    border: 0;
     min-width: 90px;
+    background-color: #e5e5e5;
   }
 
   #details,
   #stats,
   #playbook {
-    flex: 1;
-    overflow: hidden;
     width: 100%;
     margin: 4px;
   }
 
   #details {
+    flex: 8;
   }
 
   #playbook {
+    flex: 10;
     background-color: #d9d9d9;
     margin-right: 0px;
   }
 
   #stats {
+    flex: 7;
     margin-left: 0px;
   }
 
@@ -49,6 +52,10 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+
+    label {
+      font-weight: 800;
+    }
   }
 
   .checkbox {
@@ -152,7 +159,6 @@
 
   .armor-and-healing-container {
     flex: 2;
-    border-bottom: 1px solid black;
 
     .healing-container {
       display: flex;
@@ -241,6 +247,9 @@
       label {
         padding-left: 5px;
         font-size: 13px;
+        &.intrinsic {
+          font-style: italic;
+        }
       }
     }
   }
@@ -286,6 +295,8 @@
 
         .stress-box {
           height: 100%;
+          border-top: 0;
+          border-bottom: 0;
         }
       }
     }
@@ -307,7 +318,9 @@
         }
 
         .trauma-box {
+          background: white;
           height: 25px;
+          min-width: 100%;
           width: 100%;
         }
       }
@@ -438,6 +451,10 @@
 
     form {
       background: #b7b7b7;
+      select {
+        border: 0;
+        background: #b7b7b7;
+      }
     }
   }
 

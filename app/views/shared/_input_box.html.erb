@@ -4,9 +4,9 @@
 <% activeTag ||= 'X' %>
 <% tag = checked ? activeTag : ' ' %>
 <% classes ||= ''%>
-<% model ||= [@game, player_character] %>
 <% hoverText ||= nil %>
+<% disabled ||= false %>
 <%= form_with(model: model) do |form| %>
   <%= form.hidden_field field, value:  %>
-  <%= form.submit tag,  class: "checkbox #{classes}", title: hoverText %>
+  <%= form.submit tag,  class: "checkbox #{classes}", title: hoverText, disabled: %>
 <% end %>
