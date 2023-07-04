@@ -39,23 +39,31 @@
         <% end %>
       </div>
       <div class="contacts-and-items-row">
-        <% player_character.contacts.each do |contact| %>
-          <p>
-            Name: <%= contact.name %>
-            rival: <%= contact.rival %>
-            friend: <%= contact.friend %>
-          </p>
-        <% end %>
-        <strong>Playbook items </strong>
-        <%= player_character.items.where(playbook_id: player_character.playbook ).count %>
-        <% player_character.items.where(playbook_id: player_character.playbook ).each do |item| %>
-          <p>
-            Name: <%= item.name %>
-            cost: <%= item.cost %>
-            points: <%= item.points %>
-            intrinsic: <%= item.intrinsic %>
-          </p>
-        <% end %>
+        <div class="contacts-container">
+          <label class="full-width-label inverted">
+            Contacts
+          </label>
+          <% player_character.contacts.each do |contact| %>
+            <p>
+              Name: <%= contact.name %>
+              rival: <%= contact.rival %>
+              friend: <%= contact.friend %>
+            </p>
+          <% end %>
+        </div>
+        <div class="playbook-items-container">
+          <label class="full-width-label inverted">
+            Items
+          </label>
+          <% player_character.items.where(playbook_id: player_character.playbook ).each do |item| %>
+            <p>
+              Name: <%= item.name %>
+              cost: <%= item.cost %>
+              points: <%= item.points %>
+              intrinsic: <%= item.intrinsic %>
+            </p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div id="stats">
