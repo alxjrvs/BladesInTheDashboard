@@ -10,6 +10,16 @@
     flex-direction: row;
   }
 
+  input,
+  button {
+    font-family: "WalterTurncoat";
+    font-size: 16px;
+  }
+  select {
+    font-family: "alegrya";
+    min-width: 90px;
+  }
+
   #details,
   #stats,
   #playbook {
@@ -240,6 +250,13 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+
+    .playbook-row {
+      margin-top: 10px;
+    }
+    .playbook-row:last-child {
+      margin-bottom: 10px;
+    }
     @include for-desktop-up {
     }
   }

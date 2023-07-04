@@ -1,10 +1,6 @@
-  
 <div class="descriptors-container">
   <div class="playbook-row">
-    <p>
-      <strong>Crew:</strong>
-      <%= @game.name %>
-    </p>
+    <%= render "shared/input_field", model: game, field: :name, label: "Crew", disabled: true %>
   </div>
   <div class="playbook-row">
     <%= render "shared/input_field", player_character:, field: :name, label: "Name" %>
@@ -19,14 +15,15 @@
     field: :heritage_description,
     label: 'Heritage',
     select_field: :heritage,
-    collection: PlayerCharacter.heritages.keys
+    collection: PlayerCharacter.heritages.keys.map { |h| [h.titleize, h]}
   %>
     <%= render "shared/input_field",
     player_character:,
     field: :background_description,
     label: 'Background',
     select_field: :background,
-    collection: PlayerCharacter.backgrounds.keys
+    collection: PlayerCharacter.backgrounds.keys.map { |h| [h.titleize, h]}
+
   %>
   </div>
   <div class="playbook-row">
@@ -35,7 +32,7 @@
     field: :vice_description,
     label: 'Vice/Purveyor',
     select_field: :vice,
-    collection: PlayerCharacter.vices.keys
+    collection: PlayerCharacter.vices.keys.map { |h| [h.titleize, h]}
   %>
   </div>
 </div>
