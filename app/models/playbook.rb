@@ -10,69 +10,37 @@ class Playbook
     create_contacts(player_character)
   end
 
-  record id: 0 do |p|
-    p.name = 'Hound'
-    p.description = 'A deadly sharpshooter and tracker'
-    p.items = {
-      fine_long_rifle: {
-        name: 'Fine Long Rifle',
-        cost: 2,
-        points: 0
-      },
-      spyglass: {
-        name: 'Spyglass',
-        cost: 1,
-        points: 0
-      },
-      a_trained_hunting_pet: {
-        name: 'A Trained Hunting Pet',
-        intrinsic: true,
-        cost: 1,
-        points: 0
-      }
-    }
-    p.special_abilities = {
-      sharpshooter: {
-        name: 'Sharpshooter',
-        description: 'You can push yourself to do one of the following: make a ranged attack at extreme distance beyond what’s normal for the weapon—unleash a barrage of rapid fire to suppress the enemy.',
-        cost: 1,
-        points: 0
-      },
-      ghost_hunter: {
-        name: 'Ghost Hunter',
-        description: 'Your hunting pet is imbued with spirit energy. It gains potency when tracking or fighting the supernatural, and gains an arcane ability: ghost-form, mind-link, or arrow-swift. Take this ability again to choose an additional arcane ability for your pet.',
-        cost: 2,
-        points: 0
-      }
-    }
+  PLAYBOOKS = %i[hound]
 
-    p.contacts = {
-      steiner: {
-        name: 'Steiner',
-        job: 'assasin',
-        friend: false,
-        rival: false
-      }
-    }
+  PLAYBOOKS.each.with_index do |playbook_name, i|
+    playbook_data = JSON.parse(File.read("app/models/playbooks/#{playbook_name}.json"))
+
+    record id: i do |p|
+      p.name = playbook_data['name']
+      p.description = playbook_data['description']
+      p.items = playbook_data['items']
+      p.special_abilities = playbook_data['special_abilities']
+      p.contacts = playbook_data['contacts']
+    end
   end
 
   private
 
   def create_special_abilities(player_character)
-    special_abilities.each_key do |ability_key|
-      SpecialAbility.create(special_abilities[ability_key].merge({ playbook_id: id, player_character: }))
+    special_abilities.each do |ability|
+      SpecialAbility.create(ability.merge({ playbook_id: id, player_character: }))
     end
   end
 
   def create_items(player_character)
-    items.each_key do |item_key|
-      Item.create(items[item_key].merge({ playbook_id: id, player_character: }))
+    items.each do |item|
+      Item.create(item.merge({ playbook_id: id, player_character: }))
     end
   end
 
   def create_contacts(player_character)
-    contacts.each_key do |contact_key|
-      Contact.create(contacts[contact_key].merge({ playbook_id: id, player_character: }))
+    contacts.each do |contact|
+      Contact.create(contact.merge({ playbook_id: id, player_character: }))
     end
   end
 end

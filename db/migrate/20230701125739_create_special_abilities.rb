@@ -5,7 +5,7 @@ class CreateSpecialAbilities < ActiveRecord::Migration[7.0]
     create_table :special_abilities do |t|
       t.string :name
       t.text :description
-      t.integer :cost, default: 0
+      t.integer :cost, default: 1
       t.integer :points, default: 0
       t.string :detail
       t.belongs_to :player_character, null: false, foreign_key: true

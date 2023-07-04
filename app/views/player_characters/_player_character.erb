@@ -4,67 +4,7 @@
       <%= render 'player_characters/detail', player_character:, game: %>
     </div>
     <div id="playbook">
-      <div class="playbook-details-container">
-        <div class="name">
-          <%= player_character.playbook.name %>
-        </div>
-        <div class="description">
-          <%= player_character.playbook.description %>
-        </div>
-      </div>
-      <label class="full-width-label inverted">Special Abilities</label>
-      <div class="special_abilities-container">
-        <% player_character.special_abilities.each do |ability| %>
-          <div class="special_ability-row">
-            <div class="cost">
-              <% ability.cost.times do |i| %>
-                <% checked = i + 1<= ability.points %>
-                <% value = ability.points === i + 1 ? i : i + 1 %>
-                <%= render 'shared/input_box',
-                  field: :points,
-                  model: [game, player_character, ability],
-                  value:,
-                  checked:,
-                  classes: "special_ability-box"
-                %>
-              <% end %>
-            </div>
-            <div class="description">
-              <span>
-                <%= ability.name %>:
-              </span>
-              <%= ability.description %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="contacts-and-items-row">
-        <div class="contacts-container">
-          <label class="full-width-label inverted">
-            Contacts
-          </label>
-          <% player_character.contacts.each do |contact| %>
-            <p>
-              Name: <%= contact.name %>
-              rival: <%= contact.rival %>
-              friend: <%= contact.friend %>
-            </p>
-          <% end %>
-        </div>
-        <div class="playbook-items-container">
-          <label class="full-width-label inverted">
-            Items
-          </label>
-          <% player_character.items.where(playbook_id: player_character.playbook ).each do |item| %>
-            <p>
-              Name: <%= item.name %>
-              cost: <%= item.cost %>
-              points: <%= item.points %>
-              intrinsic: <%= item.intrinsic %>
-            </p>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'player_characters/playbook', player_character:, game: %>
     </div>
     <div id="stats">
       <p>
@@ -106,7 +46,7 @@
           <p>
             Name: <%= item.name %>
             cost: <%= item.cost %>
-            points: <%= item.points %>
+            loaded: <%= item.loaded %>
           </p>
         <% end %>
       </p>

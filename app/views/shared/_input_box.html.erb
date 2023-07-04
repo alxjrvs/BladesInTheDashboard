@@ -1,7 +1,8 @@
 <% onchange ||= '' %>
 <% checked ||= false %>
 <% value ||= !checked %>
-<% tag = checked ? 'X' : ' ' %>
+<% activeTag ||= 'X' %>
+<% tag = checked ? activeTag : ' ' %>
 <% classes ||= ''%>
 <% model ||= [@game, player_character] %>
 <% hoverText ||= nil %>

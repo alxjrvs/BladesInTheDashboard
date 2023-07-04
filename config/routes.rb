@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :trauma, only: %i[update]
       resources :harms, only: %i[update]
       resources :special_abilities, only: %i[update]
+      resources :contacts, only: %i[update]
+      resources :items, only: %i[update]
     end
   end
   devise_for :users
