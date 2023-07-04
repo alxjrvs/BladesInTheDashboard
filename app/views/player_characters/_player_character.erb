@@ -1,8 +1,7 @@
 <%= turbo_frame_tag "player-character-frame" do %>
   <div class="player-character" id="<%= dom_id player_character %>">
     <div id="details">
-      <%= render 'player_characters/background_info', player_character:, game: %>
-      <%= render 'player_characters/stress_and_harm', player_character:, game: %>
+      <%= render 'player_characters/detail', player_character:, game: %>
     </div>
 
     <div id="playbook">
@@ -14,17 +13,16 @@
         <strong>Playbook XP:</strong>
         <%= player_character.playbook_xp %>
       </p>
-      <p>
-        <strong>Special Abilities:</strong>
-        <%= player_character.special_abilities.count %>
+      <div class="special_abilities-container">
         <% player_character.special_abilities.each do |ability| %>
-          <p>
-            Name: <%= ability.name %>
-            description: <%= ability.description %>
-            Cost: <%= ability.cost %>
-            points invested: <%= ability.points %>
-          </p>
+          <div class="special_ability-row">
+              Name: <%= ability.name %>
+              description: <%= ability.description %>
+              Cost: <%= ability.cost %>
+              points invested: <%= ability.points %>
+            </div>
         <% end %>
+      </div>
 
         <p>
           <strong>Contacts</strong>

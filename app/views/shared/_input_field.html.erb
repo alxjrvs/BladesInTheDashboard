@@ -1,10 +1,11 @@
 <% model ||= [@game, player_character] %>
 <% label ||= nil %>
+<% classes ||= "" %>
 <% select_field ||= nil %>
 
 
 <%= form_with(model: model, class: 'input') do |form| %>
-    <%= form.text_field field, onchange: 'this.form.requestSubmit()', class: 'field' %>
+    <%= form.text_field field, onchange: 'this.form.requestSubmit()', class: "field #{classes}" %>
     <% if select_field || label %>
         <div class="lower">
             <%= (form.label field, label, class: 'label') if label %>

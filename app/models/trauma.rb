@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Trauma < ApplicationRecord
   belongs_to :player_character
 
