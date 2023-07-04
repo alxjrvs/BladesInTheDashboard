@@ -3,13 +3,15 @@
 <% classes ||= "" %>
 <% select_field ||= nil %>
 <% disabled ||= false %>
+<% rows ||= 1 %>
+<% maxlength ||= 44 %>
 <%= form_with(model: model, class: 'input') do |form| %>
-  <%= form.text_field field, disabled:, onchange: 'this.form.requestSubmit()', class: "field #{classes}" %>
+  <%= form.text_area field, disabled:, onchange: 'this.form.requestSubmit()', class: "field #{classes}", rows:, maxlength: %>
   <% if select_field || label %>
     <div class="lower">
       <%= (form.label field, label, class: 'label') if label %>
       <% if select_field %>
-        <%= form.select select_field, collection, {}, onchange: 'this.form.requestSubmit()', class: 'inner-select'  %>
+        <%= form.select select_field, collection, {}, disabled:, onchange: 'this.form.requestSubmit()', class: 'inner-select'  %>
       <% end %>
     </div>
   <% end %>

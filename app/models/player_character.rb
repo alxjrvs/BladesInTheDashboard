@@ -26,61 +26,7 @@ class PlayerCharacter < ApplicationRecord
   enum vice: { faith: 0, gambling: 1, luxury: 2, obligation: 3, pleasure: 4, stupor: 5, weird: 6 }
   enum load: { light: 2, normal: 5, heavy: 6 }
 
-  DEFAULT_ITEMS = {
-    a_blade_or_two: {
-      name: 'A Blade or Two'
-    },
-    a_pistol: {
-      name: 'A Pistol'
-    },
-    a_large_weapon: {
-      name: 'A Large Weapon',
-      cost: 2
-    },
-    armor: {
-      name: 'Armor',
-      cost: 2
-    },
-    burglary_gear: {
-      name: 'Burglary Gear'
-    },
-    arcane_implements: {
-      name: 'Arcane Implements'
-    },
-    subterfuge_supplies: {
-      name: 'Subterfuge Supplies'
-    },
-    tinkering_tools: {
-      name: 'Tinkering Tools'
-    },
-    throwing_knife: {
-      name: 'Throwing Knife'
-    },
-    a_2nd_pistol: {
-      name: 'A 2nd Pistol'
-    },
-    an_unusual_weapon: {
-      name: 'An Unusual Weapon'
-    },
-    heavy_armor: {
-      name: 'Heavy Armor',
-      cost: 3
-    },
-    climbing_gear: {
-      name: 'Climbing Gear',
-      cost: 2
-    },
-    documents: {
-      name: 'Documents'
-    },
-    demolition_tools: {
-      name: 'Demolition Tools',
-      cost: 2
-    },
-    lantern: {
-      name: 'Lantern'
-    }
-  }.freeze
+  DEFAULT_ITEMS = JSON.parse(File.read('app/models/playbooks/default_items.json'))
 
   private
 
@@ -97,8 +43,8 @@ class PlayerCharacter < ApplicationRecord
       trauma.create
     end
 
-    DEFAULT_ITEMS.each_key do |item_key|
-      Item.create(DEFAULT_ITEMS[item_key].merge({ playbook_id: nil, player_character: self }))
+    DEFAULT_ITEMS.each.with_index do |item, order|
+      Item.create(item.merge({ order:, playbook_id: nil, player_character: self }))
     end
   end
 end

@@ -27,20 +27,20 @@ class Playbook
   private
 
   def create_special_abilities(player_character)
-    special_abilities.each do |ability|
-      SpecialAbility.create(ability.merge({ playbook_id: id, player_character: }))
+    special_abilities.each.with_index do |ability, order|
+      SpecialAbility.create(ability.merge({order:, playbook_id: id, player_character: }))
     end
   end
 
   def create_items(player_character)
-    items.each do |item|
-      Item.create(item.merge({ playbook_id: id, player_character: }))
+    items.each.with_index do |item, order|
+      Item.create(item.merge({order:, playbook_id: id, player_character: }))
     end
   end
 
   def create_contacts(player_character)
-    contacts.each do |contact|
-      Contact.create(contact.merge({ playbook_id: id, player_character: }))
+    contacts.each.with_index do |contact, order|
+      Contact.create(contact.merge({order:, playbook_id: id, player_character: }))
     end
   end
 end

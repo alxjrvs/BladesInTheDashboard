@@ -11,10 +11,14 @@
   }
 
   input,
+  textarea,
   button {
     font-family: "WalterTurncoat";
     font-size: 16px;
+    resize: none;
+    overflow: hidden;
   }
+
   select {
     font-family: "alegrya";
     min-width: 90px;
@@ -135,12 +139,13 @@
         border-right: 1px solid black;
       }
 
-      input[type="text"] {
+      textarea {
         height: 55px;
         width: 99%;
         border-bottom: 1px solid black;
         border-left: 1px solid black;
         text-align: center;
+        align-items: center;
       }
     }
   }
@@ -256,6 +261,10 @@
     }
     .playbook-row:last-child {
       margin-bottom: 10px;
+    }
+
+    textarea {
+      background-color: #e5e5e5;
     }
     @include for-desktop-up {
     }

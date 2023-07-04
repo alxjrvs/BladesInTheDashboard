@@ -1,0 +1,55 @@
+[
+  {
+    "name": "A Blade or Two"
+  },
+  {
+    "name": "A Pistol"
+  },
+  {
+    "name": "A Large Weapon",
+    "cost": 2
+  },
+  {
+    "name": "Armor",
+    "cost": 2
+  },
+  {
+    "name": "Burglary Gear"
+  },
+  {
+    "name": "Arcane Implements"
+  },
+  {
+    "name": "Subterfuge Supplies"
+  },
+  {
+    "name": "Tinkering Tools"
+  },
+  {
+    "name": "Throwing Knife"
+  },
+  {
+    "name": "A 2nd Pistol"
+  },
+  {
+    "name": "An Unusual Weapon"
+  },
+  {
+    "name": "Heavy Armor",
+    "cost": 3
+  },
+  {
+    "name": "Climbing Gear",
+    "cost": 2
+  },
+  {
+    "name": "Documents"
+  },
+  {
+    "name": "Demolition Tools",
+    "cost": 2
+  },
+  {
+    "name": "Lantern"
+  }
+]
