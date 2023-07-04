@@ -1,0 +1,158 @@
+  
+<div class="descriptors-container">
+  <div class="playbook-row">
+    <p>
+      <strong>Crew:</strong>
+      <%= @game.name %>
+    </p>
+  </div>
+  <div class="playbook-row">
+    <%= render "shared/input_field", player_character:, field: :name, label: "Name" %>
+    <%= render "shared/input_field", player_character:, field: :nickname, label: "Alias" %>
+  </div>
+  <div class="playbook-row">
+    <%= render "shared/input_field", player_character:, field: :look, label: "Look" %>
+  </div>
+  <div class="playbook-row">
+    <%= render "shared/input_field",
+    player_character:,
+    field: :heritage_description,
+    label: 'Heritage',
+    select_field: :heritage,
+    collection: PlayerCharacter.heritages.keys
+  %>
+    <%= render "shared/input_field",
+    player_character:,
+    field: :background_description,
+    label: 'Background',
+    select_field: :background,
+    collection: PlayerCharacter.backgrounds.keys
+  %>
+  </div>
+  <div class="playbook-row">
+    <%= render "shared/input_field",
+    player_character:,
+    field: :vice_description,
+    label: 'Vice/Purveyor',
+    select_field: :vice,
+    collection: PlayerCharacter.vices.keys
+  %>
+  </div>
+</div>
+<div class="stress-and-harm-container">
+  <div class="playbook-row stress-row">
+    <div class='stress-container'>
+      <label class="full-width-label">Stress</label>
+      <div class="stress-boxes">
+        <%- 9.times do |i| %>
+          <% checked = i + 1<= player_character.stress %>
+          <% value = player_character.stress === i + 1 ? i : i + 1 %>
+          <%= render 'shared/input_box',
+            field: :stress,
+            player_character:,
+            value:,
+            checked:,
+            classes: "stress-box #{checked ? 'active' : ''}",
+            hoverText: "Set stress to #{i + 1}"
+          %>
+        <% end %>
+      </div>
+    </div>
+    <div class='trauma-container'>
+      <label class="full-width-label">Trauma</label>
+      <div class="trauma-boxes">
+        <% player_character.trauma.each do |trauma| %>
+          <%= render 'shared/input_select',
+            model: [game, player_character, trauma],
+            field: :trauma,
+            collection: Trauma.traumas.keys.map {|t| [t === 'unset' ? 'None' : t.titleize, t]},
+            classes: 'trauma-box'
+          %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="playbook-row harm-and-armor-row">
+    <div class="harm-container">
+      <label class="full-width-label">Harm</label>
+      <div class="harm-row">
+        <div>3</div>
+        <%- level_3_harm = player_character.harms.find_by(level: 3) %>
+        <%= render 'shared/input_field',
+          model: [game, player_character, level_3_harm],
+          field: :label,
+          classes: level_3_harm.label === "" ? '' : "active"
+        %>
+        <div>Need Help</div>
+      </div>
+      <div class="harm-row">
+        <div>2</div>
+        <% player_character.harms.where(level: 2).each do |level_2_harm| %>
+          <%= render 'shared/input_field',
+            model: [game, player_character, level_2_harm],
+            field: :label,
+            classes: level_2_harm.label === "" ? '' : "active"
+          %>
+        <% end %>
+        <div>-1D</div>
+      </div>
+      <div class="harm-row">
+        <div>1</div>
+        <% player_character.harms.where(level: 1).each do |level_1_harm| %>
+          <%= render 'shared/input_field',
+            model: [game, player_character, level_1_harm],
+            field: :label,
+            classes: level_1_harm.label === "" ? '' : "active"
+          %>
+        <% end %>
+        <div>Less Effect</div>
+      </div>
+    </div>
+    <div class="armor-and-healing-container">
+      <label class="full-width-label">Healing</label>
+      <div class="healing-container">
+        <div>Project Clock</div>
+        <div class="healing-clock">
+          <%- 4.times do |i| %>
+            <% checked = i + 1<= player_character.healing_clock %>
+            <% value = player_character.healing_clock === i + 1 ? i : i + 1 %>
+            <%= render 'shared/input_box',
+              field: :healing_clock,
+              player_character:,
+              value:,
+              checked:,
+              classes: 'healing-clock-segment'
+            %>
+          <% end %>
+        </div>
+      </div>
+      <div class="armor-container">
+        <label class="full-width-label">Armor</label>
+        <div class='armor-row'>
+          <div>Armor</div>
+          <%= render "shared/input_box",
+            checked: player_character.armor,
+            player_character:,
+            field: :armor
+          %>
+        </div>
+        <div class='armor-row'>
+          <div>Heavy</div>
+          <%= render "shared/input_box",
+            checked: player_character.heavy,
+            player_character:,
+            field: :heavy
+          %>
+        </div>
+        <div class='armor-row'>
+          <div>Special</div>
+          <%= render "shared/input_box",
+            checked: player_character.special,
+            player_character:,
+            field: :special
+          %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
