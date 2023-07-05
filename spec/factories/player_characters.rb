@@ -5,7 +5,7 @@ FactoryBot.define do
     user
     game
 
-    playbook_id { 0 }
+    playbook { Playbook.all.sample }
     retired { Faker::Coin.flip }
     name { Faker::Name.name }
     nickname { Faker::Name.initials }
