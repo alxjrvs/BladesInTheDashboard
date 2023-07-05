@@ -1,7 +1,7 @@
 <div id="footer">
   <div class="nav">
+    <%= link_to "The Crew", game_path(@game), class: "nav-item #{'active' if current_page? game_path(@game)}" %>
     <%- if @game.game_master === current_user %>
-      <div class="nav-item"> The Crew </div>
       <%- @game.player_characters.each do |char|%>
         <%= link_to char.nickname, game_player_character_path(@game, char), class: "nav-item #{'active' if current_page? game_player_character_path(@game, char)}" %>
       <% end %>

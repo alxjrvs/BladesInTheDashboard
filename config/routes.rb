@@ -11,12 +11,7 @@ Rails.application.routes.draw do
       resources :items, only: %i[update]
     end
   end
-  resources :player_characters, only: %i[update]
-  resources :trauma, only: %i[update]
-  resources :harms, only: %i[update]
-  resources :special_abilities, only: %i[update]
-  resources :contacts, only: %i[update]
-  resources :items, only: %i[update]
+
   devise_for :users
   root 'games#index'
 end
