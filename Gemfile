@@ -9,6 +9,7 @@ gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'devise', '~> 4.9'
 gem 'jsbundling-rails'
+gem 'json', '~> 2.6'
 gem 'pg', '~> 1.1'
 gem 'propshaft'
 gem 'puma', '~> 5.0'
@@ -18,10 +19,10 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'factory_bot', '~> 6.2'
+gem 'factory_bot_rails', '~> 6.2'
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'factory_bot', '~> 6.2'
-  gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 3.2'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rspec-rails', '~> 6.0.0'
@@ -41,5 +42,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-gem 'json', '~> 2.6'
