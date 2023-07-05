@@ -2,6 +2,7 @@
 
 class PlayerCharacter < ApplicationRecord
   extend StaticAssociation::AssociationHelpers
+  include BroadcastUpdateable
 
   belongs_to :user
   belongs_to :game
@@ -19,15 +20,7 @@ class PlayerCharacter < ApplicationRecord
 
   after_create :set_playbook_defaults
 
-  after_update_commit lambda {
-    Turbo::StreamsChannel.broadcast_action_later_to(
-      self,
-      action: :replace,
-      target: 'dashboard-frame',
-      partial: 'player_characters/player_character',
-      locals: { player_character: self }
-    )
-  }
+  after_update_commit -> { broadcast_update(self) }
 
   default_scope { includes(:contacts).includes(:items).includes(:special_abilities) }
 

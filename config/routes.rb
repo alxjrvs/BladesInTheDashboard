@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   resources :games, only: %i[index show] do
     get '/join', to: 'games#join'
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
+  mount Sidekiq::Web => '/sidekiq'
   devise_for :users
   root 'games#index'
 end
