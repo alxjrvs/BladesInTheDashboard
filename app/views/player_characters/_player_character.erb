@@ -1,13 +1,14 @@
+<%= turbo_stream_from player_character %>
 <%= turbo_frame_tag "dashboard-frame" do %>
   <div class="player-character" id="<%= dom_id player_character %>">
     <div id="details">
-      <%= render 'player_characters/playbook/detail', player_character:@player_character, game: @game %>
+      <%= render 'player_characters/playbook/detail', player_character:  %>
     </div>
     <div id="playbook">
-      <%= render 'player_characters/playbook/playbook', player_character:@player_character, game: @game %>
+      <%= render 'player_characters/playbook/playbook', player_character:  %>
     </div>
     <div id="stats">
-      <%= render 'player_characters/playbook/stats', player_character: @player_character, game: @game %>
+      <%= render 'player_characters/playbook/stats', player_character: %>
     </div>
   </div>
 <% end %>

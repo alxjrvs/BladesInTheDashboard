@@ -14,6 +14,7 @@ gem 'pg', '~> 1.1'
 gem 'propshaft'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.4'
+gem 'sidekiq'
 gem 'static_association', '~> 0.1.0'
 gem 'stimulus-rails'
 gem 'turbo-rails'
@@ -24,6 +25,7 @@ gem 'factory_bot_rails', '~> 6.2'
 gem 'faker', '~> 3.2'
 
 group :development, :test do
+
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry-rails', '~> 0.3.9'
   gem 'rspec-rails', '~> 6.0.0'

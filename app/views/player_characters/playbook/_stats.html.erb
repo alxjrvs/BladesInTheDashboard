@@ -7,7 +7,7 @@
         <% value = player_character.coin === i + 1 ? i : i + 1 %>
         <%= render 'shared/input_box',
                 field: :coin,
-                model: [game, player_character],
+                model: [player_character.game, player_character],
                 value:,
                 checked:,
                 classes: "coin-box"
@@ -25,7 +25,7 @@
           <% value = player_character.stash === iterator + 1 ? iterator : iterator + 1 %>
           <%= render 'shared/input_box',
                 field: :stash,
-                model: [game, player_character],
+                model: [player_character.game, player_character],
                 value:,
                 checked:,
                 classes: "stash-box"
@@ -42,7 +42,7 @@
     <% value = player_character.playbook_xp === i + 1 ? i : i + 1 %>
     <%= render 'shared/input_box',
             field: :playbook_xp,
-            model: [game, player_character],
+            model: [player_character.game, player_character],
             value:,
             checked:,
             classes: "playbook-xp-box"
@@ -58,7 +58,7 @@
         <% value = player_character.insight_xp === i + 1 ? i : i + 1 %>
         <%= render 'shared/input_box',
             field: :insight_xp,
-            model: [game, player_character],
+            model: [player_character.game, player_character],
             value:,
             checked:,
             classes: "playbook-xp-box"
@@ -72,7 +72,7 @@
           <% value = player_character[skill] === i + 1 ? i : i + 1 %>
           <%= render 'shared/input_box',
             field: skill,
-            model: [game, player_character],
+            model: [player_character.game, player_character],
             value:,
             checked:
           %>
@@ -89,7 +89,7 @@
         <% value = player_character.prowess_xp === i + 1 ? i : i + 1 %>
         <%= render 'shared/input_box',
             field: :prowess_xp,
-            model: [game, player_character],
+            model: [player_character.game, player_character],
             value:,
             checked:,
             classes: "playbook-xp-box"
@@ -103,7 +103,7 @@
           <% value = player_character[skill] === i + 1 ? i : i + 1 %>
           <%= render 'shared/input_box',
             field: skill,
-            model: [game, player_character],
+            model: [player_character.game, player_character],
             value:,
             checked:
           %>
@@ -120,7 +120,7 @@
         <% value = player_character.resolve_xp === i + 1 ? i : i + 1 %>
         <%= render 'shared/input_box',
             field: :resolve_xp,
-            model: [game, player_character],
+            model: [player_character.game, player_character],
             value:,
             checked:,
             classes: "playbook-xp-box"
@@ -134,7 +134,7 @@
           <% value = player_character[skill] === i + 1 ? i : i + 1 %>
           <%= render 'shared/input_box',
             field: skill,
-            model: [game, player_character],
+            model: [player_character.game, player_character],
             value:,
             checked:
           %>
@@ -148,7 +148,7 @@
   <div class="inline-select-label">
     <label class="full-width-label inverted">Load (<%= player_character.current_load %>/<%= PlayerCharacter.loads[player_character.load] %>)</label>
     <%= render 'shared/input_select',
-      model: [game, player_character],
+      model: [player_character.game, player_character],
       field: :load,
       collection: PlayerCharacter.loads.keys.map { |l| ["#{l.to_s.titleize} (#{PlayerCharacter.loads[l]})", l]}
     %>
@@ -160,7 +160,7 @@
           <div class="items-boxes">
             <% item.cost.times do %>
               <%= render 'shared/input_box',
-                model: [game, player_character, item],
+                model: [player_character.game, player_character, item],
                 field: :loaded,
                 checked: item.loaded
               %>
@@ -176,7 +176,7 @@
           <div class="items-boxes">
             <% item.cost.times do %>
               <%= render 'shared/input_box',
-                model: [game, player_character, item],
+                model: [player_character.game, player_character, item],
                 field: :loaded,
                 checked: item.loaded
               %>
