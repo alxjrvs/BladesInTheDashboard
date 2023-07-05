@@ -1,0 +1,38 @@
+#footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  z-index: 40;
+  bottom: 0;
+  width: calc(100% - 10px);
+
+  p {
+    margin: 0;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  a,
+  h2 {
+    text-decoration: none;
+    color: white;
+    margin: 0;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    button {
+      margin-right: 15px;
+    }
+  }
+}

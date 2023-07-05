@@ -2,9 +2,10 @@
 
 class Playbook
   include StaticAssociation
-  attr_accessor :name, :description, :items, :special_abilities, :contacts
+  attr_accessor :name, :description, :items, :special_abilities, :contacts, :stats
 
   def create_assets(player_character)
+    assign_defaults(player_character)
     create_special_abilities(player_character)
     create_items(player_character)
     create_contacts(player_character)
@@ -21,10 +22,15 @@ class Playbook
       p.items = playbook_data['items']
       p.special_abilities = playbook_data['special_abilities']
       p.contacts = playbook_data['contacts']
+      p.stats = playbook_data['stats']
     end
   end
 
   private
+
+  def assign_defaults(player_character)
+    player_character.update(stats)
+  end
 
   def create_special_abilities(player_character)
     special_abilities.each.with_index do |ability, order|

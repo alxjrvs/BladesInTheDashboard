@@ -7,17 +7,4 @@
   @include for-desktop-up {
     flex-direction: row;
   }
-
-  #main_view,
-  #side_view {
-    margin: 2px;
-  }
-
-  #main_view {
-    flex: 5;
-  }
-
-  #side_view {
-    flex: 1;
-  }
 }

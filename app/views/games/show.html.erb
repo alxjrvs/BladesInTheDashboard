@@ -1,11 +1,4 @@
 <% content_for :header_buttons do %>
   <%= button_to "Show Games", games_path, method: :get %>
 <% end %>
-<div id="dashboard">
-  <div id="main_view">
-    <%= render @game.player_characters.first, game: @game %>
-  </div>
-  <%# <div id="side_view">
-    <h1> hi!</h1>
-  </div> %>
-</div>
+<%= render @game.player_characters.first, game: @game %>

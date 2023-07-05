@@ -1,6 +1,10 @@
 {
   "name": "Hound",
   "description": "A deadly sharpshooter and tracker",
+  "stats": {
+    "hunt": 2,
+    "survey": 1
+  },
   "items": [
     {
       "name": "Fine pair of pistols"

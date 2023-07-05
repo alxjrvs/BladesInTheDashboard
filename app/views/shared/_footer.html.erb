@@ -1,0 +1,11 @@
+<div id="footer">
+  <%- if @game.game_master === current_user %>
+    <p> The Crew </p>
+    <%- @game.player_characters.each do |char|%>
+      <%= link_to char.nickname, game_player_character_path(@game, char), data: {"turbo_frame": "dashboard-frame"}
+%>
+    <% end %>
+  <% else %>
+    <%= link_to game_player_character_path(@game, current_user.player_characters.find_by(game: @game)), data: {"turbo_frame": "dashboard-frame"} %>
+  <% end %>
+</div>
