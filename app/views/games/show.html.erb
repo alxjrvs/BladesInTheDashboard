@@ -1,4 +1,3 @@
 <% content_for :header_buttons do %>
   <%= button_to "Show Games", games_path, method: :get %>
 <% end %>
-<%= render @game.player_characters.first, game: @game %>

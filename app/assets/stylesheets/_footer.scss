@@ -2,27 +2,49 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
-  color: white;
-  padding: 10px;
+  background-color: white;
+  color: black;
+  padding: 0 10px;
   position: fixed;
   z-index: 40;
   bottom: 0;
+  height: 40px;
   width: calc(100% - 10px);
+
+  .nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 40px;
+    cursor: pointer;
+
+    .nav-item {
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      margin: 10px 0px;
+      border-right: 1px solid black;
+
+      &.active {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
 
   p {
     margin: 0;
   }
 
-  .logo {
-    display: flex;
-    justify-content: flex-start;
-  }
-
   a,
   h2 {
+    height: 100%;
     text-decoration: none;
-    color: white;
+    color: black;
     margin: 0;
   }
 
