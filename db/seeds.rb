@@ -8,6 +8,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require 'factory_bot'
+require 'faker'
+
 Rails.logger.debug 'Creating Admin....'
 admin = User.find_by(email: 'funnybunny@example.com') || (FactoryBot.create :user, admin: true,
                                                                                    email: 'funnybunny@example.com', password: 'password')
