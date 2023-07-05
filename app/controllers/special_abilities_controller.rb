@@ -8,6 +8,7 @@ class SpecialAbilitiesController < AuthenticatedController
   def update
     respond_to do |format|
       if @special_ability.update(special_ability_params)
+
         format.turbo_stream
 
         format.html { redirect_to game_url(@game), notice: 'Game was successfully updated.' }
