@@ -8,7 +8,14 @@ class ItemsController < AuthenticatedController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.turbo_stream
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            @item.player_character,
+            partial: 'player_characters/player_character',
+            target: 'dashboard-frame',
+            locals: { player_character: @item.player_character.reload }
+          )
+        end
 
         format.html { redirect_to game_url(@game), notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }

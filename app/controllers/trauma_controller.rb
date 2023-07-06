@@ -8,8 +8,14 @@ class TraumaController < AuthenticatedController
   def update
     respond_to do |format|
       if @trauma.update(trauma_params)
-        format.turbo_stream
-
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            @trauma.player_character,
+            partial: 'player_characters/player_character',
+            target: 'dashboard-frame',
+            locals: { player_character: @trauma.player_character.reload }
+          )
+        end
         format.html { redirect_to game_url(@game), notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else

@@ -20,8 +20,6 @@ class PlayerCharacter < ApplicationRecord
 
   after_create :set_playbook_defaults
 
-  after_update_commit -> { broadcast_update(self) }
-
   default_scope { includes(:contacts).includes(:items).includes(:special_abilities) }
 
   enum heritage: { akoros: 0, dagger_isles: 1, iruvia: 2, severos: 3, skovlan: 4, tycheros: 5 }

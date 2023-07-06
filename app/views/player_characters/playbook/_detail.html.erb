@@ -43,7 +43,7 @@
       <div class="stress-boxes">
         <%- 9.times do |i| %>
           <% checked = i + 1<= player_character.stress %>
-          <% value = player_character.stress === i + 1 ? i : i + 1 %>
+          <% value = checked ? i :  i + 1 %>
           <%= render 'shared/input_box',
             field: :stress,
             model: [player_character.game, player_character],
@@ -112,7 +112,7 @@
         <div class="healing-clock">
           <%- 4.times do |i| %>
             <% checked = i + 1<= player_character.healing_clock %>
-            <% value = player_character.healing_clock === i + 1 ? i : i + 1 %>
+            <% value = checked ? i :  i + 1 %>
             <%= render 'shared/input_box',
               field: :healing_clock,
               model: [player_character.game, player_character],

@@ -13,7 +13,7 @@
       <div class="cost">
         <% ability.cost.times do |i| %>
           <% checked = i + 1<= ability.points %>
-          <% value = ability.points === i + 1 ? i : i + 1 %>
+          <% value = checked ? i :  i + 1 %>
           <%= render 'shared/input_box',
                   field: :points,
                   model: [player_character.game, player_character, ability],

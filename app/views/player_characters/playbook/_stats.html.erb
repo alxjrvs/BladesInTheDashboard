@@ -4,7 +4,7 @@
     <div class="coin-boxes">
       <%- 4.times do |i| %>
         <% checked = i + 1<= player_character.coin %>
-        <% value = player_character.coin === i + 1 ? i : i + 1 %>
+        <% value = checked ? i :  i + 1 %>
         <%= render 'shared/input_box',
                 field: :coin,
                 model: [player_character.game, player_character],
@@ -21,8 +21,8 @@
       <div class="stash-boxes">
         <%- 10.times do |i| %>
           <% iterator = "#{base_i}#{i}".to_i %>
-          <% checked = iterator + 1<= player_character.stash %>
-          <% value = player_character.stash === iterator + 1 ? iterator : iterator + 1 %>
+          <% checked = i + 1<= player_character.stash %>
+          <% value = checked ? iterator :  iterator + 1 %>
           <%= render 'shared/input_box',
                 field: :stash,
                 model: [player_character.game, player_character],
@@ -39,7 +39,7 @@
   <label class="full-width-label">Playbook</label>
   <%- 9.times do |i| %>
     <% checked = i + 1<= player_character.playbook_xp %>
-    <% value = player_character.playbook_xp === i + 1 ? i : i + 1 %>
+    <% value = checked ? i :  i + 1 %>
     <%= render 'shared/input_box',
             field: :playbook_xp,
             model: [player_character.game, player_character],
@@ -55,7 +55,7 @@
       <label class="full-width-label">Insight</label>
       <%- 9.times do |i| %>
         <% checked = i + 1<= player_character.insight_xp %>
-        <% value = player_character.insight_xp === i + 1 ? i : i + 1 %>
+        <% value = checked ? i :  i + 1 %>
         <%= render 'shared/input_box',
             field: :insight_xp,
             model: [player_character.game, player_character],
@@ -69,7 +69,7 @@
       <div class="skill-row">
         <%- 4.times do |i| %>
           <% checked = i + 1<= player_character[skill] %>
-          <% value = player_character[skill] === i + 1 ? i : i + 1 %>
+          <% value = checked ? i :  i + 1 %>
           <%= render 'shared/input_box',
             field: skill,
             model: [player_character.game, player_character],
@@ -86,7 +86,7 @@
       <label class="full-width-label">Prowess</label>
       <%- 9.times do |i| %>
         <% checked = i + 1<= player_character.prowess_xp %>
-        <% value = player_character.prowess_xp === i + 1 ? i : i + 1 %>
+        <% value = checked ? i :  i + 1 %>
         <%= render 'shared/input_box',
             field: :prowess_xp,
             model: [player_character.game, player_character],
@@ -100,7 +100,7 @@
       <div class="skill-row">
         <%- 4.times do |i| %>
           <% checked = i + 1<= player_character[skill] %>
-          <% value = player_character[skill] === i + 1 ? i : i + 1 %>
+          <% value = checked ? i :  i + 1 %>
           <%= render 'shared/input_box',
             field: skill,
             model: [player_character.game, player_character],
@@ -117,7 +117,7 @@
       <label class="full-width-label">Resolve</label>
       <%- 9.times do |i| %>
         <% checked = i + 1<= player_character.resolve_xp %>
-        <% value = player_character.resolve_xp === i + 1 ? i : i + 1 %>
+        <% value = checked ? i :  i + 1 %>
         <%= render 'shared/input_box',
             field: :resolve_xp,
             model: [player_character.game, player_character],
@@ -131,7 +131,7 @@
       <div class="skill-row">
         <%- 4.times do |i| %>
           <% checked = i + 1<= player_character[skill] %>
-          <% value = player_character[skill] === i + 1 ? i : i + 1 %>
+          <% value = checked ? i :  i + 1 %>
           <%= render 'shared/input_box',
             field: skill,
             model: [player_character.game, player_character],

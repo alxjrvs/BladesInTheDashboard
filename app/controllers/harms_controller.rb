@@ -8,7 +8,14 @@ class HarmsController < AuthenticatedController
   def update
     respond_to do |format|
       if @harm.update(harm_params)
-        format.turbo_stream
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            @harm.player_character,
+            partial: 'player_characters/player_character',
+            target: 'dashboard-frame',
+            locals: { player_character: @harm.player_character.reload }
+          )
+        end
 
         format.html { redirect_to game_url(@game), notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
