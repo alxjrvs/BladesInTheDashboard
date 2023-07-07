@@ -1,3 +1,4 @@
+
 .player-character {
   width: 100%;
   display: flex;
@@ -54,16 +55,6 @@
     label {
       font-weight: 800;
     }
-  }
-
-  .checkbox {
-    height: 26px;
-    width: 26px;
-    border: 1px solid black;
-    font-size: large;
-    background-color: white;
-    cursor: pointer;
-    position: relative;
   }
 
   .input {
