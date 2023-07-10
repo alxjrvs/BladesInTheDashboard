@@ -1,8 +1,25 @@
+
+
+.custom-checkbox-container:hover, .custom-checkbox-container:has(~ :hover)  {
+  .xp:not(:checked) {
+    background-color: grey;
+  }
+
+  .stress:not(:checked) {
+    background-color: red;
+  }
+}
+
+.custom-checkbox-container:hover, .custom-checkbox-container:hover ~ * {
+  .xp:checked, .stress:checked{
+    background-color: lightgrey;
+  }
+}
+
 .custom-checkbox-container {
   font-family: system-ui, sans-serif;
   font-size: 2rem;
   font-weight: bold;
-  line-height: 1.1;
   display: grid;
 
   &--disabled {
@@ -17,22 +34,31 @@
     margin: 0;
     font: inherit;
     color: currentColor;
-    width: 26px;
+    width: 25px;
     height: 26px;
     border: 0.05em solid currentColor;
     transform: translateY(-0.075em);
     display: grid;
     place-content: center;
 
+
     &::before {
       content: "";
-      width: 0.45em;
-      height: 0.45em;
-      clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .x-box {
+    &::before {
+      width: 0.25em;
+      height: 0.25em;
       transform: scale(0);
       transform-origin: center ;
       transition: 120ms transform ease-in-out;
-      background-color: CanvasText;
+      clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     }
 
     &:checked::before {
@@ -41,7 +67,71 @@
 
     &:disabled {
       color: grey;
-      cursor: not-allowed;
+    }
+  }
+
+  .xp, .stress {
+    width: 18px;
+    border: 0;
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+    margin-left: 5px;
+
+    &:not(:checked) {
+      background-color: lightgrey;
+    }
+
+    &:checked {
+      background-color: grey;
+    }
+
+    &::before {
+      height: 0;
+      width: 0;
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: inherit;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      transform-origin: right top;
+      transform: skewY(335deg);
+    }
+  }
+
+  .stress {
+    border: 0;
+    &:checked {
+      background-color: red;
+    }
+  }
+}
+
+.custom-input-container {
+  flex: 1;
+  background-color: transparent;
+  padding: 2px;
+
+  .custom-field {
+    border: 0;
+    width: 99%;
+    border-bottom: 1px solid black;
+  }
+  .lower {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .custom-label {
+      max-width: 49%;
+    }
+    .custom-select {
+      cursor: pointer;
+      max-width: 49%;
+      margin-right: 0px;
     }
   }
 }

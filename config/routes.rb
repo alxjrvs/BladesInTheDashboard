@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :items, only: %i[update]
     end
   end
+  resources :player_characters, only: %i[show update]
 
   mount Sidekiq::Web => '/sidekiq'
   devise_for :users

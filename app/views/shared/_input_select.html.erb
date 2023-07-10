@@ -1,11 +1,11 @@
 <% classes ||= '' %>
 <% disabled ||= false %>
-<%= form_with(model: model, class: 'input') do |form| %>
+<%= form_with(model: model, class: 'custom-input-container') do |form| %>
   <%= form.select field,
     collection,
     {},
     onchange: 'this.form.requestSubmit()',
-    class: "select #{classes}",
+    class: "custom-select #{classes}",
     disabled:
   %>
 <% end %>

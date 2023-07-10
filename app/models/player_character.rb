@@ -22,6 +22,12 @@ class PlayerCharacter < ApplicationRecord
 
   default_scope { includes(:contacts).includes(:items).includes(:special_abilities) }
 
+  STATS = {
+    insight: %I[hunt study survey tinker],
+    prowess: %I[finesse prowl skirmish wreck],
+    resolve: %I[attune command consort sway]
+  }
+
   enum heritage: { akoros: 0, dagger_isles: 1, iruvia: 2, severos: 3, skovlan: 4, tycheros: 5 }
   enum background: { academic: 0, labor: 1, law: 2, trade: 3, military: 4, noble: 5, underworld: 6 }
   enum vice: { faith: 0, gambling: 1, luxury: 2, obligation: 3, pleasure: 4, stupor: 5, weird: 6 }
@@ -31,6 +37,10 @@ class PlayerCharacter < ApplicationRecord
 
   def current_load
     items.where(loaded: true, intrinsic: false).sum(:cost)
+  end
+
+  def insight_score
+
   end
 
   private

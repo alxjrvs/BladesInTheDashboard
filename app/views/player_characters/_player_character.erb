@@ -1,14 +1,67 @@
-<%= turbo_stream_from player_character %>
-<%= turbo_frame_tag "dashboard-frame" do %>
-  <div class="player-character" id="<%= dom_id player_character %>">
-    <div id="details">
-      <%= render 'player_characters/playbook/detail', player_character:  %>
+  <div class="player-character-container" id="<%= dom_id player_character %>">
+    <div class="notch">
+      hello
     </div>
-    <div id="playbook">
-      <%= render 'player_characters/playbook/playbook', player_character:  %>
+    <div class="row initial">
+      <div id="bio">
+        <div class="upper">
+          <h1><%= player_character.nickname %></h1>
+        </div>
+        <div class="lower">
+          <span><%= player_character.name %></span>
+          <span>•</span>
+          <span>The <%= player_character.playbook.name %></span>
+        </div>
+      </div>
+      <div id="stats">
+          <% PlayerCharacter::STATS.keys.each do |stat_category| %>
+            <%= render 'stat_block', player_character:, stat_category:  %>
+          <% end %>
+      </div>
+      <div id="stress">
+        <div class="harm">
+        </div>
+        <div class="stress">
+          <div class="stress-row">
+            <%- 9.times do |i| %>
+              <% checked = i + 1<= player_character.stress %>
+              <% value = checked ? i :  i + 1 %>
+              <%= render 'shared/input_box',
+                field: :stress,
+                model: player_character,
+                value:,
+                checked:,
+                classes: "stress #{checked ? 'active' : ''}",
+                hoverText: "Set stress to #{i + 1}"
+              %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="stats">
-      <%= render 'player_characters/playbook/stats', player_character: %>
+    <div class="row">
+      <div id="bio-info">
+        <div class="bio">
+          <h2>Look</h2>
+          <p> <%= player_character.look %></p>
+        </div>
+        <div class="bio">
+          <h2>Heritage</h2>
+          <p><%= player_character.heritage %></p>
+          <p> <%= player_character.heritage_description %></p>
+        </div>
+        <div class="bio">
+          <h2>Background</h2>
+          <p><%= player_character.background %></p>
+          <p> <%= player_character.background_description %></p>
+        </div>
+        <div class="bio">
+          <h2>Vice</h2>
+          <p><%= player_character.vice %></p>
+          <p> <%= player_character.vice_description %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
     </div>
   </div>
-<% end %>

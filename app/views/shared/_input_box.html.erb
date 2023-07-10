@@ -7,6 +7,6 @@
 <% hoverText ||= nil %>
 <% disabled ||= false %>
 <%= form_with(model:, class: "custom-checkbox-container" ) do |form| %>
-  <%= form.check_box field, class: "custom-checkbox", checked:, disabled:, onchange: "this.form.requestSubmit()" %>
+  <%= form.check_box field, class: "custom-checkbox #{classes}", checked:, disabled:, onchange: "this.form.requestSubmit()" %>
   <%= form.hidden_field field, value: %>
 <% end %>

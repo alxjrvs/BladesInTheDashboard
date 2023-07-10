@@ -4,13 +4,13 @@
 <% disabled ||= false %>
 <% rows ||= 1 %>
 <% maxlength ||= 23 %>
-<%= form_with(model: model, class: 'input') do |form| %>
-  <%= form.text_area field, disabled:, onchange: 'this.form.requestSubmit()', class: "field #{classes}", rows:, maxlength: %>
+<%= form_with(model: model, class: 'custom-input-container') do |form| %>
+  <%= form.text_area field, disabled:, onchange: 'this.form.requestSubmit()', class: "custom-field #{classes}", rows:, maxlength: %>
   <% if select_field || label %>
     <div class="lower">
-      <%= (form.label field, label, class: 'label') if label %>
+      <%= (form.label field, label, class: 'custom-label') if label %>
       <% if select_field %>
-        <%= form.select select_field, collection, {}, disabled:, onchange: 'this.form.requestSubmit()', class: 'inner-select'  %>
+        <%= form.select select_field, collection, {}, disabled:, onchange: 'this.form.requestSubmit()', class: 'custom-select'  %>
       <% end %>
     </div>
   <% end %>

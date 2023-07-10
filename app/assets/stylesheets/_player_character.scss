@@ -1,94 +1,268 @@
-
-.player-character {
-  width: 100%;
+.player-character-container {
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  margin: 0px 20px;
+  padding-top: 10px;
+  flex-flow: column;
 
-  @include for-desktop-up {
-    align-items: flex-start;
-    flex-direction: row;
+  .row {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: white;
+    color: black;
+    flex: 4;
+    padding: 10px 10px;
+
+    &.initial {
+      background-color: black;
+      color: white;
+      flex:2;
+    }
+
+    @include for-desktop-up {
+      flex-direction: row;
+      width: 100%;
+      padding: 0;
+    }
   }
 
-  input,
-  textarea,
-  button {
-    font-family: "WalterTurncoat";
-    font-size: 16px;
-    resize: none;
-    overflow: hidden;
+  h1 {
+    font-size: 69px; // Nice
+    padding-right: 10px;
+  }
+  span {
+    font-family: Zilla Slab;
+    font-size: 14px;
   }
 
-  select {
-    font-family: "alegrya";
-    border: 0;
-    min-width: 90px;
-    background-color: #e5e5e5;
+  @mixin cell {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
   }
 
-  #details,
-  #stats,
-  #playbook {
+  .upper {
+    flex: 4;
+    display: flex;
+    align-items: end;
+    height: 100%;
+    width: 100%;
+    padding-right: 5px;
+  }
+
+  .lower {
+    flex: 1;
+    height: 100%;
     width: 100%;
   }
 
-  #details {
-    flex: 8;
-  }
+  #bio {
+    @include cell;
+    order: 1;
+    text-align: center;
+    align-items: center;
 
-  #playbook {
-    flex: 10;
-    background-color: #d9d9d9;
-    margin-right: 0px;
+    .upper {
+      justify-content: center;
+    }
+
+
+    @include for-desktop-up {
+    justify-content: end;
+      align-items: end;
+      width: auto;
+      text-align: left;
+      align-items:flex-start;
+
+      .lower {
+        display: flex;
+        justify-content: space-between;
+
+        span:last-child {
+          padding-right: 20px;
+        }
+      }
+    }
   }
 
   #stats {
-    flex: 7;
-    margin-left: 0px;
-  }
+    @include cell;
+    order: 2;
+    flex: 4;
+    align-items: end;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
 
-  .playbook-row {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-
-    label {
-      font-weight: 800;
+    @include for-desktop-up {
+      justify-content: end;
     }
-  }
 
-  .input {
-    flex: 1;
-    background-color: transparent;
-    padding: 2px;
-
-    .field {
-      border: 0;
-      width: 99%;
-      border-bottom: 1px solid black;
-    }
-    .lower {
-      display: flex;
-      justify-content: space-between;
+    .label-container {
       width: 100%;
+      position: relative;
+      display: flex;
 
-      .label {
-        max-width: 49%;
+      @include for-desktop-up {
+        max-height: 26px;
+        overflow-y: visible;
       }
-      .inner-select {
-        cursor: pointer;
-        max-width: 49%;
-        margin-right: 0px;
+
+      label {
+        font-family: "squada one";
+        text-align: left;
+        display: block;
+        text-transform: uppercase;
+        width: calc(100% - 10px);
+        background-color: black;
+        color: white;
+        padding-top: 5px;
+        padding-left: 2px;
+        padding-bottom: 0px;
+        position: relative;
+      }
+    }
+
+    .stat-block-container {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      .upper {
+        display: flex;
+        flex-wrap: wrap;
+
+        .stat {
+          width: 80%;
+          flex: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          &:nth-last-child(2), &:nth-last-child(1) {
+            padding-top: 10px;
+          }
+
+          label {
+            font-family: Zilla Slab;
+            flex: 1;
+            width: 80%;
+            display: block;
+            text-align: center;
+            border-right: 1px solid white;
+            border-left: 1px solid white;
+            border-top: 1px solid white;
+            padding: 5px 0px;
+          }
+
+          .stat-number {
+            flex:1;
+            width: 80%;
+            display: flex;
+            background: white;
+            border: 1px solid white;
+            color: black;
+
+            .stat-cell {
+              height: 10px;
+              background-color: lightgrey;
+              border: 2px solid white;
+              flex: 1;
+
+              &.acquired {
+                background-color: black;
+              }
+            }
+          }
+        }
+      }
+
+      .xp-row {
+        display: flex;
+        flex-direction: row;
+        padding-right: 9%;
+        overflow: visible;
+        padding-top: 14px;
+
+        @include for-desktop-up {
+        }
+
+        &:before {
+          content: "XP";
+          border: 0;
+          font-family: "squada one";
+          text-transform: uppercase;
+          font-size: 12px;
+          color: white;
+          margin-top: -4px;
+        }
       }
     }
   }
 
-  .active {
-    background-color: #f4c7c2;
+  #stress {
+    @include cell;
+    order: 3;
+    flex: 2;
+
+    .harm {
+      flex: 4;
+    }
+
+    .stress {
+      flex: 1;
+      @include for-desktop-up {
+        max-height: 26px;
+        overflow-y: visible;
+      }
+
+      .stress-row {
+        display: flex;
+
+        @include for-desktop-up {
+          padding-top: 14px;
+        }
+
+        &:before {
+          content: "Stress";
+          border: 0;
+          font-family: "squada one";
+          text-transform: uppercase;
+          font-size: 12px;
+          color: white;
+          margin-top: -4px;
+        }
+      }
+    }
   }
 
-  label.full-width-label {
+  #harm {
+    flex: 2;
+  }
+
+  #armor {
+    flex: 1;
+  }
+
+  #bio-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    .bio {
+      width: 100%
+    }
+  }
+}
+
+label.full-width-label {
     font-family: "squada one";
+    text-align: left;
     display: block;
     text-transform: uppercase;
     width: calc(100% - 10px);
@@ -97,376 +271,10 @@
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
+    position: relative;
 
     &.inverted {
       color: black;
       background: #b7b7b7;
     }
   }
-
-  .harm-container {
-    flex: 5;
-
-    .harm-row {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      height: 60px;
-
-      div:first-child,
-      div:last-child {
-        display: flex;
-        height: 59px;
-        border-bottom: 1px solid black;
-        border-left: 1px solid black;
-        background: #d9d9d9;
-        justify-content: center;
-        align-items: center;
-      }
-
-      div:first-child {
-        width: 30px;
-      }
-
-      div:last-child {
-        width: 60px;
-        max-width: 60px;
-        text-align: center;
-        border-right: 1px solid black;
-      }
-
-      textarea {
-        height: 55px;
-        width: 99%;
-        border-bottom: 1px solid black;
-        border-left: 1px solid black;
-        text-align: center;
-        align-items: center;
-      }
-    }
-  }
-
-  .armor-and-healing-container {
-    flex: 2;
-
-    .healing-container {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      font-style: italic;
-      flex-direction: row;
-
-      .healing-clock {
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-row: auto auto;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-      }
-    }
-
-    .armor-container {
-      height: 119px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      .armor-row {
-        justify-content: space-between;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        padding-bottom: 1.3px;
-
-        div:first-child {
-          padding-left: 5px;
-        }
-      }
-    }
-  }
-
-  .contacts-and-items-row {
-    display: flex;
-    justify-content: space-between;
-
-    .contacts-container {
-      flex: 1;
-
-      .contact-row {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-
-        label {
-          margin: 0;
-          padding-left: 5px;
-          font-size: 13px;
-        }
-
-        .friend {
-          background-color: #b8e1cc;
-        }
-
-        .rival {
-          background-color: #f4c7c2;
-        }
-      }
-    }
-  }
-  .playbook-items-container,
-  .default-items-container {
-    .item-column {
-      width: 49%;
-    }
-
-    .items-container {
-      display: flex;
-    }
-
-    .items-row {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      padding-right: 5px;
-
-      .items-boxes {
-        display: flex;
-      }
-
-      label {
-        padding-left: 5px;
-        font-size: 13px;
-        &.intrinsic {
-          font-style: italic;
-        }
-      }
-    }
-  }
-
-  .stress-and-harm-container {
-    flex: 1;
-    width: 100%;
-    @include for-desktop-up {
-    }
-  }
-  .descriptors-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-
-    .playbook-row {
-      margin-top: 10px;
-    }
-    .playbook-row:last-child {
-      margin-bottom: 10px;
-    }
-
-    textarea {
-      background-color: #e5e5e5;
-    }
-    @include for-desktop-up {
-    }
-  }
-  .stress-row {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-
-    .stress-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-
-      .stress-boxes {
-        display: flex;
-        flex-direction: row;
-        height: 50px;
-
-        .stress-box {
-          height: 100%;
-          border-top: 0;
-          border-bottom: 0;
-        }
-      }
-    }
-
-    .trauma-container {
-      width: 100%;
-    }
-
-    .trauma-container {
-      .trauma-boxes {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-row: auto auto;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-
-        form {
-          padding: 0px;
-        }
-
-        .trauma-box {
-          background: white;
-          height: 25px;
-          min-width: 100%;
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  .playbook-info-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
-
-    .name {
-      flex: 4;
-      font-size: 70px;
-      font-family: "squada one";
-      text-transform: uppercase;
-      padding-left: 10px;
-    }
-    .description {
-      font-family: "alegrya";
-      padding-right: 10px;
-      font-weight: 800;
-      flex: 1;
-    }
-  }
-
-  .special_abilities-container {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .special_ability-row {
-      width: calc(100% - 5px);
-      padding-left: 5px;
-      display: flex;
-      align-items: center;
-      padding-top: 5px;
-
-      .description {
-        padding-left: 5px;
-        padding-right: 5px;
-        font-size: 13px;
-        span {
-          font-size: 14px;
-          font-weight: 800;
-        }
-      }
-    }
-  }
-
-  .purse-container {
-    height: 90px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-
-    position: relative;
-    .coin-box,
-    .stash-box {
-      min-width: 21px;
-      min-height: 21px;
-      height: 21px;
-      width: 21px;
-    }
-
-    .stash-container {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-
-      .stash-boxes {
-        padding-left: 40px;
-        display: flex;
-        flex-direction: row;
-        input {
-          font-size: 15px;
-        }
-
-        form:last-child {
-          input {
-            background-color: #d9d9d9;
-          }
-        }
-      }
-    }
-
-    .coin-container {
-      display: flex;
-      flex-direction: row;
-      flex: 1;
-
-      .coin-boxes {
-        padding-left: 40px;
-        display: flex;
-        flex-direction: column;
-        input {
-          font-size: 15px;
-        }
-      }
-    }
-
-    label {
-      position: absolute;
-      top: 45%;
-      transform: rotate(-90deg);
-    }
-  }
-
-  .playbook_xp-container {
-    margin-bottom: 5px;
-  }
-
-  .inline-xp-label {
-    display: flex;
-
-    .checkbox {
-      width: 26px;
-      height: 26px;
-    }
-  }
-
-  .inline-select-label {
-    display: flex;
-
-    form {
-      background: #b7b7b7;
-      select {
-        border: 0;
-        background: #b7b7b7;
-      }
-    }
-  }
-
-  .xp-blocks {
-    height: 465px;
-  }
-
-  .xp-block {
-    .skill-row {
-      display: flex;
-      padding-left: 5px;
-
-      form:first-child {
-        input {
-          background: #d9d9d9;
-        }
-      }
-      label {
-        font-size: 15px;
-        text-transform: uppercase;
-        padding-left: 2px;
-        padding-top: 2px;
-      }
-    }
-  }
-}

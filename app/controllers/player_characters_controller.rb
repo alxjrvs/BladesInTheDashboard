@@ -13,16 +13,7 @@ class PlayerCharactersController < AuthenticatedController
   def update
     respond_to do |format|
       if @player_character.update(player_character_params)
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.update(
-            @player_character,
-            partial: 'player_characters/player_character',
-            target: 'dashboard-frame',
-            locals: { player_character: @player_character.reload }
-          )
-        end
-
-        format.html { redirect_to game_url(@game), notice: 'Game was successfully updated.' }
+        format.html { redirect_to player_character_path(@player_character), notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit, status: :unprocessable_entity }
