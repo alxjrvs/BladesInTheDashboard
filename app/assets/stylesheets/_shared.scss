@@ -2,17 +2,26 @@
 
 .custom-checkbox-container:hover, .custom-checkbox-container:has(~ :hover)  {
   .xp:not(:checked) {
-    background-color: grey;
+      background-color: lighten(gray, 25%);
+    &::before {
+      background-color: lighten(gray, 25%);
+    }
   }
 
   .stress:not(:checked) {
-    background-color: red;
+      background-color: lighten(red, 25%);
+    &::before {
+      background-color: lighten(red, 25%);
+    }
   }
 }
 
 .custom-checkbox-container:hover, .custom-checkbox-container:hover ~ * {
   .xp:checked, .stress:checked{
-    background-color: lightgrey;
+      background-color: $bg-lightgray;
+    &::before {
+      background-color: $bg-lightgray;
+    }
   }
 }
 
@@ -23,7 +32,7 @@
   display: grid;
 
   &--disabled {
-    color: gray;
+    color:$bg-darkgray;
     cursor: not-allowed;
   }
 
@@ -66,46 +75,61 @@
     }
 
     &:disabled {
-      color: grey;
+      color: $bg-darkgray;
     }
   }
 
+
+  $xp-width: 14px;
   .xp, .stress {
-    width: 18px;
-    border: 0;
+    width: $xp-width;
+    border: 2px solid $bg-black;
     position: relative;
     overflow: visible;
     z-index: 1;
     margin-left: 5px;
 
-    &:not(:checked) {
-      background-color: lightgrey;
-    }
-
-    &:checked {
-      background-color: grey;
-    }
-
     &::before {
       height: 0;
       width: 0;
       content: '';
-      width: 100%;
+      width: $xp-width - 4px;
+      left: -2px;
       height: 100%;
       position: absolute;
       background: inherit;
+      border: 2px solid $bg-black;
+      border-top: 0;
+      margin-top: 5px;
       z-index: -1;
       top: 0;
       bottom: 0;
       transform-origin: right top;
       transform: skewY(335deg);
     }
+
+    &:not(:checked) {
+      background-color: $bg-lightgray;
+      &::before {
+        background-color: $bg-lightgray;
+      }
+    }
+
+    &:checked {
+      background-color: gray;
+      &::before {
+        background-color: gray;
+      }
+    }
+
   }
 
   .stress {
-    border: 0;
     &:checked {
-      background-color: red;
+        background-color: red;
+      &::before {
+        background-color: red;
+      }
     }
   }
 }
@@ -118,7 +142,7 @@
   .custom-field {
     border: 0;
     width: 99%;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(43, 44, 49);
   }
   .lower {
     display: flex;

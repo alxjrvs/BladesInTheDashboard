@@ -19,9 +19,29 @@
           <% end %>
       </div>
       <div id="stress">
-        <div class="harm">
+        <div class="upper">
+          <div class="harm-row">
+            <div>3</div>
+            <%- level_3_harm = player_character.harms.find_by(level: 3) %>
+            <div class="harm">Busted Ass</div>
+            <div>Need Help</div>
+          </div>
+          <div class="harm-row">
+            <div>2</div>
+              <div class="harm">Foo</div>
+            <% player_character.harms.where(level: 2).each do |level_2_harm| %>
+            <% end %>
+            <div>-1D</div>
+          </div>
+          <div class="harm-row disabled">
+            <div>1</div>
+              <div class="harm"></div>
+            <% player_character.harms.where(level: 1).each do |level_1_harm| %>
+            <% end %>
+            <div>Less Effect</div>
+          </div>
         </div>
-        <div class="stress">
+        <div class="lower">
           <div class="stress-row">
             <%- 9.times do |i| %>
               <% checked = i + 1<= player_character.stress %>

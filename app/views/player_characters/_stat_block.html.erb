@@ -2,7 +2,6 @@
   <div class="upper">
     <% PlayerCharacter::STATS[stat_category].each do |stat| %>
       <div class="stat">
-        <label><%=stat.to_s.titleize %></label>
         <div class="stat-number">
           <% stat_value = player_character.send(stat) %>
           <% 4.times do |i| %>
@@ -10,6 +9,8 @@
             </div>
           <% end %>
         </div>
+        <div class="spacer"></div>
+        <label><%=stat.to_s.titleize %></label>
       </div>
     <% end %>
   </div>
