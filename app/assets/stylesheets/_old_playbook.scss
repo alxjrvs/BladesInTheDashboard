@@ -12,14 +12,14 @@
   input,
   textarea,
   button {
-    font-family: "WalterTurncoat";
+    font-family: WalterTurncoat;
     font-size: 16px;
     resize: none;
     overflow: hidden;
   }
 
   select {
-    font-family: "alegrya";
+    font-family: alegrya;
     border: 0;
     min-width: 90px;
     background-color: #e5e5e5;
@@ -38,12 +38,12 @@
   #playbook {
     flex: 10;
     background-color: #d9d9d9;
-    margin-right: 0px;
+    margin-right: 0;
   }
 
   #stats {
     flex: 7;
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   .playbook-row {
@@ -75,8 +75,8 @@
       div:last-child {
         display: flex;
         height: 59px;
-        border-bottom: 1px solid rgb(43, 44, 49);
-        border-left: 1px solid rgb(43, 44, 49);
+        border-bottom: 1px solid rgb(43 44 49);
+        border-left: 1px solid rgb(43 44 49);
         background: #d9d9d9;
         justify-content: center;
         align-items: center;
@@ -90,14 +90,14 @@
         width: 60px;
         max-width: 60px;
         text-align: center;
-        border-right: 1px solid rgb(43, 44, 49);
+        border-right: 1px solid rgb(43 44 49);
       }
 
       textarea {
         height: 55px;
         width: 99%;
-        border-bottom: 1px solid rgb(43, 44, 49);
-        border-left: 1px solid rgb(43, 44, 49);
+        border-bottom: 1px solid rgb(43 44 49);
+        border-left: 1px solid rgb(43 44 49);
         text-align: center;
         align-items: center;
       }
@@ -118,8 +118,7 @@
         display: grid;
         grid-template-columns: auto auto;
         grid-row: auto auto;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
+        grid-gap: 0;
       }
     }
 
@@ -128,6 +127,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
       .armor-row {
         justify-content: space-between;
         width: 100%;
@@ -171,6 +171,7 @@
       }
     }
   }
+
   .playbook-items-container,
   .default-items-container {
     .item-column {
@@ -194,6 +195,7 @@
       label {
         padding-left: 5px;
         font-size: 13px;
+
         &.intrinsic {
           font-style: italic;
         }
@@ -204,9 +206,11 @@
   .stress-and-harm-container {
     flex: 1;
     width: 100%;
+
     @include for-desktop-up {
     }
   }
+
   .descriptors-container {
     flex: 1;
     display: flex;
@@ -215,6 +219,7 @@
     .playbook-row {
       margin-top: 10px;
     }
+
     .playbook-row:last-child {
       margin-bottom: 10px;
     }
@@ -222,9 +227,11 @@
     textarea {
       background-color: #e5e5e5;
     }
+
     @include for-desktop-up {
     }
   }
+
   .stress-row {
     display: flex;
     width: 100%;
@@ -257,11 +264,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-row: auto auto;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
+        grid-gap: 0;
 
         form {
-          padding: 0px;
+          padding: 0;
         }
 
         .trauma-box {
@@ -287,8 +293,9 @@
       text-transform: uppercase;
       padding-left: 10px;
     }
+
     .description {
-      font-family: "alegrya";
+      font-family: alegrya;
       padding-right: 10px;
       font-weight: 800;
       flex: 1;
@@ -302,6 +309,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     .special_ability-row {
       width: calc(100% - 5px);
       padding-left: 5px;
@@ -313,6 +321,7 @@
         padding-left: 5px;
         padding-right: 5px;
         font-size: 13px;
+
         span {
           font-size: 14px;
           font-weight: 800;
@@ -327,8 +336,8 @@
     display: flex;
     justify-content: space-between;
     align-content: center;
-
     position: relative;
+
     .coin-box,
     .stash-box {
       min-width: 21px;
@@ -346,6 +355,7 @@
         padding-left: 40px;
         display: flex;
         flex-direction: row;
+
         input {
           font-size: 15px;
         }
@@ -367,6 +377,7 @@
         padding-left: 40px;
         display: flex;
         flex-direction: column;
+
         input {
           font-size: 15px;
         }
@@ -398,6 +409,7 @@
 
     form {
       background: #b7b7b7;
+
       select {
         border: 0;
         background: #b7b7b7;
@@ -419,6 +431,7 @@
           background: #d9d9d9;
         }
       }
+
       label {
         font-size: 15px;
         text-transform: uppercase;

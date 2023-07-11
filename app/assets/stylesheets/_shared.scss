@@ -3,6 +3,7 @@
 .custom-checkbox-container:hover, .custom-checkbox-container:has(~ :hover)  {
   .xp:not(:checked) {
       background-color: lighten(gray, 25%);
+
     &::before {
       background-color: lighten(gray, 25%);
     }
@@ -10,6 +11,7 @@
 
   .stress:not(:checked) {
       background-color: lighten(red, 25%);
+
     &::before {
       background-color: lighten(red, 25%);
     }
@@ -19,6 +21,7 @@
 .custom-checkbox-container:hover, .custom-checkbox-container:hover ~ * {
   .xp:checked, .stress:checked{
       background-color: $bg-lightgray;
+
     &::before {
       background-color: $bg-lightgray;
     }
@@ -38,14 +41,13 @@
 
   .custom-checkbox {
     cursor: pointer;
-    -webkit-appearance: none;
     appearance: none;
     margin: 0;
     font: inherit;
-    color: currentColor;
+    color: currentcolor;
     width: 25px;
     height: 26px;
-    border: 0.05em solid currentColor;
+    border: 0.05em solid currentcolor;
     transform: translateY(-0.075em);
     display: grid;
     place-content: center;
@@ -81,6 +83,7 @@
 
 
   $xp-width: 14px;
+
   .xp, .stress {
     width: $xp-width;
     border: 2px solid $bg-black;
@@ -90,8 +93,6 @@
     margin-left: 5px;
 
     &::before {
-      height: 0;
-      width: 0;
       content: '';
       width: $xp-width - 4px;
       left: -2px;
@@ -110,6 +111,7 @@
 
     &:not(:checked) {
       background-color: $bg-lightgray;
+
       &::before {
         background-color: $bg-lightgray;
       }
@@ -117,6 +119,7 @@
 
     &:checked {
       background-color: gray;
+
       &::before {
         background-color: gray;
       }
@@ -127,6 +130,7 @@
   .stress {
     &:checked {
         background-color: red;
+
       &::before {
         background-color: red;
       }
@@ -142,8 +146,9 @@
   .custom-field {
     border: 0;
     width: 99%;
-    border-bottom: 1px solid rgb(43, 44, 49);
+    border-bottom: 1px solid rgb(43 44 49);
   }
+
   .lower {
     display: flex;
     justify-content: space-between;
@@ -152,10 +157,11 @@
     .custom-label {
       max-width: 49%;
     }
+
     .custom-select {
       cursor: pointer;
       max-width: 49%;
-      margin-right: 0px;
+      margin-right: 0;
     }
   }
 }
