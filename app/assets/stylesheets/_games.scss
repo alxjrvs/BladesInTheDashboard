@@ -3,14 +3,14 @@
   grid-template-columns: repeat(4, 1fr);
 
   .game {
-    width: 250px;
-    height: 175px;
-    border-radius: 20px;
-    margin: 10px;
-    border: 1px solid #000;
     background: $bg-black;
-    color: #fff;
+    border: 1px solid #000;
+    border-radius: 20px;
     box-shadow: 4px 5px 17px 0 rgb(0 0 0 / 37%);
+    color: #fff;
+    height: 175px;
+    margin: 10px;
+    width: 250px;
 
     .game-content {
       background-color: #e5e5e5;

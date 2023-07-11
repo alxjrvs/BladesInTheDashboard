@@ -1,3 +1,21 @@
 {
-  "extends": "stylelint-config-standard-scss"
+  "extends": "stylelint-config-standard-scss",
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "order/order": [
+      "custom-properties",
+      "dollar-variables",
+      "declarations",
+      "rules",
+      "at-rules"
+    ],
+    "order/properties-order": [
+      "transform",
+      "top",
+      "color"
+    ],
+    "order/properties-alphabetical-order": true
+  }
 }

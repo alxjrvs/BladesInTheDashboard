@@ -1,28 +1,23 @@
 .player-character {
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  @include for-desktop-up {
-    align-items: flex-start;
-    flex-direction: row;
-  }
+  width: 100%;
 
   input,
   textarea,
   button {
     font-family: WalterTurncoat;
     font-size: 16px;
-    resize: none;
     overflow: hidden;
+    resize: none;
   }
 
   select {
-    font-family: alegrya;
-    border: 0;
-    min-width: 90px;
     background-color: #e5e5e5;
+    border: 0;
+    font-family: alegrya;
+    min-width: 90px;
   }
 
   #details,
@@ -36,8 +31,8 @@
   }
 
   #playbook {
-    flex: 10;
     background-color: #d9d9d9;
+    flex: 10;
     margin-right: 0;
   }
 
@@ -48,8 +43,8 @@
 
   .playbook-row {
     display: flex;
-    width: 100%;
     justify-content: space-between;
+    width: 100%;
 
     label {
       font-weight: 800;
@@ -68,18 +63,18 @@
     .harm-row {
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
       height: 60px;
+      justify-content: space-evenly;
 
       div:first-child,
       div:last-child {
-        display: flex;
-        height: 59px;
+        align-items: center;
+        background: #d9d9d9;
         border-bottom: 1px solid rgb(43 44 49);
         border-left: 1px solid rgb(43 44 49);
-        background: #d9d9d9;
+        display: flex;
+        height: 59px;
         justify-content: center;
-        align-items: center;
       }
 
       div:first-child {
@@ -87,19 +82,19 @@
       }
 
       div:last-child {
-        width: 60px;
+        border-right: 1px solid rgb(43 44 49);
         max-width: 60px;
         text-align: center;
-        border-right: 1px solid rgb(43 44 49);
+        width: 60px;
       }
 
       textarea {
-        height: 55px;
-        width: 99%;
+        align-items: center;
         border-bottom: 1px solid rgb(43 44 49);
         border-left: 1px solid rgb(43 44 49);
+        height: 55px;
         text-align: center;
-        align-items: center;
+        width: 99%;
       }
     }
   }
@@ -108,33 +103,33 @@
     flex: 2;
 
     .healing-container {
-      display: flex;
       align-items: center;
-      text-align: center;
-      font-style: italic;
+      display: flex;
       flex-direction: row;
+      font-style: italic;
+      text-align: center;
 
       .healing-clock {
         display: grid;
-        grid-template-columns: auto auto;
-        grid-row: auto auto;
         grid-gap: 0;
+        grid-row: auto auto;
+        grid-template-columns: auto auto;
       }
     }
 
     .armor-container {
-      height: 119px;
       display: flex;
       flex-direction: column;
+      height: 119px;
       justify-content: space-between;
 
       .armor-row {
-        justify-content: space-between;
-        width: 100%;
-        display: flex;
         align-items: center;
-        text-align: center;
+        display: flex;
+        justify-content: space-between;
         padding-bottom: 1.3px;
+        text-align: center;
+        width: 100%;
 
         div:first-child {
           padding-left: 5px;
@@ -151,14 +146,14 @@
       flex: 1;
 
       .contact-row {
+        align-items: center;
         display: flex;
         justify-content: flex-start;
-        align-items: center;
 
         label {
+          font-size: 13px;
           margin: 0;
           padding-left: 5px;
-          font-size: 13px;
         }
 
         .friend {
@@ -183,18 +178,18 @@
     }
 
     .items-row {
-      display: flex;
-      width: 100%;
       align-items: center;
+      display: flex;
       padding-right: 5px;
+      width: 100%;
 
       .items-boxes {
         display: flex;
       }
 
       label {
-        padding-left: 5px;
         font-size: 13px;
+        padding-left: 5px;
 
         &.intrinsic {
           font-style: italic;
@@ -212,8 +207,8 @@
   }
 
   .descriptors-container {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
 
     .playbook-row {
@@ -234,8 +229,8 @@
 
   .stress-row {
     display: flex;
-    width: 100%;
     justify-content: flex-start;
+    width: 100%;
 
     .stress-container {
       display: flex;
@@ -248,9 +243,9 @@
         height: 50px;
 
         .stress-box {
-          height: 100%;
-          border-top: 0;
           border-bottom: 0;
+          border-top: 0;
+          height: 100%;
         }
       }
     }
@@ -262,9 +257,9 @@
     .trauma-container {
       .trauma-boxes {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-row: auto auto;
         grid-gap: 0;
+        grid-row: auto auto;
+        grid-template-columns: 1fr 1fr;
 
         form {
           padding: 0;
@@ -281,46 +276,46 @@
   }
 
   .playbook-info-container {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    display: flex;
     height: 90px;
+    justify-content: space-between;
 
     .name {
       flex: 4;
-      font-size: 70px;
       font-family: "squada one";
-      text-transform: uppercase;
+      font-size: 70px;
       padding-left: 10px;
+      text-transform: uppercase;
     }
 
     .description {
-      font-family: alegrya;
-      padding-right: 10px;
-      font-weight: 800;
       flex: 1;
+      font-family: alegrya;
+      font-weight: 800;
+      padding-right: 10px;
     }
   }
 
   .special_abilities-container {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    height: 450px;
     display: flex;
     flex-direction: column;
+    height: 450px;
     justify-content: space-between;
+    padding-bottom: 10px;
+    padding-top: 10px;
 
     .special_ability-row {
-      width: calc(100% - 5px);
-      padding-left: 5px;
-      display: flex;
       align-items: center;
+      display: flex;
+      padding-left: 5px;
       padding-top: 5px;
+      width: calc(100% - 5px);
 
       .description {
+        font-size: 13px;
         padding-left: 5px;
         padding-right: 5px;
-        font-size: 13px;
 
         span {
           font-size: 14px;
@@ -331,30 +326,30 @@
   }
 
   .purse-container {
-    height: 90px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
     align-content: center;
+    display: flex;
+    height: 90px;
+    justify-content: space-between;
     position: relative;
+    width: 100%;
 
     .coin-box,
     .stash-box {
-      min-width: 21px;
-      min-height: 21px;
       height: 21px;
+      min-height: 21px;
+      min-width: 21px;
       width: 21px;
     }
 
     .stash-container {
       display: flex;
-      flex-direction: column;
       flex: 1;
+      flex-direction: column;
 
       .stash-boxes {
-        padding-left: 40px;
         display: flex;
         flex-direction: row;
+        padding-left: 40px;
 
         input {
           font-size: 15px;
@@ -370,13 +365,13 @@
 
     .coin-container {
       display: flex;
-      flex-direction: row;
       flex: 1;
+      flex-direction: row;
 
       .coin-boxes {
-        padding-left: 40px;
         display: flex;
         flex-direction: column;
+        padding-left: 40px;
 
         input {
           font-size: 15px;
@@ -399,8 +394,8 @@
     display: flex;
 
     .checkbox {
-      width: 26px;
       height: 26px;
+      width: 26px;
     }
   }
 
@@ -411,8 +406,8 @@
       background: #b7b7b7;
 
       select {
-        border: 0;
         background: #b7b7b7;
+        border: 0;
       }
     }
   }
@@ -434,10 +429,15 @@
 
       label {
         font-size: 15px;
-        text-transform: uppercase;
         padding-left: 2px;
         padding-top: 2px;
+        text-transform: uppercase;
       }
     }
+  }
+
+  @include for-desktop-up {
+    align-items: flex-start;
+    flex-direction: row;
   }
 }

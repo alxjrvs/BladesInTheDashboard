@@ -1,9 +1,9 @@
 #header {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: $bg-black;
   color: $white;
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
   top: 0;
   width: calc(100% - 10px);
@@ -19,14 +19,14 @@
 
   a,
   h2 {
-    text-decoration: none;
     color: $white;
     margin: 0;
+    text-decoration: none;
   }
 
   .header-right {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: flex-end;
 
     button {
