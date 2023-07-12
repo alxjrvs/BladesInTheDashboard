@@ -6,11 +6,17 @@
       <div id="bio">
         <div class="upper">
           <h1><%= player_character.nickname %></h1>
-        </div>
-        <div class="lower">
-          <span><%= player_character.name %></span>
-          <span>•</span>
-          <span>The <%= player_character.playbook.name %></span>
+          <div id="id">
+            <span><%= player_character.name %></span>
+            <span>•</span>
+            <span>The <%= player_character.playbook.name %></span>
+          </div>
+          <div id="traumas">
+            <div class="trauma">COLD</div>
+            <div class="trauma">OBSESSED</div>
+            <div class="trauma">SOFT</div>
+            <div class="trauma">PARANOID</div>
+          </div>
         </div>
       </div>
       <div id="stats">
@@ -55,6 +61,17 @@
                 hoverText: "Set stress to #{i + 1}"
               %>
             <% end %>
+          </div>
+
+          <div id="healing-clock-container">
+            <div class="clock acquired">
+            </div>
+            <div class="clock acquired">
+            </div>
+            <div class="clock">
+            </div>
+            <div class="clock acquired">
+            </div>
           </div>
         </div>
       </div>

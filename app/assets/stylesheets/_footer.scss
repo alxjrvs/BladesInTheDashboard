@@ -1,6 +1,6 @@
 #footer {
   align-items: center;
-  background-color: $bg-lightgray;
+  background-color: $lightgray;
   bottom: 0;
   color: rgb(43 44 49);
   display: flex;
@@ -30,7 +30,7 @@
       width: 100%;
 
       &.active {
-        background-color: $bg-black;
+        background-color: $black;
         color: $white;
       }
     }
