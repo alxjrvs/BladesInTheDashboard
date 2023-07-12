@@ -65,8 +65,7 @@
     }
   }
 
-  .xp,
-  .stress {
+  .xp {
     border: 2px solid $black;
     margin-left: 5px;
     overflow: visible;
@@ -107,16 +106,6 @@
       }
     }
   }
-
-  .stress {
-    &:checked {
-      background-color: $orange;
-
-      &::before {
-        background-color: $orange;
-      }
-    }
-  }
 }
 
 .custom-input-container {
@@ -143,37 +132,6 @@
       cursor: pointer;
       margin-right: 0;
       max-width: 49%;
-    }
-  }
-}
-
-.custom-checkbox-container:hover,
-.custom-checkbox-container:hover ~ * {
-  .xp:checked,
-  .stress:checked {
-    background-color: $lightgray;
-
-    &::before {
-      background-color: $lightgray;
-    }
-  }
-}
-
-.custom-checkbox-container:hover,
-.custom-checkbox-container:has(~ :hover) {
-  .xp:not(:checked) {
-    background-color: lighten(gray, 25%);
-
-    &::before {
-      background-color: lighten(gray, 25%);
-    }
-  }
-
-  .stress:not(:checked) {
-    background-color: lighten($orange, 25%);
-
-    &::before {
-      background-color: lighten($orange, 25%);
     }
   }
 }

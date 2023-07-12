@@ -10,6 +10,291 @@
   }
 }
 
+@mixin xp-row($color, $label: "") {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  top: 3px;
+
+  &::before {
+    border: 0;
+    bottom: 3px;
+    color: $white;
+    content: $label;
+    font-family: "squada one";
+    font-size: 15px;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  @include custom-xp($color);
+
+  @include for-desktop-up {
+    padding-top: 3px;
+  }
+
+  .xp {
+    border-top: 0;
+
+    &::after {
+      content: "";
+      height: 30px;
+      left: 12px;
+      position: absolute;
+      top: 0;
+      width: 5px;
+    }
+  }
+}
+
+.upper {
+  align-items: end;
+  display: flex;
+  flex: 4;
+  height: 100%;
+  width: 100%;
+}
+
+.lower {
+  align-items: end;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+}
+
+#harm {
+  flex-direction: column;
+
+  &::before {
+    color: $white;
+    content: "HARM";
+    left: 7px;
+    position: absolute;
+    top: -17px;
+  }
+
+  .harm-row {
+    border-bottom: 2px solid $white;
+    border-left: 2px solid $white;
+    color: $white;
+    display: flex;
+    flex-direction: row;
+    font-family: "Zilla slab";
+    height: 100%;
+    justify-content: space-between;
+    width: 100%;
+
+    &:first-child {
+      border-top: 2px solid $white;
+
+      div:last-child {
+        border-top: none;
+      }
+    }
+
+    &.disabled {
+      background: $darkgray;
+
+      div:last-child {
+        background: $darkgray;
+        color: rgb(255 255 255 / 20%);
+      }
+    }
+
+    div:first-child,
+    div:last-child {
+      align-items: center;
+      color: $white;
+      display: flex;
+      justify-content: center;
+      padding: 0 4px;
+      text-align: center;
+    }
+
+    div:first-child {
+      background: $white;
+      color: $black;
+      min-width: 10px;
+      order: 2;
+    }
+
+    div:last-child {
+      background: $red;
+      border-right: 2px solid $white;
+      min-width: 75px;
+      order: 3;
+    }
+
+    .harm {
+      align-items: center;
+      display: flex;
+      font-family: "Bradley Hand", cursive;
+      font-size: 25px;
+      justify-content: space-around;
+      order: 1;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+#traumas {
+  padding-top: 3px;
+  border-top: 2px solid $white;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 2px;
+  width: calc(100% - 4px);
+
+  .trauma {
+    color: $white;
+    font-family: "squada one";
+    font-size: 20px;
+  }
+}
+
+#stats {
+  align-items: end;
+  flex: 2;
+  flex-direction: row !important;
+  justify-content: center;
+  order: 3;
+  text-align: center;
+
+  .upper {
+    border-right: 2px solid white;
+
+    @extend .upper;
+  }
+
+  .lower {
+    @extend .lower;
+  }
+
+  .label-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+
+    label {
+      color: $white;
+      display: block;
+      font-size: 20px;
+      padding: 3px 0 0 3px;
+      position: relative;
+      text-align: left;
+      text-transform: uppercase;
+      width: calc(100% - 10px);
+    }
+
+    @include for-desktop-up {
+      border-left: 2px solid white;
+      border-top: 2px solid white;
+      max-height: 26px;
+      overflow-y: visible;
+    }
+  }
+
+  .stat-block-container {
+    display: flex;
+    flex: 3.5;
+    flex-flow: column wrap;
+    padding-left: 10px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    .upper {
+      display: flex;
+      flex-wrap: wrap;
+
+      .stat {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        label {
+          display: block;
+          flex: 1;
+          font-family: "Zilla Slab";
+          padding: 0 7px 0 5px;
+          text-align: right;
+          text-transform: uppercase;
+        }
+
+        .spacer {
+          background-color: $lightgray;
+          flex-grow: 1;
+          height: 2px;
+          width: 100%;
+        }
+
+        .stat-number {
+          display: flex;
+
+          .stat-cell {
+            display: none;
+            height: 17px;
+            padding: 5px;
+            position: relative;
+            width: 17px;
+
+            &:last-child {
+              padding-right: 0;
+            }
+
+            &:first-child {
+              border-right: 2px solid rgb(255 255 255 / 30%);
+              display: block;
+              margin: 0;
+              position: relative;
+            }
+
+            &.acquired {
+              display: block;
+
+              &::before {
+                background-color: white;
+                border-radius: 20px;
+                content: "";
+                height: 10px;
+                left: 30%;
+                position: absolute;
+                top: 30%;
+                width: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include cell;
+
+  @include for-desktop-up {
+    justify-content: end;
+  }
+}
+
+#stress {
+  @include xp-row($red, "Stress");
+}
+
+#healing-clock {
+  @include xp-row($green, "Healing");
+}
+
+.xp-row {
+  @include xp-row($gray, "XP");
+}
+
 .player-character-container {
   display: flex;
   flex-flow: column;
@@ -33,6 +318,10 @@
       flex: 2;
     }
 
+    &:not(.initial) {
+      padding: 15px 5px;
+    }
+
     @include for-desktop-up {
       flex-direction: row;
       padding: 0;
@@ -49,71 +338,26 @@
     font-size: 14px;
   }
 
-  .xp-row,
-  .stress-row {
-    display: flex;
-    position: relative;
-
-    .xp,
-    .stress {
-      border-top: 0;
-
-      &::after {
-        content: "";
-        height: 30px;
-        left: 12px;
-        position: absolute;
-        top: 0;
-        width: 5px;
-      }
-    }
-
-    @include for-desktop-up {
-      padding-top: 3px;
-    }
-  }
-
-  .upper {
-    align-items: end;
-    display: flex;
-    flex: 4;
-    height: 100%;
-    width: 100%;
-  }
-
-  .lower {
-    align-items: end;
-    flex: 1;
-    height: 100%;
-    width: 100%;
-  }
-
-  #traumas {
-    display: flex;
-    width: calc(100% - 4px);
-    justify-content: space-between;
-    border-top: 2px solid $white;
-    padding-right: 2px;
-
-    .trauma {
-      font-family: "squada one";
-      color: $orange;
-    }
-  }
-
   #id {
     display: flex;
+    justify-content: center;
     width: 100%;
-    justify-content: space-between;
+
+    span {
+      margin: 0 1.5px 3px 1.5px;
+      font-size: 22px;
+    }
   }
+
   #bio {
     align-items: center;
     order: 1;
     text-align: center;
 
     .upper {
-      justify-content: flex-end;
+      align-items: center;
       flex-direction: column;
+      justify-content: flex-end;
     }
 
     @include cell;
@@ -126,305 +370,21 @@
     }
   }
 
-  #stats {
-    align-items: end;
-    flex: 2;
-    flex-direction: row !important;
-    justify-content: center;
-    order: 3;
-    text-align: center;
-
-    @include cell;
-    .upper {
-      border-right: 2px solid white;
-    }
-
-    .label-container {
-      display: flex;
-      position: relative;
-      width: 100%;
-
-      label {
-        color: $white;
-        display: block;
-        font-size: 20px;
-        padding: 3px 0 0 3px;
-        position: relative;
-        text-align: left;
-        text-transform: uppercase;
-        width: calc(100% - 10px);
-      }
-
-      @include for-desktop-up {
-        border-left: 2px solid white;
-        border-top: 2px solid white;
-        max-height: 26px;
-        overflow-y: visible;
-      }
-    }
-
-    .stat-block-container {
-      display: flex;
-      flex: 3.5;
-      flex-flow: column wrap;
-      padding-left: 10px;
-
-      &:first-child {
-        padding-left: 0;
-      }
-
-      .upper {
-        display: flex;
-        flex-wrap: wrap;
-
-        .stat {
-          align-items: center;
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-
-          label {
-            display: block;
-            flex: 1;
-            font-family: "Zilla Slab";
-            padding: 0 7px 0 5px;
-            text-align: right;
-            text-transform: uppercase;
-          }
-
-          .spacer {
-            background-color: $lightgray;
-            flex-grow: 1;
-            height: 2px;
-            width: 100%;
-          }
-
-          .stat-number {
-            display: flex;
-
-            .stat-cell {
-              display: none;
-              height: 17px;
-              padding: 5px;
-              position: relative;
-              width: 17px;
-
-              &:last-child {
-                padding-right: 0;
-              }
-
-              &:first-child {
-                border-right: 2px solid rgb(255 255 255 / 30%);
-                display: block;
-                margin: 0;
-                position: relative;
-              }
-
-              &.acquired {
-                display: block;
-
-                &::before {
-                  background-color: white;
-                  border-radius: 20px;
-                  content: "";
-                  height: 10px;
-                  left: 30%;
-                  position: absolute;
-                  top: 30%;
-                  width: 10px;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .xp-row {
-        display: flex;
-        flex-direction: row;
-        overflow: visible;
-        padding-right: 10px;
-        padding-top: 3px;
-        position: relative;
-
-        &::before {
-          border: 0;
-          bottom: 0;
-          color: $white;
-          content: "XP";
-          font-family: "squada one";
-          font-size: 12px;
-          left: -7px;
-          position: absolute;
-          text-transform: uppercase;
-        }
-
-        @include for-desktop-up {
-        }
-      }
-    }
-
-    @include for-desktop-up {
-      justify-content: end;
-    }
+  #harm {
+    @extend .upper;
   }
 
-  #stress {
+  #damageables {
     flex: 1;
     order: 2;
     position: relative;
 
-    .upper {
-      flex-direction: column;
-
-      &::before {
-        color: $white;
-        content: "HARM";
-        left: 7px;
-        position: absolute;
-        top: -17px;
-      }
-
-      .harm-row {
-        border-bottom: 2px solid $white;
-        border-left: 2px solid $white;
-        color: $white;
-        display: flex;
-        flex-direction: row;
-        font-family: "Zilla slab";
-        height: 100%;
-        justify-content: space-between;
-        width: 100%;
-
-        &:first-child {
-          border-top: 2px solid $white;
-
-          div:last-child {
-            border-top: none;
-          }
-        }
-
-        &.disabled {
-          background: $darkgray;
-
-          div:last-child {
-            background: $darkgray;
-            color: rgb(255 255 255 / 20%);
-          }
-        }
-
-        div:first-child,
-        div:last-child {
-          align-items: center;
-          color: $white;
-          display: flex;
-          justify-content: center;
-          padding: 0 4px;
-          text-align: center;
-        }
-
-        div:first-child {
-          background: $white;
-          color: $black;
-          min-width: 10px;
-          order: 2;
-        }
-
-        div:last-child {
-          background: $red;
-          border-right: 2px solid $white;
-          min-width: 75px;
-          order: 3;
-        }
-
-        .harm {
-          align-items: center;
-          display: flex;
-          font-family: "Bradley Hand", cursive;
-          font-size: 25px;
-          justify-content: space-around;
-          order: 1;
-          text-align: center;
-          width: 100%;
-        }
-      }
-    }
-
     .lower {
-      justify-content: space-between;
       display: flex;
-      .stress-row {
-        display: flex;
-        margin-left: 36px;
-        top: 2px;
+      justify-content: space-between;
 
-        &::before {
-          border: 0;
-          bottom: 2px;
-          color: $white;
-          content: "Stress";
-          font-family: "squada one";
-          font-size: 15px;
-          left: -40px;
-          position: absolute;
-          text-transform: uppercase;
-        }
-      }
-
-      #healing-clock-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        position: relative;
-        bottom: -20px;
-
-        &::before {
-          border: 0;
-          bottom: 20px;
-          color: rgb(255, 255, 255);
-          content: "Healing";
-          font-family: "squada one";
-          font-size: 15px;
-          left: -44px;
-          position: absolute;
-          text-transform: uppercase;
-        }
-
-        .clock {
-          height: 18px;
-          width: 18px;
-          border: 2px solid $black;
-          background-color: $lightgray;
-
-          &.acquired {
-            background-color: lightgreen;
-          }
-
-          &:nth-child(1) {
-            border-right: 1px solid $black;
-            border-bottom: 1px solid $black;
-            border-radius: 100% 0 0 0;
-          }
-          &:nth-child(2) {
-            border-left: 1px solid $black;
-            border-bottom: 1px solid $black;
-            border-radius: 0 100% 0 0;
-          }
-          &:nth-child(3) {
-            border-top: 1px solid $black;
-            border-right: 1px solid $black;
-            border-radius: 0 0 0 100%;
-          }
-          &:nth-child(4) {
-            border-top: 1px solid $black;
-            border-left: 1px solid $black;
-            border-radius: 0 0 100% 0;
-          }
-        }
+      .xp-row {
+        top: 0;
       }
 
       @include for-desktop-up {
@@ -441,6 +401,10 @@
     order: 4;
   }
 
+  #bio {
+    flex: 1;
+  }
+
   #harm {
     flex: 2;
   }
@@ -451,11 +415,39 @@
 
   #bio-info {
     display: flex;
+    flex: 1;
     flex-direction: column;
     text-align: center;
+    margin-left: 3px;
+    margin-top: 3px;
+
+    h2 {
+      background: $darkgray;
+      color: $white;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-family: Zilla Slab;
+      margin: 10px;
+    }
+
+    span {
+      font-style: bold;
+      border-top: 0;
+      width: 100%;
+      border-bottom: 2px solid $black;
+      position: relative;
+      text-transform: capitalize;
+      font-size: 20px;
+      top: 0px;
+      padding: 2px 5px;
+    }
 
     .bio {
       width: 100%;
+      margin-bottom: 5px;
+      border: 2px solid $black;
     }
   }
 }

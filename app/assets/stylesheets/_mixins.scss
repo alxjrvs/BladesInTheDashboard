@@ -3,3 +3,34 @@
     @content;
   }
 }
+
+@mixin custom-xp($color) {
+  .custom-checkbox-container:hover,
+  .custom-checkbox-container:hover ~ * {
+    .xp:checked {
+      background-color: $lightgray;
+
+      &::before {
+        background-color: $lightgray;
+      }
+    }
+  }
+
+  .xp:checked {
+    background-color: $color;
+    &::before {
+      background-color: $color;
+    }
+  }
+
+  .custom-checkbox-container:hover,
+  .custom-checkbox-container:has(~ :hover) {
+    .xp:not(:checked) {
+      background-color: lighten($color, 25%);
+
+      &::before {
+        background-color: lighten($color, 25%);
+      }
+    }
+  }
+}

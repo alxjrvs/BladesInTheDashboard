@@ -5,11 +5,11 @@
     <div class="row initial">
       <div id="bio">
         <div class="upper">
-          <h1><%= player_character.nickname %></h1>
+          <h1 id="nickname"><%= player_character.nickname %></h1>
           <div id="id">
-            <span><%= player_character.name %></span>
+            <span id="name"><%= player_character.name %></span>
             <span>•</span>
-            <span>The <%= player_character.playbook.name %></span>
+            <span id="playbook_name">The <%= player_character.playbook.name %></span>
           </div>
           <div id="traumas">
             <div class="trauma">COLD</div>
@@ -24,8 +24,8 @@
             <%= render 'stat_block', player_character:, stat_category:  %>
           <% end %>
       </div>
-      <div id="stress">
-        <div class="upper">
+      <div id="damageables">
+        <div id="harm">
           <div class="harm-row">
             <div>3</div>
             <%- level_3_harm = player_character.harms.find_by(level: 3) %>
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="lower">
-          <div class="stress-row">
+          <div id="stress">
             <%- 9.times do |i| %>
               <% checked = i + 1<= player_character.stress %>
               <% value = checked ? i :  i + 1 %>
@@ -57,22 +57,26 @@
                 model: player_character,
                 value:,
                 checked:,
-                classes: "stress #{checked ? 'active' : ''}",
+                classes: "xp #{checked ? 'active' : ''}",
                 hoverText: "Set stress to #{i + 1}"
               %>
             <% end %>
           </div>
 
-          <div id="healing-clock-container">
-            <div class="clock acquired">
-            </div>
-            <div class="clock acquired">
-            </div>
-            <div class="clock">
-            </div>
-            <div class="clock acquired">
-            </div>
+          <div id="healing-clock">
+            <%- 4.times do |i| %>
+              <% checked = i + 1<= player_character.healing_clock %>
+              <% value = checked ? i :  i + 1 %>
+              <%= render 'shared/input_box',
+                        field: :healing_clock,
+                        model: player_character,
+                        value:,
+                        checked:,
+                        classes: "xp"
+                      %>
+            <% end %>
           </div>
+
         </div>
       </div>
     </div>
@@ -84,18 +88,18 @@
         </div>
         <div class="bio">
           <h2>Heritage</h2>
-          <p><%= player_character.heritage %></p>
+          <span><%= player_character.heritage %></span>
           <p> <%= player_character.heritage_description %></p>
         </div>
         <div class="bio">
           <h2>Background</h2>
-          <p><%= player_character.background %></p>
-          <p> <%= player_character.background_description %></p>
+          <span><%= player_character.background %></span>
+          <p><%= player_character.background_description %></p>
         </div>
         <div class="bio">
           <h2>Vice</h2>
-          <p><%= player_character.vice %></p>
-          <p> <%= player_character.vice_description %></p>
+          <span><%= player_character.vice %></span>
+          <p><%= player_character.vice_description %></p>
         </div>
       </div>
     </div>
