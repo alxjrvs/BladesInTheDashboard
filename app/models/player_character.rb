@@ -39,8 +39,12 @@ class PlayerCharacter < ApplicationRecord
     items.where(loaded: true, intrinsic: false).sum(:cost)
   end
 
-  def insight_score
+  def friends
+    contacts.where(friend: true)
+  end
 
+  def rivals
+    contacts.where(friend: true)
   end
 
   private
