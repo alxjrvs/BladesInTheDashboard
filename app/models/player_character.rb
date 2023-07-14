@@ -44,23 +44,13 @@ class PlayerCharacter < ApplicationRecord
   end
 
   def rivals
-    contacts.where(friend: true)
+    contacts.where(rival: true)
   end
 
   private
 
   def set_playbook_defaults
     playbook.create_assets(self)
-
-    harms.create(label: '', level: 1)
-    harms.create(label: '', level: 1)
-    harms.create(label: '', level: 2)
-    harms.create(label: '', level: 2)
-    harms.create(label: '', level: 3)
-
-    4.times do
-      trauma.create
-    end
 
     DEFAULT_ITEMS.each.with_index do |item, order|
       Item.create(item.merge({ order:, playbook_id: nil, player_character: self }))

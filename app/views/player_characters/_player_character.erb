@@ -1,54 +1,29 @@
-  <div class="player-character-container" id="<%= dom_id player_character %>">
-    <div class="notch">
-      hello
-    </div>
-    <div class="row initial">
-      <div id="bio">
-        <div class="upper">
-          <h1 id="nickname"><%= player_character.nickname %></h1>
-          <div id="id">
-            <span id="name"><%= player_character.name %></span>
-            <span>•</span>
-            <span id="playbook_name">The <%= player_character.playbook.name %></span>
-          </div>
-          <div id="traumas">
-            <div class="trauma">COLD</div>
-            <div class="trauma">OBSESSED</div>
-            <div class="trauma">SOFT</div>
-            <div class="trauma">PARANOID</div>
-          </div>
+<div class="player-character-container" id="<%= dom_id player_character %>">
+  <div class="notch">
+    hello
+  </div>
+  <div class="row initial">
+    <div id="bio" class="cell">
+      <div class="upper">
+        <label id="playbook_name">The <%= player_character.playbook.name %></label>
+        <h1 id="nickname"><%= player_character.nickname %></h1>
+        <h2 id="name"><%= player_character.name %></h2>
+        <div id="traumas">
+          <div class="trauma">COLD</div>
+          <div class="trauma">OBSESSED</div>
+          <div class="trauma">SOFT</div>
+          <div class="trauma">PARANOID</div>
         </div>
       </div>
-      <div id="damageables">
-        <div id="harm">
-          <label>Harm</label>
-          <div class="harm-row">
-            <div>3</div>
-            <%- level_3_harm = player_character.harms.find_by(level: 3) %>
-            <div class="harm">Busted Ass</div>
-            <div>Need Help</div>
-          </div>
-          <div class="harm-row">
-            <div>2</div>
-              <div class="harm">Foo</div>
-            <% player_character.harms.where(level: 2).each do |level_2_harm| %>
-            <% end %>
-            <div>-1D</div>
-          </div>
-          <div class="harm-row disabled">
-            <div>1</div>
-              <div class="harm"></div>
-            <% player_character.harms.where(level: 1).each do |level_1_harm| %>
-            <% end %>
-            <div>Less Effect</div>
-          </div>
-        </div>
-        <div class="lower">
-          <div id="stress">
-            <%- 9.times do |i| %>
-              <% checked = i + 1<= player_character.stress %>
-              <% value = checked ? i :  i + 1 %>
-              <%= render 'shared/input_box',
+    </div>
+    <div id="damageables" class="cell">
+      <%= render "player_characters/harm_block", harms: player_character.harms %>
+      <div class="lower">
+        <div id="stress">
+          <%- 9.times do |i| %>
+            <% checked = i + 1<= player_character.stress %>
+            <% value = checked ? i :  i + 1 %>
+            <%= render 'shared/input_box',
                 field: :stress,
                 model: player_character,
                 value:,
@@ -56,92 +31,127 @@
                 classes: "xp",
                 hoverText: "Set stress to #{i + 1}"
               %>
-            <% end %>
-          </div>
-
-          <div id="healing-clock">
-            <%- 4.times do |i| %>
-              <% checked = i + 1<= player_character.healing_clock %>
-              <% value = checked ? i :  i + 1 %>
-              <%= render 'shared/input_box',
+          <% end %>
+        </div>
+        <div id="healing-clock">
+          <%- 4.times do |i| %>
+            <% checked = i + 1<= player_character.healing_clock %>
+            <% value = checked ? i :  i + 1 %>
+            <%= render 'shared/input_box',
                         field: :healing_clock,
                         model: player_character,
                         value:,
                         checked:,
                         classes: "xp"
                       %>
-            <% end %>
-          </div>
-
+          <% end %>
         </div>
       </div>
-      <div id="armor">
-        <label> Armor </label>
-        <%[:special, :heavy, :armor].each do |armor| %>
-          <%= render 'shared/input_box',
+    </div>
+    <div id="armor" class="cell">
+      <label> Armor </label>
+      <%[:special, :heavy, :armor].each do |armor| %>
+        <%= render 'shared/input_box',
                 field: armor,
                 model: player_character,
                 checked: player_character.send(armor),
                 classes: "armor #{armor}-box"
               %>
-        <% end %>
-      </div>
-      <div id="stats">
-          <% PlayerCharacter::STATS.keys.each do |stat_category| %>
-            <%= render 'stat_block', player_character:, stat_category:  %>
-          <% end %>
-      </div>
+      <% end %>
     </div>
-    <div class="row">
-      <div id="bio-info">
-        <div class="bio">
-          <h2>Look</h2>
-          <p> <%= player_character.look %></p>
-        </div>
-        <div class="bio">
-          <h2>Heritage</h2>
-          <span><%= player_character.heritage %></span>
-          <p> <%= player_character.heritage_description %></p>
-        </div>
-        <div class="bio">
-          <h2>Background</h2>
-          <span><%= player_character.background %></span>
-          <p><%= player_character.background_description %></p>
-        </div>
-        <div class="bio">
-          <h2>Vice</h2>
-          <span><%= player_character.vice %></span>
-          <p><%= player_character.vice_description %></p>
-        </div>
-      </div>
-
-      <div id="contacts">
-        <div class="friends">
-          <label>Friends</lable>
-          <% player_character.friends.each do |contact| %>
-            <div class="contact">
-              <div class="contact-name"><%= contact.name %></div>
-              <div class="contact-description"><%= contact.job %></div>
-            </div>
-          <% end %>
-        </div>
-        <div class="rivals">
-          <label>rivals</lable>
-          <% player_character.rivals.each do |contact| %>
-            <div class="contact">
-              <div class="contact-name"><%= contact.name %></div>
-              <div class="contact-description"><%= contact.job %></div>
-            </div>
-          <% end %>
-        </div>
-        <% player_character.contacts.each do |contact| %>
-          <div class="contact">
-            <div class="contact-name"><%= contact.name %></div>
-            <div class="contact-description"><%= contact.job %></div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
+    <div id="stats" class="cell">
+      <% PlayerCharacter::STATS.keys.each do |stat_category| %>
+        <%= render 'stat_block', player_character:, stat_category:  %>
+      <% end %>
     </div>
   </div>
+  <div class="row">
+    <div id="bio-info" class="cell">
+      <div class="info-cell">
+        <h2>Look</h2>
+        <p> <%= player_character.look %></p>
+      </div>
+      <div class="info-cell">
+        <h2>Heritage</h2>
+        <span><%= player_character.heritage %></span>
+        <p> <%= player_character.heritage_description %></p>
+      </div>
+      <div class="info-cell">
+        <h2>Background</h2>
+        <span><%= player_character.background %></span>
+        <p><%= player_character.background_description %></p>
+      </div>
+      <div class="info-cell">
+        <h2>Vice</h2>
+        <span><%= player_character.vice %></span>
+        <p><%= player_character.vice_description %></p>
+      </div>
+      <div id="contacts" class="cell">
+        <div id="friends" class="info-cell">
+          <h2>Friends</h2>
+          <% player_character.friends.each do |contact| %>
+            <div class="contact">
+              <span class="contact-name"><%= contact.name %></span>
+              <div class="contact-job">The <%= contact.job.capitalize %></div>
+            </div>
+          <% end %>
+        </div>
+        <div id="rivals" class="info-cell">
+          <h2>rivals</h2>
+          <% player_character.rivals.each do |contact| %>
+            <div class="contact">
+              <span class="contact-name"><%= contact.name %></span>
+              <div class="contact-job">The <%= contact.job.capitalize %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div id="cash" class="cell">
+      <div class="info-cell">
+        <h2>Coin </h2>
+        <div id="coins">
+          <%- 4.times do |i| %>
+            <% checked = i + 1<= player_character.coin %>
+            <% value = checked ? i :  i + 1 %>
+            <%= render 'shared/input_box',
+                field: :coin,
+                model: [player_character.game, player_character],
+                value:,
+                checked:,
+                classes: "coin-box"
+              %>
+          <% end %>
+        </div>
+      </div>
+      <div class="info-cell">
+        <h2>Stash</h2>
+        <div id="stash">
+          <%- 4.times do |base_i|%>
+            <div class="stash-boxes">
+              <%- 10.times do |i| %>
+                <% iterator = "#{base_i}#{i}".to_i %>
+                <% checked = iterator + 1<= player_character.stash %>
+                <% value = checked ? iterator :  iterator + 1 %>
+                <%= render 'shared/input_box',
+                  field: :stash,
+                  model: [player_character.game, player_character],
+                  value:,
+                  data: iterator +1,
+                  checked:,
+                  classes: "stash-box"
+                %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div id="playbook-abilities" class="cell">
+    </div>
+    <div id="items" class="cell">
+    </div>
+  </div>
+  <div class="row">
+  </div>
+</div>

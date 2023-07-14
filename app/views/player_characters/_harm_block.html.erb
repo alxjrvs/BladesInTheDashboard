@@ -1,0 +1,39 @@
+<% level3_harm = harms.where(level: 3).map(&:label).first %>
+<% level2_harms = harms.where(level: 2).map(&:label) %>
+<% level1_harms = harms.where(level: 1).map(&:label) %>
+<div id="harm">
+  <label>Harm</label>
+  <div class="harm-row <%= level3_harm.present? || 'disabled' %>">
+    <div class="harm-container">
+      <div class="harm <%= level3_harm || "disabled" %>">
+        <%= level3_harm || "None"%>
+      </div>
+    </div>
+    <div class="number">3</div>
+    <div class="effect">Need Help</div>
+  </div>
+  <div class="harm-row <%= level2_harms.any? || 'disabled' %>">
+    <div class="harm-container">
+      <div class="harm <%= level2_harms[0] || "disabled" %>">
+        <%= level2_harms[0] || "None"%>
+      </div>
+      <div class="harm <%= level2_harms[1] || "disabled" %>">
+        <%= level2_harms[1] || "None"%>
+      </div>
+    </div>
+    <div class="number">2</div>
+    <div class="effect">-1D</div>
+  </div>
+  <div class="harm-row <%= level1_harms.any? || 'disabled' %>">
+    <div class="harm-container">
+      <div class="harm <%= level1_harms[0] || "disabled" %>">
+        <%= level1_harms[0] || "None"%>
+      </div>
+      <div class="harm <%= level1_harms[1] || "disabled" %>">
+        <%= level1_harms[1] || "None"%>
+      </div>
+    </div>
+    <div class="number">1</div>
+    <div class="effect">Less Effect</div>
+  </div>
+</div>
