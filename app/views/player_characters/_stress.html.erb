@@ -1,0 +1,14 @@
+<div id="stress" class="col-2">
+  <%- 9.times do |i| %>
+    <% checked = i + 1<= player_character.stress %>
+    <% value = checked ? i :  i + 1 %>
+    <%= render 'shared/input_box',
+                field: :stress,
+                model: player_character,
+                value:,
+                checked:,
+                classes: "xp",
+                hoverText: "Set stress to #{i + 1}"
+              %>
+  <% end %>
+</div>

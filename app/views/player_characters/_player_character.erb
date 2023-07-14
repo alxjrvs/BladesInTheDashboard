@@ -3,70 +3,26 @@
     hello
   </div>
   <div class="row initial">
-    <div id="bio" class="cell">
+    <div id="bio" class="cell col-1">
       <div class="upper">
         <label id="playbook_name">The <%= player_character.playbook.name %></label>
         <h1 id="nickname"><%= player_character.nickname %></h1>
         <h2 id="name"><%= player_character.name %></h2>
-        <div id="traumas">
-          <div class="trauma">COLD</div>
-          <div class="trauma">OBSESSED</div>
-          <div class="trauma">SOFT</div>
-          <div class="trauma">PARANOID</div>
-        </div>
+        <%= render "player_characters/traumas", player_character: %>
       </div>
     </div>
-    <div id="damageables" class="cell">
+    <div id="damageables" class="cell col-3">
       <%= render "player_characters/harm_block", harms: player_character.harms %>
       <div class="lower">
-        <div id="stress">
-          <%- 9.times do |i| %>
-            <% checked = i + 1<= player_character.stress %>
-            <% value = checked ? i :  i + 1 %>
-            <%= render 'shared/input_box',
-                field: :stress,
-                model: player_character,
-                value:,
-                checked:,
-                classes: "xp",
-                hoverText: "Set stress to #{i + 1}"
-              %>
-          <% end %>
-        </div>
-        <div id="healing-clock">
-          <%- 4.times do |i| %>
-            <% checked = i + 1<= player_character.healing_clock %>
-            <% value = checked ? i :  i + 1 %>
-            <%= render 'shared/input_box',
-                        field: :healing_clock,
-                        model: player_character,
-                        value:,
-                        checked:,
-                        classes: "xp"
-                      %>
-          <% end %>
-        </div>
+        <%= render "player_characters/stress", player_character: %>
+        <%= render "player_characters/healing_clock", player_character: %>
       </div>
     </div>
-    <div id="armor" class="cell">
-      <label> Armor </label>
-      <%[:special, :heavy, :armor].each do |armor| %>
-        <%= render 'shared/input_box',
-                field: armor,
-                model: player_character,
-                checked: player_character.send(armor),
-                classes: "armor #{armor}-box"
-              %>
-      <% end %>
-    </div>
-    <div id="stats" class="cell">
-      <% PlayerCharacter::STATS.keys.each do |stat_category| %>
-        <%= render 'stat_block', player_character:, stat_category:  %>
-      <% end %>
-    </div>
+    <%= render "player_characters/armor", player_character: %>
+    <%= render "player_characters/stats", player_character: %>
   </div>
   <div class="row">
-    <div id="bio-info" class="cell">
+    <div id="bio-info" class="cell col-2">
       <div class="info-cell">
         <h2>Look</h2>
         <p> <%= player_character.look %></p>
@@ -86,7 +42,15 @@
         <span><%= player_character.vice %></span>
         <p><%= player_character.vice_description %></p>
       </div>
-      <div id="contacts" class="cell">
+    </div>
+    <%= render "player_characters/playbook_abilities", player_character: %>
+    <div id="items" class="cell col-1">
+      <div class="info-cell">
+        <h2> Items</h2>
+      </div>
+    </div>
+    <div class="cell col-1">
+      <div id="contacts" >
         <div id="friends" class="info-cell">
           <h2>Friends</h2>
           <% player_character.friends.each do |contact| %>
@@ -107,51 +71,15 @@
         </div>
       </div>
     </div>
-    <div id="cash" class="cell">
+    <div class="cell col-1">
       <div class="info-cell">
         <h2>Coin </h2>
-        <div id="coins">
-          <%- 4.times do |i| %>
-            <% checked = i + 1<= player_character.coin %>
-            <% value = checked ? i :  i + 1 %>
-            <%= render 'shared/input_box',
-                field: :coin,
-                model: [player_character.game, player_character],
-                value:,
-                checked:,
-                classes: "coin-box"
-              %>
-          <% end %>
-        </div>
+        <%= render "player_characters/coin", player_character: %>
       </div>
       <div class="info-cell">
         <h2>Stash</h2>
-        <div id="stash">
-          <%- 4.times do |base_i|%>
-            <div class="stash-boxes">
-              <%- 10.times do |i| %>
-                <% iterator = "#{base_i}#{i}".to_i %>
-                <% checked = iterator + 1<= player_character.stash %>
-                <% value = checked ? iterator :  iterator + 1 %>
-                <%= render 'shared/input_box',
-                  field: :stash,
-                  model: [player_character.game, player_character],
-                  value:,
-                  data: iterator +1,
-                  checked:,
-                  classes: "stash-box"
-                %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+        <%= render "player_characters/stash", player_character: %>
       </div>
     </div>
-    <div id="playbook-abilities" class="cell">
-    </div>
-    <div id="items" class="cell">
-    </div>
-  </div>
-  <div class="row">
   </div>
 </div>

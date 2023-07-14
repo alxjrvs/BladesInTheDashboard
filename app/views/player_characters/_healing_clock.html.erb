@@ -1,0 +1,14 @@
+        
+<div id="healing-clock">
+  <%- 4.times do |i| %>
+    <% checked = i + 1<= player_character.healing_clock %>
+    <% value = checked ? i :  i + 1 %>
+    <%= render 'shared/input_box',
+                        field: :healing_clock,
+                        model: player_character,
+                        value:,
+                        checked:,
+                        classes: "xp"
+                      %>
+  <% end %>
+</div>

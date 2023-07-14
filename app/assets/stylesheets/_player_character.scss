@@ -1,6 +1,22 @@
+.col-1 {
+  flex: 1;
+}
+
+.col-2 {
+  flex: 2;
+}
+
+.col-3 {
+  flex: 3;
+}
+
+.col-4 {
+  flex: 4;
+}
+
 @mixin xp-row($color, $label: "") {
-  display: flex;
   align-items: flex-end;
+  display: flex;
   position: relative;
 
   &::before {
@@ -10,11 +26,9 @@
     content: $label;
     font-family: "squada one";
     font-size: 15px;
-    text-transform: uppercase;
     position: relative;
+    text-transform: uppercase;
   }
-
-  @include custom-xp($color);
 
   .xp {
     border-top: 0;
@@ -28,38 +42,44 @@
       width: 5px;
     }
   }
+
+  @include custom-xp($color);
 }
 
 .info-cell {
-  width: calc(100% - 4px);
-  margin-bottom: 5px;
   border: 2px solid $black;
+  margin-bottom: 5px;
+  width: calc(100% - 4px);
 
   h2 {
+    align-items: center;
     background: $darkgray;
     color: $white;
-    text-transform: uppercase;
+    display: flex;
+    font-size: 18px;
+    height: 24px;
+    justify-content: center;
+    padding: 2px 0;
     text-align: center;
-    padding: 3px 0px;
-    font-size: 20px;
+    text-transform: uppercase;
   }
 
   p {
-    font-family: Zilla Slab;
+    font-family: "Zilla Slab";
     margin: 10px;
     text-align: left;
   }
 
   span {
-    font-family: Zilla Slab;
-    border-top: 0;
-    width: 100%;
     border-bottom: 2px solid $black;
+    border-top: 0;
+    font-family: "Zilla Slab";
+    font-size: 20px;
+    padding: 2px 5px;
     position: relative;
     text-transform: capitalize;
-    font-size: 20px;
-    top: 0px;
-    padding: 2px 5px;
+    top: 0;
+    width: 100%;
   }
 }
 
@@ -80,25 +100,19 @@
 
 #contacts {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   #friends,
   #rivals {
     flex: 1;
   }
 
-  #friends {
-    margin-right: 2.5px;
-  }
-  #rivals {
-    margin-left: 2.5px;
-  }
   .contact {
     text-align: center;
 
     .contact-name {
-      padding: 0 5px;
       font-family: "squada one";
+      padding: 0 5px;
     }
 
     .contact-job {
@@ -109,44 +123,70 @@
 }
 
 #coins {
+  align-items: center;
   display: flex;
   justify-content: space-around;
-  align-items: center;
   min-height: 38px;
-  padding-top: 4px;
+  padding-top: 2px;
 
   .coin-box {
+    border-radius: 15px;
+    height: 20px;
+    width: 20px;
+
     &:checked {
       background-color: $red;
     }
   }
 }
 
+#playbook-abilities {
+  h2 {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    width: 100%;
+  }
+
+  .xp-row {
+    margin-left: 25%;
+
+    &::before {
+      content: "playbook xp";
+    }
+
+    .xp {
+    }
+  }
+}
+
 #stash {
   display: flex;
-  justify-content: space-around;
   flex: 1;
+  justify-content: space-around;
   padding-top: 4px;
 
   .stash-boxes {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     form {
       .stash-box {
-        position: relative;
+        border-radius: 15px;
         margin-top: 2px;
+        position: relative;
 
         &::after {
-          display: flex;
-          content: attr(data);
-          position: absolute;
-          color: $darkgray;
-          font-size: 12px;
-          width: 100%;
-          justify-content: center;
           align-items: center;
+          color: $darkgray;
+          content: attr(data);
+          display: flex;
+          font-size: 12px;
           height: 100%;
+          justify-content: center;
+          position: absolute;
+          width: 100%;
         }
 
         &:checked {
@@ -162,6 +202,7 @@
     form:last-child {
       .stash-box {
         background-color: $darkgray;
+
         &::after {
           color: $white;
         }
@@ -175,27 +216,28 @@
 }
 
 #armor {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 90%;
   justify-content: space-between;
   padding-left: 5px;
-  height: 90%;
 
   label {
-    text-transform: uppercase;
     text-align: center;
+    text-transform: uppercase;
   }
 
   .armor {
-    height: 25px;
-    width: 25px;
     border: 2px solid $white;
     border-radius: 50% 50% 50% 50% / 12% 12% 88% 88%;
+    height: 25px;
     position: relative;
+    width: 25px;
 
     &:checked {
       background: $red;
+
       &::before {
         color: $white;
         left: 6px;
@@ -203,44 +245,44 @@
     }
 
     &::before {
+      font-size: 14px;
       position: absolute;
       top: 1px;
-      font-size: 14px;
     }
 
     &.special-box {
       &::before {
-        left: 6px;
         content: "S";
+        left: 6px;
       }
     }
 
     &.heavy-box {
       &::before {
-        left: 5px;
         content: "H";
+        left: 5px;
       }
     }
 
     &.armor-box {
       &::before {
-        left: 6px;
         content: "A";
+        left: 6px;
       }
     }
   }
 }
 
 #harm {
-  display: flex;
   align-items: flex-start;
+  display: flex;
   flex-direction: column;
   position: relative;
   z-index: 2;
 
   label {
-    text-transform: uppercase;
     text-align: center;
+    text-transform: uppercase;
     width: 100%;
   }
 
@@ -280,27 +322,27 @@
     }
 
     .number {
-      flex: 1;
       background: $white;
       color: $black;
+      flex: 1;
       min-width: 10px;
     }
 
     .effect {
-      flex: 3;
       background: $red;
       border-right: 2px solid $white;
-      min-width: 75px;
-      padding-top: 1px;
-      padding-bottom: 1px;
+      flex: 3;
       min-height: 30px;
+      min-width: 75px;
+      padding-bottom: 1px;
+      padding-top: 1px;
     }
 
     .harm-container {
-      width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: center;
+      width: 100%;
     }
 
     .harm {
@@ -314,9 +356,10 @@
       &:first-child {
         margin-right: 5px;
         position: relative;
+
         &::after {
-          content: ",";
           color: $white;
+          content: ",";
         }
       }
 
@@ -332,12 +375,12 @@
 }
 
 #traumas {
-  padding-top: 3px;
+  background-color: $red;
   display: flex;
   justify-content: space-between;
+  padding: 0 2px;
+  padding-top: 3px;
   width: calc(100% - 4px);
-  padding: 0px 2px;
-  background-color: $red;
 
   .trauma {
     color: $white;
@@ -350,21 +393,21 @@
   align-items: end;
   flex-direction: row;
   justify-content: center;
-  text-align: center;
   position: relative;
+  text-align: center;
 
   &::before {
     content: "Actions & Attributes";
     position: absolute;
-    top: 0;
     text-transform: uppercase;
+    top: 0;
     width: 100%;
   }
 
   .upper {
-    position: relative;
-    border-right: 2px solid $white;
     border-bottom: 2px solid $white;
+    border-right: 2px solid $white;
+    position: relative;
     z-index: 2;
 
     @extend .upper;
@@ -452,8 +495,8 @@
 
             &::before {
               background-color: $lightgray;
-              border-radius: 20px;
               border: 2px solid $white;
+              border-radius: 20px;
               content: "";
               height: 10px;
               left: 30%;
@@ -512,8 +555,11 @@
       background-color: $darkgray;
       color: $white;
       flex: 2;
+      max-height: 150px;
 
       .cell {
+        justify-content: flex-end;
+
         &:first-child {
           margin-left: 0;
         }
@@ -525,13 +571,7 @@
     }
 
     &:not(.initial) {
-      width: 100%;
       padding: 15px 0;
-    }
-
-    @include for-desktop-up {
-      flex-direction: row;
-      padding: 0;
       width: 100%;
     }
 
@@ -541,6 +581,12 @@
       height: 100%;
       margin-left: 2.5px;
       margin-right: 2.5px;
+    }
+
+    @include for-desktop-up {
+      flex-direction: row;
+      padding: 0;
+      width: 100%;
     }
   }
 
@@ -553,21 +599,21 @@
     text-align: center;
 
     h2 {
-      font-family: "Zilla Slab";
-      width: 100%;
-      text-align: center;
       border-bottom: 2px solid $white;
       border-top: 2px solid $white;
+      font-family: "Zilla Slab";
+      text-align: center;
+      width: 100%;
     }
 
     label {
       background: $white;
       color: $darkgray;
       font-size: 18px;
-      width: 100%;
       margin: 4px 0;
       text-align: center;
       text-transform: uppercase;
+      width: 100%;
     }
 
     .upper {
@@ -584,12 +630,7 @@
     }
   }
 
-  #stats {
-    flex: 2;
-  }
-
   #damageables {
-    flex: 1;
     position: relative;
 
     .lower {
@@ -603,31 +644,10 @@
     }
   }
 
-  #bio {
-    flex: 1;
-  }
-
-  #harm {
-    flex: 4;
-  }
-
   #bio-info {
     display: flex;
-    flex: 2;
     flex-direction: column;
     text-align: center;
-  }
-
-  #cash {
-    flex: 1;
-  }
-  #playbook-abilities {
-    flex: 4;
-    background-color: blue;
-  }
-  #items {
-    flex: 2;
-    background-color: yellow;
   }
 }
 

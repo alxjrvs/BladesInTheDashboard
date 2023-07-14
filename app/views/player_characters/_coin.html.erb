@@ -1,0 +1,13 @@
+<div id="coins">
+  <%- 4.times do |i| %>
+    <% checked = i + 1<= player_character.coin %>
+    <% value = checked ? i :  i + 1 %>
+    <%= render 'shared/input_box',
+                field: :coin,
+                model: [player_character.game, player_character],
+                value:,
+                checked:,
+                classes: "coin-box"
+              %>
+  <% end %>
+</div>

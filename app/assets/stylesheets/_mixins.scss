@@ -18,6 +18,7 @@
 
   .xp:checked {
     background-color: $color;
+
     &::before {
       background-color: $color;
     }

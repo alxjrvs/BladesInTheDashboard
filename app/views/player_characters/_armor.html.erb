@@ -1,0 +1,12 @@
+    
+<div id="armor" class="cell">
+  <label> Armor </label>
+  <%[:special, :heavy, :armor].each do |armor| %>
+    <%= render 'shared/input_box',
+                field: armor,
+                model: player_character,
+                checked: player_character.send(armor),
+                classes: "armor #{armor}-box"
+              %>
+  <% end %>
+</div>
