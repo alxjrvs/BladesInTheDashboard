@@ -1,5 +1,5 @@
-<div id="stats" class="cell col-2">
+<div id="stats">
   <% PlayerCharacter::STATS.keys.each do |stat_category| %>
-    <%= render 'stat_block', player_character:, stat_category:  %>
+    <%= render 'player_characters/stat_block', player_character:, stat_category:  %>
   <% end %>
 </div>

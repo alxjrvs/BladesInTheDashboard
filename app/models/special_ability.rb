@@ -8,4 +8,6 @@ class SpecialAbility < ApplicationRecord
   belongs_to_static :playbook
 
   default_scope { order(:order) }
+  scope :active, -> { where("points = cost") }
+  scope :inactive, -> { where.not("points = cost") }
 end

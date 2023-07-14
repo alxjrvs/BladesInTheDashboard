@@ -14,38 +14,6 @@
   flex: 4;
 }
 
-@mixin xp-row($color, $label: "") {
-  align-items: flex-end;
-  display: flex;
-  position: relative;
-
-  &::before {
-    border: 0;
-    bottom: 3px;
-    color: $white;
-    content: $label;
-    font-family: "squada one";
-    font-size: 15px;
-    position: relative;
-    text-transform: uppercase;
-  }
-
-  .xp {
-    border-top: 0;
-
-    &::after {
-      content: "";
-      height: 30px;
-      left: 12px;
-      position: absolute;
-      top: 0;
-      width: 5px;
-    }
-  }
-
-  @include custom-xp($color);
-}
-
 .info-cell {
   border: 2px solid $black;
   margin-bottom: 5px;
@@ -62,6 +30,30 @@
     padding: 2px 0;
     text-align: center;
     text-transform: uppercase;
+
+    &.inverted {
+      background: $gray;
+      border-bottom: 2px solid $black;
+      color: $darkgray;
+    }
+  }
+
+  h3 {
+    align-items: center;
+    background: $gray;
+    color: $darkgray;
+    display: flex;
+    font-size: 16px;
+    justify-content: flex-start;
+    padding: 2px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  k h3 {
+    font-family: "Zilla Slab";
+    text-align: center;
+    width: 100%;
   }
 
   p {
@@ -98,9 +90,86 @@
   width: 100%;
 }
 
+#items {
+  margin: 2px;
+
+  .playbook {
+    background-color: $gray;
+  }
+
+  .items-row {
+    display: flex;
+    margin-bottom: 3px;
+  }
+
+  .items-boxes {
+    display: flex;
+  }
+
+  .items-boxes:hover {
+    .item-box {
+      background-color: lighten($red, 20%);
+      flex: 1;
+
+      &:disabled {
+        background-color: $darkgray;
+      }
+    }
+  }
+
+  .item-box {
+    border: 2px solid $black;
+    flex: 1;
+    height: 20px;
+    width: 20px;
+
+    &:disabled {
+      background-color: $darkgray;
+    }
+
+    &:checked {
+      background-color: $red;
+    }
+  }
+
+  .custom-checkbox-container + .custom-checkbox-container {
+    .item-box {
+      margin-left: 5px;
+
+      &::before {
+        background-color: $black;
+        content: "";
+        display: block;
+        height: 2px;
+        left: -12px;
+        position: relative;
+        width: 6px;
+      }
+    }
+  }
+
+  label {
+    flex: 1;
+    font-family: "Zilla Slab";
+    padding-left: 5px;
+  }
+
+  label.intrinsic {
+    font-style: italic;
+  }
+}
+
+#load {
+  font-family: "Zilla Slab";
+  text-align: center;
+}
+
 #contacts {
   display: flex;
-  flex-direction: column;
+
+  div:first-child {
+    margin-right: 3px;
+  }
 
   #friends,
   #rivals {
@@ -131,6 +200,7 @@
 
   .coin-box {
     border-radius: 15px;
+    border: 2px solid $black;
     height: 20px;
     width: 20px;
 
@@ -140,23 +210,91 @@
   }
 }
 
-#playbook-abilities {
-  h2 {
-    align-items: center;
-    display: flex;
-    justify-content: flex-end;
-    text-align: center;
-    width: 100%;
+#special-abilities {
+  .info-cell {
+    h2 {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 20px;
+      width: calc(100% - 20px);
+    }
   }
 
-  .xp-row {
-    margin-left: 25%;
+  .info-cell:first-child {
+    margin-bottom: 10px;
 
-    &::before {
-      content: "playbook xp";
+    h2 {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
     }
 
-    .xp {
+    .xp-row {
+      margin-left: 25%;
+
+      &::before {
+        content: "playbook xp";
+      }
+
+      .xp {
+        height: 30px;
+      }
+    }
+  }
+
+  .info-cell.inverted {
+    h2 {
+      border-bottom: 0;
+      justify-content: center;
+      padding-left: 0;
+      width: 100%;
+    }
+  }
+
+  .ability-boxes {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .ability-box {
+    background-color: $lightgray;
+    border: 2px solid $black;
+    height: 25px;
+    margin: 2px;
+    width: 25px;
+
+    &:checked {
+      background-color: $red;
+    }
+
+    &:hover {
+      background-color: lighten($red, 20%);
+    }
+  }
+
+  .inactive {
+    display: flex;
+    flex-direction: column;
+
+    .info-cell {
+      margin-bottom: 10px;
+      width: calc(50% - 5px);
+
+      h2 {
+        justify-content: space-between;
+        padding-left: 5px;
+        width: calc(100% - 5px);
+      }
+
+      p {
+        font-size: 13px;
+      }
+    }
+
+    @include for-desktop-up {
+      flex-wrap: wrap;
+      max-height: 500px;
     }
   }
 }
@@ -170,6 +308,7 @@
   .stash-boxes {
     display: flex;
     flex-direction: column-reverse;
+    padding-bottom: 5px;
 
     form {
       .stash-box {
@@ -219,9 +358,8 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 90%;
   justify-content: space-between;
-  padding-left: 5px;
+  padding-bottom: 10px;
 
   label {
     text-align: center;
@@ -245,29 +383,28 @@
     }
 
     &::before {
+      color: $white;
       font-size: 14px;
+      left: 7px;
       position: absolute;
-      top: 1px;
+      top: 2px;
     }
 
     &.special-box {
       &::before {
         content: "S";
-        left: 6px;
       }
     }
 
     &.heavy-box {
       &::before {
         content: "H";
-        left: 5px;
       }
     }
 
     &.armor-box {
       &::before {
         content: "A";
-        left: 6px;
       }
     }
   }
@@ -391,7 +528,9 @@
 
 #stats {
   align-items: end;
+  display: flex;
   flex-direction: row;
+  height: 100%;
   justify-content: center;
   position: relative;
   text-align: center;
@@ -487,22 +626,21 @@
             width: 17px;
 
             &:first-child {
-              border-right: 2px solid rgb(255 255 255 / 30%);
+              border-right: 2px solid $faded;
               display: block;
               margin: 0;
               position: relative;
             }
 
             &::before {
-              background-color: $lightgray;
-              border: 2px solid $white;
+              background-color: $gray;
               border-radius: 20px;
               content: "";
-              height: 10px;
+              height: 12px;
               left: 30%;
               position: absolute;
               top: 30%;
-              width: 10px;
+              width: 12px;
             }
 
             &.acquired {
@@ -535,6 +673,54 @@
   @include xp-row($red, "XP");
 }
 
+.row {
+  background-color: $lightgray;
+  color: rgb(43 44 49);
+  display: flex;
+  flex: 4;
+  flex-direction: column;
+  padding: 10px;
+
+  &.initial {
+    background-color: $darkgray;
+    color: $white;
+    flex: 2;
+    max-height: 150px;
+
+    .cell {
+      height: 100%;
+      justify-content: flex-end;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &:not(.initial) {
+    padding: 15px 0;
+    width: 100%;
+  }
+
+  .cell {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+
+  @include for-desktop-up {
+    flex-direction: row;
+    padding: 0;
+    width: 100%;
+  }
+}
+
 .player-character-container {
   display: flex;
   flex-flow: column;
@@ -543,110 +729,72 @@
   padding-top: 10px;
   width: 100%;
 
-  .row {
-    background-color: $lightgray;
-    color: rgb(43 44 49);
-    display: flex;
-    flex: 4;
-    flex-direction: column;
-    padding: 10px;
-
-    &.initial {
-      background-color: $darkgray;
-      color: $white;
-      flex: 2;
-      max-height: 150px;
-
-      .cell {
-        justify-content: flex-end;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
-
-    &:not(.initial) {
-      padding: 15px 0;
-      width: 100%;
-    }
-
-    .cell {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      margin-left: 2.5px;
-      margin-right: 2.5px;
-    }
-
-    @include for-desktop-up {
-      flex-direction: row;
-      padding: 0;
-      width: 100%;
-    }
-  }
-
   h1 {
     font-size: 69px; // Nice
   }
+}
 
-  #bio {
-    align-items: center;
+#bio {
+  align-items: center;
+  text-align: center;
+
+  h2 {
+    border-bottom: 2px solid $white;
+    font-family: "Zilla Slab";
     text-align: center;
-
-    h2 {
-      border-bottom: 2px solid $white;
-      border-top: 2px solid $white;
-      font-family: "Zilla Slab";
-      text-align: center;
-      width: 100%;
-    }
-
-    label {
-      background: $white;
-      color: $darkgray;
-      font-size: 18px;
-      margin: 4px 0;
-      text-align: center;
-      text-transform: uppercase;
-      width: 100%;
-    }
-
-    .upper {
-      align-items: center;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
+    width: 100%;
 
     @include for-desktop-up {
-      align-items: flex-start;
-      justify-content: end;
-      text-align: left;
+      font-size: 1.3vw;
       width: auto;
     }
   }
 
-  #damageables {
-    position: relative;
-
-    .lower {
-      display: flex;
-      justify-content: space-between;
-
-      @include for-desktop-up {
-        max-height: 26px;
-        overflow-y: visible;
-      }
-    }
+  label {
+    background: $gray;
+    color: $darkgray;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
   }
 
-  #bio-info {
-    display: flex;
+  .upper {
+    align-items: center;
     flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  @include for-desktop-up {
+    align-items: flex-start;
+    justify-content: end;
+    text-align: left;
+    width: auto;
+  }
+}
+
+#damageables {
+  position: relative;
+
+  .lower {
+    display: flex;
+    justify-content: space-between;
+
+    @include for-desktop-up {
+      max-height: 26px;
+      overflow-y: visible;
+    }
+  }
+}
+
+#bio-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#crew {
+  p {
     text-align: center;
   }
 }

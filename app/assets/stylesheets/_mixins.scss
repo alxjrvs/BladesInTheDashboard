@@ -5,13 +5,54 @@
 }
 
 @mixin custom-xp($color) {
+  .xp {
+    border: 2px solid $black;
+    margin-left: 5px;
+    overflow: visible;
+    position: relative;
+    width: 14px;
+    z-index: 1;
+
+    &::before {
+      background: inherit;
+      border: 2px solid $black;
+      border-top: 0;
+      bottom: 0;
+      content: "";
+      height: 100%;
+      left: -2px;
+      margin-top: 5px;
+      position: absolute;
+      top: 0;
+      transform: skewY(335deg);
+      width: 14px - 4px;
+      z-index: -1;
+    }
+
+    &:not(:checked) {
+      background-color: $gray;
+
+      &::before {
+        background-color: $gray;
+      }
+    }
+
+    &:checked {
+      background-color: $gray;
+
+      &::before {
+        background-color: $gray;
+      }
+    }
+  }
+
   .custom-checkbox-container:hover,
   .custom-checkbox-container:hover ~ * {
     .xp:checked {
-      background-color: $lightgray;
+      background-color: $gray;
 
       &::before {
-        background-color: $lightgray;
+        background-color: $gray;
       }
     }
   }
@@ -34,4 +75,36 @@
       }
     }
   }
+}
+
+@mixin xp-row($color, $label: "") {
+  align-items: flex-end;
+  display: flex;
+  position: relative;
+
+  &::before {
+    border: 0;
+    bottom: 3px;
+    color: $white;
+    content: $label;
+    font-family: "squada one";
+    font-size: 15px;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  .xp {
+    border-top: 0;
+
+    &::after {
+      content: "";
+      height: 30px;
+      left: 12px;
+      position: absolute;
+      top: 0;
+      width: 5px;
+    }
+  }
+
+  @include custom-xp($color);
 }

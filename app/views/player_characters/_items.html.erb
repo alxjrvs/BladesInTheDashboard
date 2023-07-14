@@ -1,0 +1,38 @@
+<div id="items">
+  <div class="playbook">
+    <% player_character.items.playbook.each do |item| %>
+      <div class="items-row">
+        <div class="items-boxes">
+          <% item.cost.times do %>
+            <%= render 'shared/input_box',
+                      model: [player_character.game, player_character, item],
+                      field: :loaded,
+                      checked: item.loaded,
+                      disabled: item.intrinsic?,
+                      classes: "item-box"
+                    %>
+          <% end %>
+        </div>
+        <label class="<%= item.intrinsic ? 'intrinsic' : '' %>" > <%= item.name %> </label>
+      </div>
+    <% end %>
+  </div>
+  <div class="default">
+    <% player_character.items.default.each do |item| %>
+      <div class="items-row">
+        <div class="items-boxes">
+          <% item.cost.times do %>
+            <%= render 'shared/input_box',
+                      model: [player_character.game, player_character, item],
+                      field: :loaded,
+                      checked: item.loaded,
+                      disabled: item.intrinsic?,
+                      classes: "item-box"
+                    %>
+          <% end %>
+        </div>
+        <label class="<%= item.intrinsic ? 'intrinsic' : '' %>" > <%= item.name %> </label>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,28 +1,15 @@
 .custom-checkbox-container {
   $xp-width: 14px;
 
-  display: grid;
-  font-family: system-ui, sans-serif;
-  font-size: 2rem;
-  font-weight: bold;
-
-  &--disabled {
-    color: $darkgray;
-    cursor: not-allowed;
-  }
-
   .custom-checkbox {
     appearance: none;
-    border: 0.05em solid currentcolor;
-    color: currentcolor;
     cursor: pointer;
     display: grid;
     font: inherit;
     height: 26px;
     margin: 0;
     place-content: center;
-    transform: translateY(-0.075em);
-    width: 25px;
+    width: 26px;
 
     &::before {
       content: "";
@@ -62,48 +49,6 @@
 
     &:disabled {
       color: $darkgray;
-    }
-  }
-
-  .xp {
-    border: 2px solid $black;
-    margin-left: 5px;
-    overflow: visible;
-    position: relative;
-    width: $xp-width;
-    z-index: 1;
-
-    &::before {
-      background: inherit;
-      border: 2px solid $black;
-      border-top: 0;
-      bottom: 0;
-      content: "";
-      height: 100%;
-      left: -2px;
-      margin-top: 5px;
-      position: absolute;
-      top: 0;
-      transform: skewY(335deg);
-      transform-origin: right top;
-      width: $xp-width - 4px;
-      z-index: -1;
-    }
-
-    &:not(:checked) {
-      background-color: $lightgray;
-
-      &::before {
-        background-color: $lightgray;
-      }
-    }
-
-    &:checked {
-      background-color: $gray;
-
-      &::before {
-        background-color: $gray;
-      }
     }
   }
 }

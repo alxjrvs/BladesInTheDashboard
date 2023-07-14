@@ -1,62 +1,52 @@
 <div class="player-character-container" id="<%= dom_id player_character %>">
-  <div class="notch">
-    hello
-  </div>
   <div class="row initial">
     <div id="bio" class="cell col-1">
       <div class="upper">
-        <label id="playbook_name">The <%= player_character.playbook.name %></label>
+        <h2 id="name"><%= player_character.name %>, A.K.A.:</h2>
         <h1 id="nickname"><%= player_character.nickname %></h1>
-        <h2 id="name"><%= player_character.name %></h2>
+        <label id="playbook_name">The <%= player_character.playbook.name %></label>
         <%= render "player_characters/traumas", player_character: %>
       </div>
     </div>
-    <div id="damageables" class="cell col-3">
+    <div id="damageables" class="cell col-2">
       <%= render "player_characters/harm_block", harms: player_character.harms %>
       <div class="lower">
         <%= render "player_characters/stress", player_character: %>
         <%= render "player_characters/healing_clock", player_character: %>
       </div>
     </div>
-    <%= render "player_characters/armor", player_character: %>
-    <%= render "player_characters/stats", player_character: %>
+    <div class="cell">
+      <%= render "player_characters/armor", player_character: %>
+    </div>
+    <div class="cell col-2">
+      <%= render "player_characters/stats", player_character: %>
+    </div>
   </div>
   <div class="row">
     <div id="bio-info" class="cell col-2">
       <div class="info-cell">
-        <h2>Look</h2>
+        <h2 class="inverted">Look</h2>
         <p> <%= player_character.look %></p>
       </div>
       <div class="info-cell">
-        <h2>Heritage</h2>
+        <h2 class="inverted">Heritage</h2>
         <span><%= player_character.heritage %></span>
         <p> <%= player_character.heritage_description %></p>
       </div>
       <div class="info-cell">
-        <h2>Background</h2>
+        <h2 class="inverted">Background</h2>
         <span><%= player_character.background %></span>
         <p><%= player_character.background_description %></p>
       </div>
       <div class="info-cell">
-        <h2>Vice</h2>
+        <h2 class="inverted">Vice</h2>
         <span><%= player_character.vice %></span>
         <p><%= player_character.vice_description %></p>
       </div>
-    </div>
-    <%= render "player_characters/playbook_abilities", player_character: %>
-    <div class="cell col-1">
-      <div class="info-cell">
-        <h2>Load</h2>
-        <div id="load">
-        </div>
+      <div id="crew" class="info-cell">
+        <h2>Crew</h2>
+        <p> The Outkasts </p>
       </div>
-      <div class="info-cell">
-        <h2>Items</h2>
-        <div id="items">
-        </div>
-      </div>
-    </div>
-    <div class="cell col-1">
       <div id="contacts" >
         <div id="friends" class="info-cell">
           <h2>Friends</h2>
@@ -76,6 +66,19 @@
             </div>
           <% end %>
         </div>
+      </div>
+    </div>
+    <div class="cell col-4">
+      <%= render "player_characters/special_abilities", player_character: %>
+    </div>
+    <div class="cell col-1">
+      <div class="info-cell">
+        <h2>Load</h2>
+        <div id="load"><%= player_character.load.titleize %> (<%= PlayerCharacter.loads[player_character.load] %>) </div>
+      </div>
+      <div class="info-cell">
+        <h2>items</h2>
+        <%= render "player_characters/items", player_character: %>
       </div>
     </div>
     <div class="cell col-1">
