@@ -18,7 +18,22 @@
   </div>
   <% player_character.special_abilities.active.each do |ability|%>
     <div class="info-cell">
-      <h2><%= ability.name %></h2>
+      <h2>
+        <%= ability.name %>
+        <div class="ability-boxes">
+          <% ability.cost.times do |i| %>
+            <% checked = i + 1<= ability.points %>
+            <% value = checked ? i :  i + 1 %>
+            <%= render 'shared/input_box',
+                        field: :points,
+                        model: [player_character.game, player_character, ability],
+                        value:,
+                        checked:,
+                        classes: "ability-box"
+                      %>
+          <% end %>
+        </div>
+      </h2>
       <p><%= ability.description %></p>
     </div>
   <%end %>

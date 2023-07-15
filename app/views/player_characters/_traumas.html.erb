@@ -1,6 +1,7 @@
-<div id="traumas">
-  <div class="trauma">COLD</div>
-  <div class="trauma">OBSESSED</div>
-  <div class="trauma">SOFT</div>
-  <div class="trauma">PARANOID</div>
-</div>
+<% if player_character.trauma.any? %>
+  <div id="traumas">
+    <% player_character.trauma.each do |trauma| %>
+      <div class="trauma"><%= trauma.trauma %></div>
+    <% end %>
+  </div>
+<% end %>

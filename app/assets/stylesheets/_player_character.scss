@@ -14,6 +14,44 @@
   flex: 4;
 }
 
+.order-1 {
+  order: 1;
+}
+
+.desk-order-1 {
+  @include for-desktop-up {
+    order: 1;
+  }
+}
+
+.order-2 {
+  order: 2;
+}
+
+.desk-order-2 {
+  @include for-desktop-up {
+    order: 2;
+  }
+}
+.order-3 {
+  order: 3;
+}
+
+.desk-order-3 {
+  @include for-desktop-up {
+    order: 3;
+  }
+}
+.order-4 {
+  order: 4;
+}
+
+.desk-order-4 {
+  @include for-desktop-up {
+    order: 4;
+  }
+}
+
 .info-cell {
   border: 2px solid $black;
   margin-bottom: 5px;
@@ -93,6 +131,22 @@
 #items {
   margin: 2px;
 
+  span {
+    width: 100%;
+    display: block;
+    padding: 0;
+    text-align: center;
+    font-style: italic;
+    border: 0;
+    flex: 1;
+    font-size: inherit;
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+  span + span {
+    margin-bottom: 2px;
+  }
+
   .playbook {
     background-color: $gray;
   }
@@ -119,6 +173,7 @@
 
   .item-box {
     border: 2px solid $black;
+    background-color: $gray;
     flex: 1;
     height: 20px;
     width: 20px;
@@ -159,11 +214,6 @@
   }
 }
 
-#load {
-  font-family: "Zilla Slab";
-  text-align: center;
-}
-
 #contacts {
   display: flex;
 
@@ -201,6 +251,7 @@
   .coin-box {
     border-radius: 15px;
     border: 2px solid $black;
+    background-color: $gray;
     height: 20px;
     width: 20px;
 
@@ -258,7 +309,7 @@
   }
 
   .ability-box {
-    background-color: $lightgray;
+    background-color: $gray;
     border: 2px solid $black;
     height: 25px;
     margin: 2px;
@@ -279,7 +330,10 @@
 
     .info-cell {
       margin-bottom: 10px;
-      width: calc(50% - 5px);
+
+      @include for-desktop-up {
+        width: calc(50% - 5px);
+      }
 
       h2 {
         justify-content: space-between;
@@ -357,9 +411,15 @@
 #armor {
   align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 10px;
+  margin-top: 10px;
+
+  @include for-desktop-up {
+    flex-direction: column;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
 
   label {
     text-align: center;
@@ -415,6 +475,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  height: 100%;
   z-index: 2;
 
   label {
@@ -514,7 +575,7 @@
 #traumas {
   background-color: $red;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0 2px;
   padding-top: 3px;
   width: calc(100% - 4px);
@@ -523,24 +584,22 @@
     color: $white;
     font-family: "squada one";
     font-size: 20px;
+    text-transform: uppercase;
   }
 }
 
 #stats {
   align-items: end;
-  display: flex;
-  flex-direction: row;
   height: 100%;
-  justify-content: center;
-  position: relative;
   text-align: center;
-
-  &::before {
-    content: "Actions & Attributes";
-    position: absolute;
+  label {
     text-transform: uppercase;
-    top: 0;
-    width: 100%;
+  }
+
+  .stats-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 
   .upper {
@@ -685,11 +744,12 @@
     background-color: $darkgray;
     color: $white;
     flex: 2;
-    max-height: 150px;
 
     .cell {
       height: 100%;
-      justify-content: flex-end;
+      justify-content: space-between;
+      margin-top: 0;
+      margin-bottom: 0;
 
       &:first-child {
         margin-left: 0;
@@ -699,19 +759,30 @@
         margin-right: 0;
       }
     }
+
+    @include for-desktop-up {
+      max-height: 150px;
+    }
   }
 
   &:not(.initial) {
-    padding: 15px 0;
-    width: 100%;
+    padding: 5px;
+    width: calc(100% - 10px);
+    @include for-desktop-up {
+      padding: 15px 0;
+      width: 100%;
+    }
   }
 
   .cell {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-left: 2.5px;
-    margin-right: 2.5px;
+
+    @include for-desktop-up {
+      margin-left: 2.5px;
+      margin-right: 2.5px;
+    }
   }
 
   @include for-desktop-up {
@@ -757,6 +828,7 @@
     text-align: center;
     text-transform: uppercase;
     width: 100%;
+    border-bottom: 2px solid $black;
   }
 
   .upper {

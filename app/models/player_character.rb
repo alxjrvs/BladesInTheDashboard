@@ -39,6 +39,14 @@ class PlayerCharacter < ApplicationRecord
     items.where(loaded: true, intrinsic: false).sum(:cost)
   end
 
+  def load_capacity
+    self.class.loads[load]
+  end
+
+  def load_remaining
+    load_capacity - current_load
+  end
+
   def friends
     contacts.where(friend: true)
   end

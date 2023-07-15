@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_04_211623) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_001855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -124,6 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_211623) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order", null: false
+    t.boolean "multipart", default: false
     t.index ["player_character_id"], name: "index_special_abilities_on_player_character_id"
   end
 

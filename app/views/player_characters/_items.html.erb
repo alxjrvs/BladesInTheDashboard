@@ -1,4 +1,6 @@
 <div id="items">
+  <span>Load: <%= player_character.load.titleize %> (<%= player_character.load_capacity %>) </span>
+  <span>Available Capacity: <%= player_character.load_remaining %></span>
   <div class="playbook">
     <% player_character.items.playbook.each do |item| %>
       <div class="items-row">
@@ -8,7 +10,7 @@
                       model: [player_character.game, player_character, item],
                       field: :loaded,
                       checked: item.loaded,
-                      disabled: item.intrinsic?,
+                      disabled: item.intrinsic? || !item.loaded && item.cost > player_character.load_remaining,
                       classes: "item-box"
                     %>
           <% end %>
@@ -26,7 +28,7 @@
                       model: [player_character.game, player_character, item],
                       field: :loaded,
                       checked: item.loaded,
-                      disabled: item.intrinsic?,
+                      disabled: item.intrinsic? || !item.loaded && item.cost > player_character.load_remaining,
                       classes: "item-box"
                     %>
           <% end %>

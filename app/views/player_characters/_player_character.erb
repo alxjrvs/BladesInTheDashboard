@@ -1,6 +1,6 @@
 <div class="player-character-container" id="<%= dom_id player_character %>">
   <div class="row initial">
-    <div id="bio" class="cell col-1">
+    <div id="bio" class="cell col-1 order-1">
       <div class="upper">
         <h2 id="name"><%= player_character.name %>, A.K.A.:</h2>
         <h1 id="nickname"><%= player_character.nickname %></h1>
@@ -8,22 +8,22 @@
         <%= render "player_characters/traumas", player_character: %>
       </div>
     </div>
-    <div id="damageables" class="cell col-2">
+    <div id="damageables" class="cell col-2 order-3 desk-order-2">
       <%= render "player_characters/harm_block", harms: player_character.harms %>
       <div class="lower">
         <%= render "player_characters/stress", player_character: %>
         <%= render "player_characters/healing_clock", player_character: %>
       </div>
     </div>
-    <div class="cell">
+    <div class="cell order-2 desk-order-3">
       <%= render "player_characters/armor", player_character: %>
     </div>
-    <div class="cell col-2">
+    <div class="cell col-2 order-4">
       <%= render "player_characters/stats", player_character: %>
     </div>
   </div>
   <div class="row">
-    <div id="bio-info" class="cell col-2">
+    <div id="bio-info" class="cell col-2 order-2 desk-order-1">
       <div class="info-cell">
         <h2 class="inverted">Look</h2>
         <p> <%= player_character.look %></p>
@@ -51,37 +51,27 @@
         <div id="friends" class="info-cell">
           <h2>Friends</h2>
           <% player_character.friends.each do |contact| %>
-            <div class="contact">
-              <span class="contact-name"><%= contact.name %></span>
-              <div class="contact-job">The <%= contact.job.capitalize %></div>
-            </div>
+            <%= render 'player_characters/contact', contact: %>
           <% end %>
         </div>
         <div id="rivals" class="info-cell">
           <h2>rivals</h2>
           <% player_character.rivals.each do |contact| %>
-            <div class="contact">
-              <span class="contact-name"><%= contact.name %></span>
-              <div class="contact-job">The <%= contact.job.capitalize %></div>
-            </div>
+            <%= render 'player_characters/contact', contact: %>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="cell col-4">
+    <div class="cell col-4 order-1 desk-order-2">
       <%= render "player_characters/special_abilities", player_character: %>
     </div>
-    <div class="cell col-1">
-      <div class="info-cell">
-        <h2>Load</h2>
-        <div id="load"><%= player_character.load.titleize %> (<%= PlayerCharacter.loads[player_character.load] %>) </div>
-      </div>
+    <div class="cell col-1 order-3">
       <div class="info-cell">
         <h2>items</h2>
         <%= render "player_characters/items", player_character: %>
       </div>
     </div>
-    <div class="cell col-1">
+    <div class="cell col-1 order-4">
       <div class="info-cell">
         <h2>Coin </h2>
         <%= render "player_characters/coin", player_character: %>
