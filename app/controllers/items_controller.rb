@@ -8,7 +8,9 @@ class ItemsController < AuthenticatedController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to player_character_url(@player_character), notice: 'Character was successfully updated.' }
+        format.html do
+          redirect_to player_character_url(@player_character), notice: 'Character was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit, status: :unprocessable_entity }

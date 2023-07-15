@@ -22,7 +22,7 @@ Rails.logger.debug "Game created: #{game.name}"
 
 Rails.logger.debug 'Creating Players...'
 unless game.players.any?
-  FactoryBot.create :player_character, game:, nickname: "Showtime", name: "Allistair Smoshmouth"
+  FactoryBot.create :player_character, game:, nickname: 'Showtime', name: 'Allistair Smoshmouth'
   game.player_characters.each do |character|
     Rails.logger.debug "Player created: #{character.user.email} is #{character.name}"
   end

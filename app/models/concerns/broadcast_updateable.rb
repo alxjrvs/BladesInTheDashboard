@@ -8,7 +8,7 @@ module BroadcastUpdateable
   end
 
   def broadcast_update
-    char = (instance_of?(PlayerCharacter) ? self : player_character).reload
+    (instance_of?(PlayerCharacter) ? self : player_character).reload
     # Turbo::StreamsChannel.broadcast_update_later_to(
     #   char,
     #   target: 'dashboard-frame',

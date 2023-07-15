@@ -26,7 +26,7 @@ class PlayerCharacter < ApplicationRecord
     insight: %I[hunt study survey tinker],
     prowess: %I[finesse prowl skirmish wreck],
     resolve: %I[attune command consort sway]
-  }
+  }.freeze
 
   enum heritage: { akoros: 0, dagger_isles: 1, iruvia: 2, severos: 3, skovlan: 4, tycheros: 5 }
   enum background: { academic: 0, labor: 1, law: 2, trade: 3, military: 4, noble: 5, underworld: 6 }
