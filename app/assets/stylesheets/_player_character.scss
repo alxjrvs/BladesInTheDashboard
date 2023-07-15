@@ -303,6 +303,11 @@
     }
   }
 
+  .ability-column {
+    display: flex;
+    flex-direction: column;
+  }
+
   .ability-boxes {
     display: flex;
     justify-content: space-around;

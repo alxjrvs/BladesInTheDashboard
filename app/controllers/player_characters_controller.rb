@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PlayerCharactersController < AuthenticatedController
-  before_action :set_game, only: %i[show edit update destroy]
   before_action :set_player_character, only: %i[show edit update destroy]
 
   def new
@@ -14,7 +13,7 @@ class PlayerCharactersController < AuthenticatedController
     respond_to do |format|
       if @player_character.update(player_character_params)
         format.html { redirect_to player_character_url(@player_character), notice: 'Game was successfully updated.' }
-        format.json { render :show, status: :ok, location: @game }
+        format.json { render :show, status: :ok, location: @player_characer }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @player_character.errors, status: :unprocessable_entity }

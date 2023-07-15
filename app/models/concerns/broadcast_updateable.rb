@@ -4,7 +4,7 @@ module BroadcastUpdateable
   extend ActiveSupport::Concern
 
   included do
-    after_update_commit :broadcast_update
+    # after_update_commit :broadcast_update
   end
 
   def broadcast_update
