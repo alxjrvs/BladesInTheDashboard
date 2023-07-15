@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   resources :player_characters, only: %i[show update] do
     resources :harms, only: %i[update create]
+    resources :special_abilities, only: %i[update create]
+    resources :items, only: %i[update create]
   end
 
   mount Sidekiq::Web => '/sidekiq'

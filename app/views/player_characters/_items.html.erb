@@ -7,7 +7,7 @@
         <div class="items-boxes">
           <% item.cost.times do %>
             <%= render 'shared/input_box',
-                      model: [player_character.game, player_character, item],
+                      model: [player_character, item],
                       field: :loaded,
                       checked: item.loaded,
                       disabled: item.intrinsic? || !item.loaded && item.cost > player_character.load_remaining,
@@ -25,7 +25,7 @@
         <div class="items-boxes">
           <% item.cost.times do %>
             <%= render 'shared/input_box',
-                      model: [player_character.game, player_character, item],
+                      model: [player_character, item],
                       field: :loaded,
                       checked: item.loaded,
                       disabled: item.intrinsic? || !item.loaded && item.cost > player_character.load_remaining,

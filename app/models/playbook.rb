@@ -2,7 +2,7 @@
 
 class Playbook
   include StaticAssociation
-  attr_accessor :name, :description, :items, :special_abilities, :contacts, :stats
+  attr_accessor :name, :description, :items, :special_abilities, :contacts, :stats, :xp_triggers
 
   def create_assets(player_character)
     assign_defaults(player_character)
@@ -23,6 +23,7 @@ class Playbook
       p.special_abilities = playbook_data['special_abilities']
       p.contacts = playbook_data['contacts']
       p.stats = playbook_data['stats']
+      p.xp_triggers = playbook_data['xp_triggers']
     end
   end
 

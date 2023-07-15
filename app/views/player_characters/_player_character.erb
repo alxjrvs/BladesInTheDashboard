@@ -51,14 +51,22 @@
         <div id="contacts" >
           <div id="friends" class="info-cell">
             <h2>Friends</h2>
-            <% player_character.friends.each do |contact| %>
-              <%= render 'player_characters/contact', contact: %>
+            <% if player_character.rivals.any? %>
+              <% player_character.friends.each do |contact| %>
+                <%= render 'player_characters/contact', contact: %>
+              <% end %>
+            <% else %>
+              <p> No Friends... Yet </p>
             <% end %>
           </div>
           <div id="rivals" class="info-cell">
             <h2>rivals</h2>
-            <% player_character.rivals.each do |contact| %>
-              <%= render 'player_characters/contact', contact: %>
+            <% if player_character.rivals.any? %>
+              <% player_character.rivals.each do |contact| %>
+                <%= render 'player_characters/contact', contact: %>
+              <% end %>
+            <% else %>
+              <p> No Rivals... Yet </p>
             <% end %>
           </div>
         </div>
@@ -74,11 +82,19 @@
       </div>
       <div class="cell col-1 order-4">
         <div class="info-cell">
-          <h2>Coin </h2>
+          <h2>Xp Triggers</h2>
+          <ul>
+            <li>You addressed a challenge with <%= player_character.playbook.xp_triggers.join(' or ') %>.</li>
+            <li>You expressed your beliefs, drives, heritage, or background.</li>
+            <li>You struggled with issues from your vice or traumas during the session.</li>
+          </ul>
+        </div>
+        <div class="info-cell">
+          <h2 class="inverted">Coin </h2>
           <%= render "player_characters/coin", player_character: %>
         </div>
         <div class="info-cell">
-          <h2>Stash</h2>
+          <h2 class="inverted">Stash</h2>
           <%= render "player_characters/stash", player_character: %>
         </div>
       </div>

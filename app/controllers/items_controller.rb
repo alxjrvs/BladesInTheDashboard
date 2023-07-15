@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ItemsController < AuthenticatedController
-  before_action :set_game, only: %i[update]
   before_action :set_player_character, only: %i[update]
   before_action :set_item, only: %i[update]
 

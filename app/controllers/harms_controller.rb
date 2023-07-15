@@ -8,8 +8,6 @@ class HarmsController < AuthenticatedController
     @harm = @player_character.harms.new(harm_params)
     respond_to do |format|
       if @harm.save
-        format.turbo_stream
-
         format.html { redirect_to player_character_url(@player_character), notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
@@ -22,8 +20,6 @@ class HarmsController < AuthenticatedController
   def update
     respond_to do |format|
       if @harm.update(harm_params)
-        format.turbo_stream
-
         format.html { redirect_to player_character_url(@player_character), notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else

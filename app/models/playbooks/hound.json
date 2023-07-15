@@ -89,5 +89,6 @@
       "name": "Casta",
       "job": "bounty hunter"
     }
-  ]
+  ],
+  "xp_triggers": ["tracking", "violence"]
 }
