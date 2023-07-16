@@ -1,0 +1,13 @@
+<%- size.times do |i| %>
+  <%= render(
+    CustomCheckboxComponent.new(
+      field:,
+      model:,
+      value: value(i),
+      checked: checked?(i),
+      classes:,
+      data: data(i),
+      disabled:
+    )
+  ) %>
+<% end %>

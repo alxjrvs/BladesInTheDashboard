@@ -2,17 +2,15 @@
   <div class="info-cell">
     <h2>Special Abilities
       <div class="xp-row">
-        <%- 8.times do |i| %>
-          <% checked = i + 1<= player_character.playbook_xp %>
-          <% value = checked ? i :  i + 1 %>
-          <%= render 'shared/input_box',
-                        field: :playbook_xp,
-                        model: player_character,
-                        value:,
-                        checked:,
-                        classes: "xp"
-                      %>
-        <% end %>
+        <%= render(
+          CustomCheckboxListComponent.new(
+            size: 8,
+            model: player_character,
+            field: :playbook_xp,
+            comparitor: player_character.playbook_xp,
+            classes: "xp"
+          )
+        ) %>
       </div>
     </h2>
   </div>
@@ -21,17 +19,15 @@
       <h2>
         <%= ability.name %>
         <div class="ability-boxes">
-          <% ability.cost.times do |i| %>
-            <% checked = i + 1<= ability.points %>
-            <% value = checked ? i :  i + 1 %>
-            <%= render 'shared/input_box',
-                        field: :points,
-                        model: [player_character, ability],
-                        value:,
-                        checked:,
-                        classes: "ability-box"
-                      %>
-          <% end %>
+          <%= render(
+            CustomCheckboxListComponent.new(
+              size: ability.cost,
+              field: :points,
+              model: [player_character, ability],
+              comparitor: ability.points,
+              classes: "ability-box"
+            )
+          ) %>
         </div>
       </h2>
       <p><%= ability.description %></p>
@@ -46,17 +42,15 @@
         <h2 class="inverted">
           <%= ability.name %>
           <div class="ability-boxes">
-            <% ability.cost.times do |i| %>
-              <% checked = i + 1<= ability.points %>
-              <% value = checked ? i :  i + 1 %>
-              <%= render 'shared/input_box',
-                        field: :points,
-                        model: [player_character, ability],
-                        value:,
-                        checked:,
-                        classes: "ability-box"
-                      %>
-            <% end %>
+            <%= render(
+              CustomCheckboxListComponent.new(
+                size: ability.cost,
+                field: :points,
+                model: [player_character, ability],
+                comparitor: ability.points,
+                classes: "ability-box"
+              )
+            ) %>
           </div>
         </h2>
         <p><%= ability.description %></p>

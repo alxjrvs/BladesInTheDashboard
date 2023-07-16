@@ -253,6 +253,7 @@ GEM
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
+    rufo (0.16.1)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -275,6 +276,10 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
+    view_component (3.4.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -322,12 +327,14 @@ DEPENDENCIES
   rubocop-factory_bot (~> 2.23)
   rubocop-rails (~> 2.20)
   rubocop-rspec (~> 2.22)
+  rufo (~> 0.16.1)
   selenium-webdriver
   sidekiq
   static_association (~> 0.1.0)
   stimulus-rails
   turbo-rails
   tzinfo-data
+  view_component
   web-console
   webdrivers
 

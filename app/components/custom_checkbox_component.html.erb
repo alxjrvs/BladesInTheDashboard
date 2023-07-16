@@ -1,0 +1,4 @@
+<%= form_with(model:, class: "custom-checkbox-container" ) do |form| %>
+  <%= form.check_box field, class: "custom-checkbox #{classes}", checked:, disabled:, onchange: "this.form.requestSubmit()", data: %>
+  <%= form.hidden_field field, value: %>
+<% end %>

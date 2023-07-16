@@ -17,18 +17,16 @@
   <div class="label-container">
     <label><%= stat_category.to_s.capitalize %></label>
     <div class="xp-row">
-      <%- 6.times do |i| %>
-        <% field = [stat_category.downcase, :_xp].map(&:to_s).join.to_sym %>
-        <% checked = i + 1<= player_character.send(field) %>
-        <% value = checked ? i :  i + 1 %>
-        <%= render 'shared/input_box',
-              field:,
-              model: player_character,
-              value:,
-              checked:,
-              classes: "xp"
-            %>
-      <% end %>
+      <% field =  [stat_category.downcase, :_xp].map(&:to_s).join.to_sym %>
+      <%= render(
+        CustomCheckboxListComponent.new(
+          size: 6,
+          model: player_character,
+          comparitor: player_character.send(field),
+          field:,
+          classes: "xp"
+        )
+      ) %>
     </div>
   </div>
 </div>

@@ -595,15 +595,15 @@
 }
 
 #stress {
-  @include xp-row($red, "Stress");
+  @include xp-row("Stress");
 }
 
 #healing-clock {
-  @include xp-row($red, "Healing");
+  @include xp-row("Healing");
 }
 
 .xp-row {
-  @include xp-row($red, "XP");
+  @include xp-row("XP");
 }
 
 .player-character-container {

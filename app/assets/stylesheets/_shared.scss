@@ -11,6 +11,13 @@
     place-content: center;
     width: 26px;
 
+    &:not(:checked) {
+      background: $gray;
+    }
+    &:checked {
+      background: $red;
+    }
+
     &::before {
       content: "";
     }
@@ -20,63 +27,80 @@
     }
   }
 
-  .x-box {
+  .xp {
+    border-top: 0;
+    border: 2px solid $black;
+    margin-left: 5px;
+    overflow: visible;
+    position: relative;
+    width: 14px;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      height: 30px;
+      left: 12px;
+      position: absolute;
+      top: 0;
+      width: 5px;
+    }
+
     &::before {
-      clip-path: polygon(
-        20% 0%,
-        0% 20%,
-        30% 50%,
-        0% 80%,
-        20% 100%,
-        50% 70%,
-        80% 100%,
-        100% 80%,
-        70% 50%,
-        100% 20%,
-        80% 0%,
-        50% 30%
-      );
-      height: 0.25em;
-      transform: scale(0);
-      transform-origin: center;
-      transition: 120ms transform ease-in-out;
-      width: 0.25em;
+      background: inherit;
+      border: 2px solid $black;
+      border-top: 0;
+      bottom: 0;
+      content: "";
+      height: 100%;
+      left: -2px;
+      margin-top: 5px;
+      position: absolute;
+      top: 0;
+      transform: skewY(335deg);
+      width: 14px - 4px;
+      z-index: -1;
     }
 
-    &:checked::before {
-      transform: scale(1);
+    &:not(:checked) {
+      &::before {
+        background-color: $gray;
+      }
     }
 
-    &:disabled {
-      color: $darkgray;
+    &:checked {
+      &::before {
+        background-color: $red;
+      }
     }
   }
 }
 
-.custom-input-container {
-  background-color: transparent;
-  flex: 1;
-  padding: 2px;
+.custom-checkbox-container:hover,
+.custom-checkbox-container:hover ~ * {
+  .xp:checked {
+    background-color: $gray;
 
-  .custom-field {
-    border: 0;
-    border-bottom: 1px solid rgb(43 44 49);
-    width: 99%;
-  }
-
-  .lower {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    .custom-label {
-      max-width: 49%;
+    &::before {
+      background-color: $gray;
     }
+  }
+}
 
-    .custom-select {
-      cursor: pointer;
-      margin-right: 0;
-      max-width: 49%;
+.xp:checked {
+  background-color: $red;
+
+  &::before {
+    background-color: $red;
+  }
+}
+
+.custom-checkbox-container:hover,
+.custom-checkbox-container:has(~ :hover) {
+  .xp:not(:checked) {
+    background-color: lighten($red, 25%);
+
+    &::before {
+      background-color: lighten($red, 25%);
     }
   }
 }

@@ -4,80 +4,7 @@
   }
 }
 
-@mixin custom-xp($color) {
-  .xp {
-    border: 2px solid $black;
-    margin-left: 5px;
-    overflow: visible;
-    position: relative;
-    width: 14px;
-    z-index: 1;
-
-    &::before {
-      background: inherit;
-      border: 2px solid $black;
-      border-top: 0;
-      bottom: 0;
-      content: "";
-      height: 100%;
-      left: -2px;
-      margin-top: 5px;
-      position: absolute;
-      top: 0;
-      transform: skewY(335deg);
-      width: 14px - 4px;
-      z-index: -1;
-    }
-
-    &:not(:checked) {
-      background-color: $gray;
-
-      &::before {
-        background-color: $gray;
-      }
-    }
-
-    &:checked {
-      background-color: $gray;
-
-      &::before {
-        background-color: $gray;
-      }
-    }
-  }
-
-  .custom-checkbox-container:hover,
-  .custom-checkbox-container:hover ~ * {
-    .xp:checked {
-      background-color: $gray;
-
-      &::before {
-        background-color: $gray;
-      }
-    }
-  }
-
-  .xp:checked {
-    background-color: $color;
-
-    &::before {
-      background-color: $color;
-    }
-  }
-
-  .custom-checkbox-container:hover,
-  .custom-checkbox-container:has(~ :hover) {
-    .xp:not(:checked) {
-      background-color: lighten($color, 25%);
-
-      &::before {
-        background-color: lighten($color, 25%);
-      }
-    }
-  }
-}
-
-@mixin xp-row($color, $label: "") {
+@mixin xp-row($label: "") {
   align-items: flex-end;
   display: flex;
   position: relative;
@@ -92,19 +19,4 @@
     position: relative;
     text-transform: uppercase;
   }
-
-  .xp {
-    border-top: 0;
-
-    &::after {
-      content: "";
-      height: 30px;
-      left: 12px;
-      position: absolute;
-      top: 0;
-      width: 5px;
-    }
-  }
-
-  @include custom-xp($color);
 }

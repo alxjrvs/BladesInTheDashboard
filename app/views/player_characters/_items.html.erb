@@ -5,15 +5,16 @@
     <% player_character.items.playbook.each do |item| %>
       <div class="items-row">
         <div class="items-boxes">
-          <% item.cost.times do %>
-            <%= render 'shared/input_box',
-                      model: [player_character, item],
-                      field: :loaded,
-                      checked: item.loaded,
-                      disabled: item.intrinsic? || !item.loaded && item.cost > player_character.load_remaining,
-                      classes: "item-box"
-                    %>
-          <% end %>
+          <%= render(
+            CustomCheckboxListComponent.new(
+              size: item.cost,
+              model: [player_character, item],
+              field: :loaded,
+              checked: item.loaded,
+              disabled: item.intrinsic? || !item.loaded && item.cost > player_character.load_remaining,
+              classes: "item-box"
+            )
+          ) %>
         </div>
         <label class="<%= item.intrinsic ? 'intrinsic' : '' %>" > <%= item.name %> </label>
       </div>
@@ -23,15 +24,16 @@
     <% player_character.items.default.each do |item| %>
       <div class="items-row">
         <div class="items-boxes">
-          <% item.cost.times do %>
-            <%= render 'shared/input_box',
-                      model: [player_character, item],
-                      field: :loaded,
-                      checked: item.loaded,
-                      disabled: item.intrinsic? || !item.loaded && item.cost > player_character.load_remaining,
-                      classes: "item-box"
-                    %>
-          <% end %>
+          <%= render(
+            CustomCheckboxListComponent.new(
+              size: item.cost,
+              model: [player_character, item],
+              field: :loaded,
+              checked: item.loaded,
+              disabled: item.intrinsic? || !item.loaded && item.cost > player_character.load_remaining,
+              classes: "item-box"
+            )
+          ) %>
         </div>
         <label class="<%= item.intrinsic ? 'intrinsic' : '' %>" > <%= item.name %> </label>
       </div>

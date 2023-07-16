@@ -1,19 +1,16 @@
 <div id="stash">
   <%- 4.times do |base_i|%>
     <div class="stash-boxes">
-      <%- 10.times do |i| %>
-        <% iterator = "#{base_i}#{i}".to_i %>
-        <% checked = iterator + 1<= player_character.stash %>
-        <% value = checked ? iterator :  iterator + 1 %>
-        <%= render 'shared/input_box',
-                  field: :stash,
-                  model: player_character,
-                  value:,
-                  data: iterator +1,
-                  checked:,
-                  classes: "stash-box"
-                %>
-      <% end %>
+      <%= render(
+        CustomCheckboxListComponent.new(
+          size: 10,
+          iterator_prefix: base_i,
+          model: player_character,
+          field: :stash,
+          comparitor: player_character.stash,
+          classes: "stash-box"
+        )
+      ) %>
     </div>
   <% end %>
 </div>
