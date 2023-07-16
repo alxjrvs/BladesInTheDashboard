@@ -4,7 +4,7 @@
     <% value = checked ? i :  i + 1 %>
     <%= render 'shared/input_box',
                 field: :coin,
-                model: [player_character.game, player_character],
+                model: player_character,
                 value:,
                 checked:,
                 classes: "coin-box"
