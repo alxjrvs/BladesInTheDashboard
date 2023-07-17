@@ -34,12 +34,12 @@
     </div>
   <%end %>
   <div class="info-cell inverted">
-    <h2 class="inverted"> inactive Special Abilities </h2>
+    <h2> inactive Special Abilities </h2>
   </div>
   <div class="inactive">
     <% player_character.special_abilities.inactive.each do |ability|%>
-      <div class="info-cell">
-        <h2 class="inverted">
+      <div class="info-cell inverted">
+        <h2>
           <%= ability.name %>
           <div class="ability-boxes">
             <%= render(

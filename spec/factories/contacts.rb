@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :contact do
+    source { player_character }
     name { 'MyString' }
     job { 'MyString' }
     friend { false }

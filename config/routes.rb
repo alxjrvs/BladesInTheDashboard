@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :crews, only: %i[show]
   resources :player_characters, only: %i[show update] do
     resources :harms, only: %i[update create]
     resources :special_abilities, only: %i[update create]

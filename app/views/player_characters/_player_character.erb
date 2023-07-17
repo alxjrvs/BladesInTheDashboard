@@ -24,29 +24,26 @@
       </div>
     </div>
     <div class="row">
-      <div id="bio-info" class="cell col-2 order-2 desk-order-1">
-        <div class="info-cell">
-          <h2 class="inverted">Look</h2>
+      <div id="info" class="cell col-2 order-2 desk-order-1">
+        <div class="info-cell inverted">
+          <h2>Look</h2>
           <p> <%= player_character.look %></p>
         </div>
-        <div class="info-cell">
-          <h2 class="inverted">Heritage</h2>
-          <span><%= player_character.heritage %></span>
+        <div class="info-cell inverted">
+          <h2>Heritage: <%= player_character.heritage %></h2>
           <p> <%= player_character.heritage_description %></p>
         </div>
-        <div class="info-cell">
-          <h2 class="inverted">Background</h2>
-          <span><%= player_character.background %></span>
+        <div class="info-cell inverted">
+          <h2>Background: <%= player_character.background %></h2>
           <p><%= player_character.background_description %></p>
         </div>
-        <div class="info-cell">
-          <h2 class="inverted">Vice</h2>
-          <span><%= player_character.vice %></span>
+        <div class="info-cell inverted">
+          <h2>Vice: <%= player_character.vice %></h2>
           <p><%= player_character.vice_description %></p>
         </div>
         <div id="player-crew" class="info-cell">
           <h2>Crew</h2>
-          <p> The Outkasts </p>
+          <%= link_to player_character.crew.name, crew_path(player_character.crew),  data: {turbo: false} %>
         </div>
         <div id="contacts" >
           <div id="friends" class="info-cell">
@@ -89,12 +86,12 @@
             <li>You struggled with issues from your vice or traumas during the session.</li>
           </ul>
         </div>
-        <div class="info-cell">
-          <h2 class="inverted">Coin </h2>
+        <div class="info-cell inverted">
+          <h2>Coin </h2>
           <%= render "player_characters/coin", player_character: %>
         </div>
-        <div class="info-cell">
-          <h2 class="inverted">Stash</h2>
+        <div class="info-cell inverted">
+          <h2>Stash</h2>
           <%= render "player_characters/stash", player_character: %>
         </div>
       </div>

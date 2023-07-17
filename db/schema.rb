@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_15_001855) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_16_141312) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,12 +19,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_001855) do
     t.string "job", null: false
     t.boolean "friend", default: false
     t.boolean "rival", default: false
-    t.integer "playbook_id"
-    t.bigint "player_character_id", null: false
+    t.bigint "playbook_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order", null: false
-    t.index ["player_character_id"], name: "index_contacts_on_player_character_id"
+    t.string "source_type", null: false
+    t.bigint "source_id", null: false
+    t.index ["source_type", "source_id"], name: "index_contacts_on_source"
+  end
+
+  create_table "crews", force: :cascade do |t|
+    t.string "name"
+    t.integer "reputation"
+    t.text "reputation_description"
+    t.integer "lair"
+    t.text "lair_description"
+    t.integer "hunting_ground"
+    t.text "hunting_ground_description"
+    t.integer "turf"
+    t.integer "hold"
+    t.integer "tier"
+    t.integer "heat"
+    t.integer "vaults"
+    t.integer "coin"
+    t.integer "wanted_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "xp"
   end
 
   create_table "games", force: :cascade do |t|
@@ -50,7 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_001855) do
     t.boolean "intrinsic", default: false
     t.bigint "player_character_id", null: false
     t.boolean "default", default: false
-    t.integer "playbook_id"
+    t.bigint "playbook_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "loaded", default: false
@@ -72,7 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_001855) do
   create_table "player_characters", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "game_id", null: false
-    t.integer "playbook_id", null: false
+    t.bigint "playbook_id", null: false
     t.boolean "retired", default: false
     t.string "name"
     t.string "nickname"
@@ -109,6 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_001855) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "healing_clock", default: 0
+    t.bigint "crew_id"
     t.index ["game_id"], name: "index_player_characters_on_game_id"
     t.index ["user_id"], name: "index_player_characters_on_user_id"
   end
@@ -119,13 +141,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_001855) do
     t.integer "cost", default: 1
     t.integer "points", default: 0
     t.string "detail"
-    t.bigint "player_character_id", null: false
-    t.integer "playbook_id", null: false
+    t.bigint "playbook_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order", null: false
     t.boolean "multipart", default: false
-    t.index ["player_character_id"], name: "index_special_abilities_on_player_character_id"
+    t.string "source_type", null: false
+    t.bigint "source_id", null: false
+    t.index ["source_type", "source_id"], name: "index_special_abilities_on_source"
   end
 
   create_table "traumas", force: :cascade do |t|
@@ -149,13 +172,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_001855) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "contacts", "player_characters"
   add_foreign_key "games", "users"
   add_foreign_key "harms", "player_characters"
   add_foreign_key "items", "player_characters"
   add_foreign_key "playbooks", "player_characters"
   add_foreign_key "player_characters", "games"
   add_foreign_key "player_characters", "users"
-  add_foreign_key "special_abilities", "player_characters"
   add_foreign_key "traumas", "player_characters"
 end

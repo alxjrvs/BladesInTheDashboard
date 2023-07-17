@@ -6,12 +6,13 @@ class PlayerCharacter < ApplicationRecord
 
   belongs_to :user
   belongs_to :game
+  belongs_to :crew
   belongs_to_static :playbook
   has_many :items, dependent: :destroy
   accepts_nested_attributes_for :items
-  has_many :contacts, dependent: :destroy
+  has_many :contacts, dependent: :destroy, as: :source
   accepts_nested_attributes_for :contacts
-  has_many :special_abilities, dependent: :destroy
+  has_many :special_abilities, dependent: :destroy, as: :source
   accepts_nested_attributes_for :special_abilities
   has_many :harms, dependent: :destroy
   accepts_nested_attributes_for :harms
@@ -55,10 +56,14 @@ class PlayerCharacter < ApplicationRecord
     contacts.where(rival: true)
   end
 
+  def stress_boxes
+    9
+  end
+
   private
 
   def set_playbook_defaults
-    playbook.create_assets(self)
+    playbook.create_player_assets(self)
 
     DEFAULT_ITEMS.each.with_index do |item, order|
       Item.create(item.merge({ order:, playbook_id: nil, player_character: self }))

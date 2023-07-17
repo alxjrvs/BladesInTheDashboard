@@ -57,6 +57,14 @@
   margin-bottom: 5px;
   width: calc(100% - 4px);
 
+  &.inverted {
+    h2 {
+      background: $gray;
+      border-bottom: 2px solid $black;
+      color: $darkgray;
+    }
+  }
+
   h2 {
     align-items: center;
     background: $darkgray;
@@ -64,16 +72,9 @@
     display: flex;
     font-size: 18px;
     height: 24px;
-    justify-content: center;
-    padding: 2px 0;
+    padding: 2px 0 2px 5px;
     text-align: center;
     text-transform: uppercase;
-
-    &.inverted {
-      background: $gray;
-      border-bottom: 2px solid $black;
-      color: $darkgray;
-    }
   }
 
   h3 {

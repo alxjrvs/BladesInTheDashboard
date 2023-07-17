@@ -1,0 +1,161 @@
+{
+  "name": "Shadows",
+  "description": "Thieves, Spies, and Saboteurs",
+  "type": "Crew",
+  "claims": [
+    {
+      "name": "Interrogation Chamber",
+      "description": "+1d to Command and Sway on site",
+      "connections": ["right", "bottom"]
+    },
+    {
+      "name": "Turf",
+      "connections": ["right", "left"]
+    },
+    {
+      "name": "Loyal Fence",
+      "description": "+2 Coin for any burglary or robbery",
+      "connections": ["bottom", "left"]
+    },
+    {
+      "name": "Gambling Den",
+      "description": "(Tier Roll) - Heat = Coin in Downtime",
+      "connections": ["right", "bottom"]
+    },
+    {
+      "name": "Tavern",
+      "description": "+1d to Sway and Consort on site",
+      "connections": ["bottom", "left"]
+    },
+    {
+      "name": "Drug Den",
+      "description": "(Tier Roll) - Heat = Coin in Downtime",
+      "connections": ["top", "right", "bottom"]
+    },
+    {
+      "name": "Informants",
+      "description": "+1d to Gather Info for scores",
+      "connections": ["right", "bottom", "left"]
+    },
+    {
+      "name": "Lair",
+      "connections": ["top", "right", "bottom", "left"]
+    },
+    {
+      "name": "Turf",
+      "connections": ["top", "right", "left"]
+    },
+    {
+      "name": "Lookouts",
+      "description": "+1d to Survey and Hunt on your turf",
+      "connections": ["top", "bottom", "left"]
+    },
+    {
+      "name": "Hagfish Farm",
+      "description": "Body disposal, +1d to reduce heat after a score",
+      "connections": ["top", "right"]
+    },
+    {
+      "name": "Infirmary",
+      "description": "+1d to healing rolls",
+      "connections": ["top", "left"]
+    },
+    {
+      "name": "Covert Drops",
+      "description": "+2 coin for Espionage or Sabotage",
+      "connections": ["top", "right"]
+    },
+    {
+      "name": "Turf",
+      "connections": ["right", "left"]
+    },
+    {
+      "name": "Pathways",
+      "description": "+1d engagement for stealth plans",
+      "connections": ["top", "left"]
+    }
+  ],
+  "upgrades": [
+    {
+      "name": "Thief rigging (2 free load of tools/gear)"
+    },
+    {
+      "name": "Underground maps & passkeys"
+    },
+    {
+      "name": "Elite Rooks"
+    },
+    {
+      "name": "Elite Skulks"
+    },
+    {
+      "name": "Steady (+1 stress box)",
+      "cost": 3
+    }
+  ],
+  "special_abilities": [
+    {
+      "name": "Everyone Steals",
+      "description": "Each PC may add +1 action rating to Prowl, Finesse, or Tinker (up to a max rating of 3)."
+    },
+    {
+      "name": "Ghost Echoes",
+      "description": "From weird experience or occult ritual, all crew members gain the ability to see and interact with the ghostly structures, streets, and objects within the echo of Doskvol that exists in the ghost field."
+    },
+    {
+      "name": "Pack Rats",
+      "description": "Your lair is a jumble of stolen items. When you roll to acquire an asset, take +1d"
+    },
+    {
+      "name": "Patron",
+      "description": "When you advance your Tier, it costs half the coin it normally would. Who is your patron? Why do they help you?"
+    },
+    {
+      "name": "Second Story",
+      "description": "When you execute a clandestine infiltration, you get +1d to the engagement roll."
+    },
+    {
+      "name": "Slippery",
+      "description": "When you roll entanglements, roll twice and keep the one you want. When you reduce heat on the crew, take +1d."
+    },
+    {
+      "name": "Synchronized",
+      "description": "When you perform a group action, you may count multiple 6s from different rolls as a critical success."
+    },
+    {
+      "name": "Veteran",
+      "description": "Choose a special ability from another source."
+    },
+    {
+      "name": "Veteran",
+      "description": "Choose a special ability from another source."
+    }
+  ],
+  "contacts": [
+    {
+      "name": "Dowler",
+      "job": "explorer"
+    },
+    {
+      "name": "Laroze",
+      "job": "bluecoat"
+    },
+    {
+      "name": "Amancio",
+      "job": "deal broker"
+    },
+    {
+      "name": "Fitz",
+      "job": "collector"
+    },
+    {
+      "name": "Adelaide Phroaig",
+      "job": "noble"
+    },
+    {
+      "name": "Beppo",
+      "job": "tavern owner"
+    }
+  ],
+  "xp_triggers": ["espionage", "sabotage", "theft"]
+}

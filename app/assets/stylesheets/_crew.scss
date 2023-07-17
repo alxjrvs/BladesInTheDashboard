@@ -1,0 +1,12 @@
+.crew-container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  margin: 0 20px;
+  padding-top: 10px;
+  width: 100%;
+
+  h1 {
+    font-size: 69px; // Nice
+  }
+}

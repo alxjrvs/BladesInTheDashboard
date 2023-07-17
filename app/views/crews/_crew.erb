@@ -1,0 +1,59 @@
+<%= turbo_frame_tag "crew" do %>
+  <div class="crew-container" id="<%= dom_id crew %>">
+    <div class="row initial">
+      <div id="bio" class="cell col-1">
+        <div class="upper">
+          <h2 id="name"><%= crew.name %></h2>
+          <p id="hold"><%= crew.hold %>
+          <p id="tier"><%= crew.tier %>
+        </div>
+        <div class="lower">
+          <div id="heat">
+            <%= render(CustomCheckboxListComponent.new(
+              field: :heat,
+              model: crew,
+              comparitor: crew.heat,
+              size: crew.max_heat,
+              classes: "heat xp",
+            ))%>
+          </div>
+          <div id="wanted_level">
+            <% crew.wanted_level.times do %>
+              *
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div id="info" class="cell col-1">
+        <div class="upper">
+          <div class="info-cell inverted">
+            <h2>Reputation: <%= crew.reputation %> </h2>
+            <p><%= crew.reputation_description%></p>
+          </div>
+          <div class="info-cell inverted">
+            <h2>Lair: <%= crew.lair %> </h2>
+            <p><%= crew.lair_description%></p>
+          </div>
+          <div class="info-cell inverted">
+            <h2>Reputation: <%= crew.hunting_ground %> </h2>
+            <p><%= crew.hunting_ground_description%></p>
+          </div>
+        </div>
+        <div class="lower">
+          <div id="reputation">
+            <%= render(CustomCheckboxListComponent.new(
+              field: :reputation,
+              model: crew,
+              comparitor: crew.reputation,
+              size: crew.max_reputation,
+              classes: "reputation xp",
+            ))%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    </div>
+  </div>
+
+<% end %>
