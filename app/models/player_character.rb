@@ -9,19 +9,14 @@ class PlayerCharacter < ApplicationRecord
   belongs_to :crew
   belongs_to_static :playbook
   has_many :items, dependent: :destroy
-  accepts_nested_attributes_for :items
   has_many :contacts, dependent: :destroy, as: :source
-  accepts_nested_attributes_for :contacts
   has_many :special_abilities, dependent: :destroy, as: :source
-  accepts_nested_attributes_for :special_abilities
   has_many :harms, dependent: :destroy
-  accepts_nested_attributes_for :harms
   has_many :trauma, dependent: :destroy
-  accepts_nested_attributes_for :trauma
 
   after_create :set_playbook_defaults
 
-  default_scope { includes(:contacts).includes(:items).includes(:special_abilities) }
+  default_scope { includes(:contacts).includes(:items).includes(:special_abilities).includes(:harm).includes(:trauma) }
 
   STATS = {
     insight: %I[hunt study survey tinker],
