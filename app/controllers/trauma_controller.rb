@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class TraumaController < AuthenticatedController
-  before_action :set_player_character, only: %i[update]
   before_action :set_trauma, only: %i[update]
 
   def update
@@ -15,11 +14,11 @@ class TraumaController < AuthenticatedController
             locals: { player_character: @trauma.player_character.reload }
           )
         end
-        format.html { redirect_to player_character_url(@player_character), notice: 'Character was successfully updated.' }
-        format.json { render :show, status: :ok, location: @game }
+        format.html { redirect_to player_character_url(@trauma.player_character), notice: 'Character was successfully updated.' }
+        format.json { render :show, status: :ok, location: @trauma }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @player_character.errors, status: :unprocessable_entity }
+        format.json { render json: @trauma.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -23,8 +23,10 @@ class PlayerCharactersController < AuthenticatedController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  # Only allow a list of trusted parameters through.
+  def set_player_character
+    @player_character = PlayerCharacter.find(params[:id])
+  end
+
   def player_character_params
     params
       .require(:player_character)
