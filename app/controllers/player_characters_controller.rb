@@ -29,7 +29,7 @@ class PlayerCharactersController < AuthenticatedController
     params
       .require(:player_character)
       .permit(
-        :playbook_xp,
+        :xp,
         :insight_xp,
         :resolve_xp,
         :prowess_xp,

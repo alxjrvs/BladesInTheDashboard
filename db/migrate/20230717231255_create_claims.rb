@@ -1,7 +1,7 @@
 class CreateClaims < ActiveRecord::Migration[7.0]
   def change
     create_table :claims do |t|
-      t.belongs_to :crew, null: false, foreign_key: true
+      t.belongs_to :source, null: false, polymorphic: true
       t.string :name, null: false
       t.text :description
       t.boolean :claimed, default: false

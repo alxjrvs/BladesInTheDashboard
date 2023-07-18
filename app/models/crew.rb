@@ -4,10 +4,10 @@ class Crew < ApplicationRecord
   belongs_to :game, optional: true
   belongs_to_static :playbook
 
-  has_many :contacts, as: :source
-  has_many :special_abilities, as: :source
+  has_many :contacts, as: :source, dependent: :destroy
+  has_many :special_abilities, as: :source, dependent: :destroy
   has_many :upgrades, dependent: :destroy
-  has_many :claims, dependent: :destroy
+  has_many :claims, as: :source, dependent: :destroy
 
   enum reputation: { ambitious: 0, brutal: 1, daring: 2, honorable: 3, professional: 4, savvy: 5, subtle: 6, strange: 7 }
   enum lair: {

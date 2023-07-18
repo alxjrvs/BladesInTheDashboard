@@ -5,15 +5,15 @@
         <%= render(
           CustomCheckboxListComponent.new(
             size: 8,
-            model: player_character,
-            field: :playbook_xp,
+            model: source,
+            field: :xp,
             classes: "xp"
           )
         ) %>
       </div>
     </h2>
   </div>
-  <% player_character.special_abilities.active.each do |ability|%>
+  <% source.special_abilities.active.each do |ability|%>
     <div class="info-cell">
       <h2>
         <%= ability.name %>
@@ -35,7 +35,7 @@
     <h2> inactive Special Abilities </h2>
   </div>
   <div class="inactive">
-    <% player_character.special_abilities.inactive.each do |ability|%>
+    <% source.special_abilities.inactive.each do |ability|%>
       <div class="info-cell inverted">
         <h2>
           <%= ability.name %>

@@ -10,7 +10,7 @@ class SpecialAbilitiesController < AuthenticatedController
         url = @special_ability.source.instance_of?(PlayerCharacter) ? player_character_url(@special_ability.source) : crew_url(@special_ability.source)
 
         format.html { redirect_to url, notice: 'Character was successfully updated.' }
-        format.json { render :show, status: :ok, location: @game }
+        format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }

@@ -1,18 +1,17 @@
 # frozen_string_literal: true
 
 class HarmsController < AuthenticatedController
-  before_action :set_player_character, only: %i[creatre update]
   before_action :set_harm, only: %i[update]
 
   def create
     @harm = @player_character.harms.new(harm_params)
     respond_to do |format|
       if @harm.save
-        format.html { redirect_to player_character_url(@player_character), notice: 'Game was successfully updated.' }
-        format.json { render :show, status: :ok, location: @game }
+        format.html { redirect_to player_character_url(@harm.player_character), notice: 'Game was successfully updated.' }
+        format.json { render :show, status: :ok, location: @harm }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @player_character.errors, status: :unprocessable_entity }
+        format.json { render json: @harm.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -20,11 +19,11 @@ class HarmsController < AuthenticatedController
   def update
     respond_to do |format|
       if @harm.update(harm_params)
-        format.html { redirect_to player_character_url(@player_character), notice: 'Game was successfully updated.' }
-        format.json { render :show, status: :ok, location: @game }
+        format.html { redirect_to player_character_url(@harm.player_character), notice: 'Game was successfully updated.' }
+        format.json { render :show, status: :ok, location: @harm }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @player_character.errors, status: :unprocessable_entity }
+        format.json { render json: @harm.errors, status: :unprocessable_entity }
       end
     end
   end

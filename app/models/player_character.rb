@@ -16,7 +16,7 @@ class PlayerCharacter < ApplicationRecord
 
   after_create :set_playbook_defaults
 
-  default_scope { includes(:contacts).includes(:items).includes(:special_abilities).includes(:harm).includes(:trauma) }
+  default_scope { includes(:contacts).includes(:items).includes(:special_abilities).includes(:harms).includes(:trauma) }
 
   STATS = {
     insight: %I[hunt study survey tinker],

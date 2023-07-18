@@ -21,7 +21,7 @@ FactoryBot.define do
     armor { Faker::Coin.flip }
     heavy { Faker::Coin.flip }
     special { Faker::Coin.flip }
-    playbook_xp { Faker::Number.within(range: 0..9) }
+    xp { Faker::Number.within(range: 0..9) }
     insight_xp { Faker::Number.within(range: 0..9) }
     prowess_xp { Faker::Number.within(range: 0..9) }
     resolve_xp { Faker::Number.within(range: 0..9) }

@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_203934) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_18_212356) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "claims", force: :cascade do |t|
-    t.bigint "crew_id", null: false
+    t.string "source_type", null: false
+    t.bigint "source_id", null: false
     t.string "name", null: false
     t.text "description"
     t.boolean "claimed", default: false
@@ -27,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_203934) do
     t.boolean "bottom", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["crew_id"], name: "index_claims_on_crew_id"
+    t.index ["source_type", "source_id"], name: "index_claims_on_source"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -126,7 +127,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_203934) do
     t.boolean "armor", default: false
     t.boolean "heavy", default: false
     t.boolean "special", default: false
-    t.integer "playbook_xp", default: 0
+    t.integer "xp", default: 0
     t.integer "insight_xp", default: 0
     t.integer "prowess_xp", default: 0
     t.integer "resolve_xp", default: 0
@@ -202,7 +203,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_203934) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "claims", "crews"
   add_foreign_key "games", "users"
   add_foreign_key "harms", "player_characters"
   add_foreign_key "items", "player_characters"

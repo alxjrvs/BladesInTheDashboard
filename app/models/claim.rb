@@ -1,3 +1,3 @@
 class Claim < ApplicationRecord
-  belongs_to :crew
+  belongs_to :source, polymorphic: true
 end

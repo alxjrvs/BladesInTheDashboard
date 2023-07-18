@@ -71,7 +71,7 @@ class Playbook
 
     claims.each.with_index do |claim_group, y_coord|
       claim_group.each.with_index do |claim, x_coord|
-        Claim.create(claim.merge({ crew:, y_coord:, x_coord: }))
+        Claim.create(claim.merge({ source: crew, y_coord:, x_coord: }))
       end
     end
   end
