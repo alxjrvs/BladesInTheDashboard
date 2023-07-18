@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
-  before_action :set_player_character, only: %i[update]
+class ContactsController < AuthenticatedController
   before_action :set_contact, only: %i[update]
 
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        url = @contact.source.instance_of?(PlayerCharacter) ? player_character_url(@contact.source) : crew_url(@contact.source)
+        url = @contact.source.instance_of?(PlayerCharacter) ?
+          player_character_url(@contact.source)
+          : crew_url(@contact.source)
 
         format.html { redirect_to url, notice: 'Character was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }
