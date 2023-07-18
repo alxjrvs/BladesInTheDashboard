@@ -2,6 +2,7 @@ class CreateCrews < ActiveRecord::Migration[7.0]
   def change
     create_table :crews do |t|
       t.string :name
+      t.integer :playbook_id, null: false, foreign_key: true
       t.integer :reputation
       t.text :reputation_description
       t.integer :lair

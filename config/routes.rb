@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :crews, only: %i[show]
+  resources :crews, only: %i[show update]
+
+  resources :upgrades, only: %i[show update]
+
   resources :player_characters, only: %i[show update] do
     resources :harms, only: %i[update create]
     resources :special_abilities, only: %i[update create]
@@ -23,5 +26,5 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
   devise_for :users
-  root 'games#index'
+  root 'crews#default'
 end

@@ -42,17 +42,21 @@
         <div class="lower">
           <div id="reputation">
             <%= render(CustomCheckboxListComponent.new(
-              field: :reputation,
+              field: :rep,
               model: crew,
-              comparitor: crew.reputation,
-              size: crew.max_reputation,
-              classes: "reputation xp",
+              comparitor: crew.rep,
+              size: crew.max_rep,
+              classes: "rep xp",
             ))%>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
+    <div class="cell col-3">
+      <div id="claims">
+      </div>
+    </div>
     </div>
   </div>
 

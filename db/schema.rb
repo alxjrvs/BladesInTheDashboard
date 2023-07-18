@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_16_141312) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_18_203934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "claims", force: :cascade do |t|
+    t.bigint "crew_id", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.boolean "claimed", default: false
+    t.integer "x_coord", null: false
+    t.integer "y_coord", null: false
+    t.boolean "right", default: false
+    t.boolean "top", default: false
+    t.boolean "left", default: false
+    t.boolean "bottom", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crew_id"], name: "index_claims_on_crew_id"
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
@@ -30,22 +46,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_16_141312) do
 
   create_table "crews", force: :cascade do |t|
     t.string "name"
+    t.integer "playbook_id", null: false
     t.integer "reputation"
     t.text "reputation_description"
     t.integer "lair"
     t.text "lair_description"
     t.integer "hunting_ground"
     t.text "hunting_ground_description"
-    t.integer "turf"
-    t.integer "hold"
-    t.integer "tier"
-    t.integer "heat"
-    t.integer "vaults"
-    t.integer "coin"
-    t.integer "wanted_level"
+    t.integer "turf", default: 0
+    t.integer "hold", default: 0
+    t.integer "tier", default: 0
+    t.integer "heat", default: 0
+    t.integer "vaults", default: 0
+    t.integer "coin", default: 0
+    t.integer "wanted_level", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "xp"
+    t.integer "xp", default: 0
+    t.integer "rep", default: 0
   end
 
   create_table "games", force: :cascade do |t|
@@ -159,6 +177,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_16_141312) do
     t.index ["player_character_id"], name: "index_traumas_on_player_character_id"
   end
 
+  create_table "upgrades", force: :cascade do |t|
+    t.bigint "crew_id", null: false
+    t.string "name", null: false
+    t.integer "cost", default: 1
+    t.integer "points", default: 0
+    t.integer "order", null: false
+    t.integer "playbook_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crew_id"], name: "index_upgrades_on_crew_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -172,6 +202,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_16_141312) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "claims", "crews"
   add_foreign_key "games", "users"
   add_foreign_key "harms", "player_characters"
   add_foreign_key "items", "player_characters"
@@ -179,4 +210,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_16_141312) do
   add_foreign_key "player_characters", "games"
   add_foreign_key "player_characters", "users"
   add_foreign_key "traumas", "player_characters"
+  add_foreign_key "upgrades", "crews"
 end

@@ -1,6 +1,7 @@
 {
   "name": "Hound",
   "description": "A deadly sharpshooter and tracker",
+  "type": "Character",
   "stats": {
     "hunt": 2,
     "survey": 1

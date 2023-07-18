@@ -27,7 +27,7 @@ class CustomCheckboxListComponent < ViewComponent::Base
 
   def data(index)
     new_index = prefix_iterator(index)
-    return new_index + 1 unless @data.present?
+    return new_index + 1 if @data.blank?
 
     @data
   end
@@ -50,7 +50,7 @@ class CustomCheckboxListComponent < ViewComponent::Base
   private
 
   def prefix_iterator(index)
-    return index unless @iterator_prefix.present?
+    return index if @iterator_prefix.blank?
 
     "#{@iterator_prefix}#{index}".to_i
   end

@@ -1,11 +1,13 @@
 class Crew < ApplicationRecord
   extend StaticAssociation::AssociationHelpers
-  has_many :player_characters
+  has_many :player_characters, dependent: :nullify
   belongs_to :game, optional: true
   belongs_to_static :playbook
 
   has_many :contacts, as: :source
   has_many :special_abilities, as: :source
+  has_many :upgrades, dependent: :destroy
+  has_many :claims, dependent: :destroy
 
   enum reputation: { ambitious: 0, brutal: 1, daring: 2, honorable: 3, professional: 4, savvy: 5, subtle: 6, strange: 7 }
   enum lair: {
@@ -25,11 +27,19 @@ class Crew < ApplicationRecord
 
   enum hunting_ground: { burglary: 0, espionage: 1, robbery: 2, sabotage: 3 }
 
+  after_create :set_playbook_defaults
+
   def max_heat
     9
   end
 
-  def max_reputation
+  def max_rep
     12
+  end
+
+  private
+
+  def set_playbook_defaults
+    playbook.create_crew_assets(self)
   end
 end

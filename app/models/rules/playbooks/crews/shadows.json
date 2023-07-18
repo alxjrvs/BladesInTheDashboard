@@ -3,77 +3,104 @@
   "description": "Thieves, Spies, and Saboteurs",
   "type": "Crew",
   "claims": [
-    {
-      "name": "Interrogation Chamber",
-      "description": "+1d to Command and Sway on site",
-      "connections": ["right", "bottom"]
-    },
-    {
-      "name": "Turf",
-      "connections": ["right", "left"]
-    },
-    {
-      "name": "Loyal Fence",
-      "description": "+2 Coin for any burglary or robbery",
-      "connections": ["bottom", "left"]
-    },
-    {
-      "name": "Gambling Den",
-      "description": "(Tier Roll) - Heat = Coin in Downtime",
-      "connections": ["right", "bottom"]
-    },
-    {
-      "name": "Tavern",
-      "description": "+1d to Sway and Consort on site",
-      "connections": ["bottom", "left"]
-    },
-    {
-      "name": "Drug Den",
-      "description": "(Tier Roll) - Heat = Coin in Downtime",
-      "connections": ["top", "right", "bottom"]
-    },
-    {
-      "name": "Informants",
-      "description": "+1d to Gather Info for scores",
-      "connections": ["right", "bottom", "left"]
-    },
-    {
-      "name": "Lair",
-      "connections": ["top", "right", "bottom", "left"]
-    },
-    {
-      "name": "Turf",
-      "connections": ["top", "right", "left"]
-    },
-    {
-      "name": "Lookouts",
-      "description": "+1d to Survey and Hunt on your turf",
-      "connections": ["top", "bottom", "left"]
-    },
-    {
-      "name": "Hagfish Farm",
-      "description": "Body disposal, +1d to reduce heat after a score",
-      "connections": ["top", "right"]
-    },
-    {
-      "name": "Infirmary",
-      "description": "+1d to healing rolls",
-      "connections": ["top", "left"]
-    },
-    {
-      "name": "Covert Drops",
-      "description": "+2 coin for Espionage or Sabotage",
-      "connections": ["top", "right"]
-    },
-    {
-      "name": "Turf",
-      "connections": ["right", "left"]
-    },
-    {
-      "name": "Pathways",
-      "description": "+1d engagement for stealth plans",
-      "connections": ["top", "left"]
-    }
+    [
+      {
+        "name": "Interrogation Chamber",
+        "description": "+1d to Command and Sway on site",
+        "right": true,
+        "bottom": true
+      },
+      {
+        "name": "Turf",
+        "right": true,
+        "left": true
+      },
+      {
+        "name": "Loyal Fence",
+        "description": "+2 Coin for any burglary or robbery",
+        "bottom": true,
+        "left": true
+      },
+      {
+        "name": "Gambling Den",
+        "description": "(Tier Roll) - Heat = Coin in Downtime",
+        "right": true,
+        "bottom": true
+      },
+      {
+        "name": "Tavern",
+        "description": "+1d to Sway and Consort on site",
+        "bottom": true,
+        "left": true
+      }
+    ],
+    [
+      {
+        "name": "Drug Den",
+        "description": "(Tier Roll) - Heat = Coin in Downtime",
+        "top": true,
+        "right": true,
+        "bottom": true
+      },
+      {
+        "name": "Informants",
+        "description": "+1d to Gather Info for scores",
+        "right": true,
+        "bottom": true,
+        "left": true
+      },
+      {
+        "name": "Lair",
+        "top": true,
+        "right": true,
+        "bottom": true,
+        "left": true
+      },
+      {
+        "name": "Turf",
+        "top": true,
+        "right": true,
+        "left": true
+      },
+      {
+        "name": "Lookouts",
+        "description": "+1d to Survey and Hunt on your turf",
+        "top": true,
+        "bottom": true,
+        "left": true
+      }
+    ],
+    [
+      {
+        "name": "Hagfish Farm",
+        "description": "Body disposal, +1d to reduce heat after a score",
+        "top": true,
+        "right": true
+      },
+      {
+        "name": "Infirmary",
+        "description": "+1d to healing rolls",
+        "top": true,
+        "left": true
+      },
+      {
+        "name": "Covert Drops",
+        "description": "+2 coin for Espionage or Sabotage",
+        "top": true,
+        "right": true
+      },
+      {
+        "name": "Turf",
+        "right": true,
+        "left": true
+      },
+      {
+        "name": "Pathways",
+        "description": "+1d engagement for stealth plans",
+        "top": true,
+        "left": true
+      }
+    ]
   ],
   "upgrades": [
     {

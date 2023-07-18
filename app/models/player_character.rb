@@ -34,7 +34,7 @@ class PlayerCharacter < ApplicationRecord
   enum vice: { faith: 0, gambling: 1, luxury: 2, obligation: 3, pleasure: 4, stupor: 5, weird: 6 }
   enum load: { light: 2, normal: 5, heavy: 6 }
 
-  DEFAULT_ITEMS = JSON.parse(File.read('app/models/playbooks/default_items.json'))
+  DEFAULT_ITEMS = JSON.parse(File.read('app/models/rules/default_items.json'))
 
   def current_load
     items.where(loaded: true, intrinsic: false).sum(:cost)
@@ -63,7 +63,7 @@ class PlayerCharacter < ApplicationRecord
   private
 
   def set_playbook_defaults
-    playbook.create_player_assets(self)
+    playbook.create_character_assets(self)
 
     DEFAULT_ITEMS.each.with_index do |item, order|
       Item.create(item.merge({ order:, playbook_id: nil, player_character: self }))

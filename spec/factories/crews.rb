@@ -1,7 +1,7 @@
-:FactoryBot.define do
+FactoryBot.define do
   factory :crew do
     name { 'The Baddest Boys' }
-    playbook { Playbook.where(type: 'Crew').sample }
+    playbook { Playbook.crews.sample }
     reputation { 1 }
     reputation_description { 'MyText' }
     lair { 1 }

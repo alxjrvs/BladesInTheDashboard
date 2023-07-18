@@ -4,8 +4,9 @@ FactoryBot.define do
   factory :player_character do
     user
     game
+    crew
 
-    playbook { Playbook.where(type: 'Character').sample }
+    playbook { Playbook.characters.sample }
     retired { Faker::Coin.flip }
     name { Faker::Name.name }
     nickname { Faker::Name.initials }
