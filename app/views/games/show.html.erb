@@ -1,6 +1,6 @@
 <% player_character = PlayerCharacter.first %>
 <%= render "shared/input_box",
             checked: player_character.heavy,
-            model: [player_character.game, player_character],
+            model: player_character
             field: :heavy
           %>

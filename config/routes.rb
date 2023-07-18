@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   resources :upgrades, only: %i[show update]
 
+  resources :items, only: %i[update]
+  resources :special_abilities, only: %i[update]
   resources :player_characters, only: %i[show update] do
     resources :harms, only: %i[update create]
     resources :special_abilities, only: %i[update create]

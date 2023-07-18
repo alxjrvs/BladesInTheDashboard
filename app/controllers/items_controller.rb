@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 class ItemsController < AuthenticatedController
-  before_action :set_player_character, only: %i[update]
   before_action :set_item, only: %i[update]
 
   def update
     respond_to do |format|
       if @item.update(item_params)
         format.html do
-          redirect_to player_character_url(@player_character), notice: 'Character was successfully updated.'
+          redirect_to player_character_url(@item.player_character), notice: 'Character was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @game }
       else

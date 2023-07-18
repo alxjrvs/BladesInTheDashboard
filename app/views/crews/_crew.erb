@@ -12,7 +12,6 @@
             <%= render(CustomCheckboxListComponent.new(
               field: :heat,
               model: crew,
-              comparitor: crew.heat,
               size: crew.max_heat,
               classes: "heat xp",
             ))%>
@@ -44,7 +43,6 @@
             <%= render(CustomCheckboxListComponent.new(
               field: :rep,
               model: crew,
-              comparitor: crew.rep,
               size: crew.max_rep,
               classes: "rep xp",
             ))%>

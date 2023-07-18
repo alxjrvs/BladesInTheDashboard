@@ -32,9 +32,13 @@ class CustomCheckboxListComponent < ViewComponent::Base
     @data
   end
 
+  def comparitor
+    @comparitor || model.send(field)
+  end
+
   def checked?(index)
     new_index = prefix_iterator(index)
-    return new_index + 1 <= @comparitor if @checked.nil?
+    return new_index + 1 <= comparitor if @checked.nil?
 
     @checked
   end
