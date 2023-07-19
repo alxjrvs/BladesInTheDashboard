@@ -51,29 +51,15 @@
       </div>
     </div>
     <div class="row">
-    <div class="cell col-3">
-      <div id="claims">
-        <% crew.claims.each do |claim| %>
-          <div class="claim-container">
-            <div class="claim">
-              <h2> <%= claim.name %> </h2>
-              <p> <%= claim.description %> </p>
-            </div>
-            <div class="connector top <%= claim.top ? '' : 'disabled' %>">
-            </div>
-            <div class="connector right <%= claim.right ? '' : 'disabled' %>">
-            </div>
-            <div class="connector bottom <%= claim.bottom ? '' : 'disabled' %>">
-            </div>
-            <div class="connector left <%= claim.left ? '' : 'disabled' %>">
-            </div>
-          </div>
-        <% end %>
+      <div class="cell col-3">
+        <%= render 'crews/claims', crew: %>
       </div>
-    </div>
-    <div class="cell col-3">
-      <%= render "shared/special_abilities", source: crew %>
-    </div>
+      <div class="cell col-3">
+        <%= render "shared/special_abilities", source: crew %>
+      </div>
+      <div class="cell col-2">
+        <%= render 'shared/contacts', source: crew %>
+      </div>
     </div>
   </div>
 

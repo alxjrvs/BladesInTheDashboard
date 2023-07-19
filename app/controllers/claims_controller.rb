@@ -6,7 +6,7 @@ class ClaimsController < AuthenticatedController
   def update
     respond_to do |format|
       if @claim.update(claim_params)
-        format.html { redirect_to crew_url(@claim.crew), notice: 'Game was successfully updated.' }
+        format.html { redirect_to crew_url(@claim.source), notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @claim }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -18,10 +18,10 @@ class ClaimsController < AuthenticatedController
   private
 
   def set_claim
-    @claim = Claim.find(arams[:id])
+    @claim = Claim.find(params[:id])
   end
 
   def claim_params
-    params.require(:claim).permit(:points)
+    params.require(:claim).permit(:claimed)
   end
 end

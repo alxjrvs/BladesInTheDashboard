@@ -1,0 +1,32 @@
+<div id="contacts" >
+  <div class="container">
+    <div id="friends" class="info-cell">
+      <h2>Friends</h2>
+      <% if source.friends.any? %>
+        <% source.friends.each do |contact| %>
+          <%= render 'shared/friend', contact: %>
+        <% end %>
+      <% else %>
+        <p> No Friends... Yet </p>
+      <% end %>
+    </div>
+    <div id="rivals" class="info-cell">
+      <h2>rivals</h2>
+      <% if source.rivals.any? %>
+        <% source.rivals.each do |contact| %>
+          <%= render 'shared/rival', contact: %>
+        <% end %>
+      <% else %>
+        <p> No Rivals... Yet </p>
+      <% end %>
+    </div>
+  </div>
+  <% if source.strangers.any? %>
+    <div id="strangers" class="info-cell">
+      <h2>Strangers</h2>
+      <% source.strangers.each do |contact| %>
+        <%= render 'shared/contact', contact: %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

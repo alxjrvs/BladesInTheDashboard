@@ -85,19 +85,124 @@
 }
 
 #contacts {
-  display: flex;
-
-  div:first-child {
-    margin-right: 3px;
+  .container {
+    display: flex;
+    div:first-child {
+      margin-right: 3px;
+    }
   }
 
   #friends,
   #rivals {
     flex: 1;
+    min-height: 100%;
+  }
+
+  #strangers {
+    width: 100%;
   }
 
   .contact {
     text-align: center;
+    display: flex;
+
+    .custom-checkbox-container,
+    .contact-column {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+    }
+
+    span {
+      width: 40%;
+    }
+
+    .to-stranger,
+    .to-rival,
+    .to-friend {
+      background: transparent;
+      position: relative;
+
+      &:hover {
+        color: $darkgray;
+
+        &::after {
+          color: $darkgray;
+        }
+      }
+
+      &::after {
+        color: lighten($darkgray, 20%);
+        display: block;
+        z-index: 2;
+      }
+
+      &::before {
+        z-index: 1;
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid $red;
+        bottom: 20px;
+        left: -2px;
+      }
+    }
+
+    .to-friend {
+      &:hover {
+        &::before {
+          border-bottom-color: $green;
+        }
+      }
+
+      &::after {
+        content: "Friend";
+      }
+
+      &::before {
+        content: "";
+        border-bottom-color: lighten($green, 20%);
+      }
+    }
+
+    .to-rival {
+      &:hover {
+        &::before {
+          border-bottom-color: $red;
+        }
+      }
+      &::after {
+        content: "Rival";
+      }
+
+      &::before {
+        content: "";
+        border-bottom-color: lighten($red, 20%);
+      }
+    }
+
+    .to-stranger {
+      &:hover {
+        &::before {
+          border-bottom-color: $darkgray;
+        }
+      }
+      &::after {
+        content: "Strangers";
+      }
+
+      &::before {
+        content: "";
+        border-bottom-color: lighten($darkgray, 20%);
+        transform: rotate(180deg);
+        bottom: -8px;
+      }
+    }
 
     .contact-name {
       font-family: "squada one";

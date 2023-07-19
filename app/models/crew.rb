@@ -1,10 +1,11 @@
 class Crew < ApplicationRecord
   extend StaticAssociation::AssociationHelpers
+  include HasContacts
+
   has_many :player_characters, dependent: :nullify
   belongs_to :game, optional: true
   belongs_to_static :playbook
 
-  has_many :contacts, as: :source, dependent: :destroy
   has_many :special_abilities, as: :source, dependent: :destroy
   has_many :upgrades, dependent: :destroy
   has_many :claims, as: :source, dependent: :destroy
@@ -26,6 +27,7 @@ class Crew < ApplicationRecord
   }
 
   enum hunting_ground: { burglary: 0, espionage: 1, robbery: 2, sabotage: 3 }
+  enum hold: { weak: 0, strong: 1}
 
   after_create :set_playbook_defaults
 

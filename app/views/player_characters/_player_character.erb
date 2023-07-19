@@ -45,28 +45,7 @@
           <h2>Crew</h2>
           <%= link_to player_character.crew.name, crew_path(player_character.crew),  data: {turbo: false} %>
         </div>
-        <div id="contacts" >
-          <div id="friends" class="info-cell">
-            <h2>Friends</h2>
-            <% if player_character.rivals.any? %>
-              <% player_character.friends.each do |contact| %>
-                <%= render 'player_characters/contact', contact: %>
-              <% end %>
-            <% else %>
-              <p> No Friends... Yet </p>
-            <% end %>
-          </div>
-          <div id="rivals" class="info-cell">
-            <h2>rivals</h2>
-            <% if player_character.rivals.any? %>
-              <% player_character.rivals.each do |contact| %>
-                <%= render 'player_characters/contact', contact: %>
-              <% end %>
-            <% else %>
-              <p> No Rivals... Yet </p>
-            <% end %>
-          </div>
-        </div>
+        <%= render 'shared/contacts', source: player_character %>
       </div>
       <div class="cell col-4 order-1 desk-order-2">
         <%= render "shared/special_abilities", source: player_character %>

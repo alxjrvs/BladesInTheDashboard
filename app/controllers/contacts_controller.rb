@@ -6,9 +6,11 @@ class ContactsController < AuthenticatedController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        url = @contact.source.instance_of?(PlayerCharacter) ?
-          player_character_url(@contact.source)
-          : crew_url(@contact.source)
+        url = if @contact.source.instance_of?(PlayerCharacter)
+                player_character_url(@contact.source)
+              else
+                crew_url(@contact.source)
+              end
 
         format.html { redirect_to url, notice: 'Character was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }

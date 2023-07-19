@@ -3,13 +3,13 @@
 class PlayerCharacter < ApplicationRecord
   extend StaticAssociation::AssociationHelpers
   include BroadcastUpdateable
+  include HasContacts
 
   belongs_to :user
   belongs_to :game
   belongs_to :crew
   belongs_to_static :playbook
   has_many :items, dependent: :destroy
-  has_many :contacts, dependent: :destroy, as: :source
   has_many :special_abilities, dependent: :destroy, as: :source
   has_many :harms, dependent: :destroy
   has_many :trauma, dependent: :destroy
@@ -41,14 +41,6 @@ class PlayerCharacter < ApplicationRecord
 
   def load_remaining
     load_capacity - current_load
-  end
-
-  def friends
-    contacts.where(friend: true)
-  end
-
-  def rivals
-    contacts.where(rival: true)
   end
 
   def stress_boxes

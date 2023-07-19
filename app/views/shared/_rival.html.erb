@@ -1,0 +1,7 @@
+<div class="contact">
+  <%= render CustomCheckboxComponent.new(model: contact, field: :rival, checked: contact.rival, classes: 'to-stranger')%>
+  <div class="contact-column">
+    <span class="contact-name"><%= contact.name %></span>
+    <div class="contact-job">The <%= contact.job.capitalize %></div>
+  </div>
+</div>

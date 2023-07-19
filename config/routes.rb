@@ -16,8 +16,9 @@ Rails.application.routes.draw do
 
   resources :crews, only: %i[show update]
 
-  resources :upgrades, only: %i[show update]
-
+  resources :upgrades, only: %i[update]
+  resources :claims, only: %i[update]
+  resources :contacts, only: %i[update]
   resources :items, only: %i[update]
   resources :special_abilities, only: %i[update]
   resources :player_characters, only: %i[show update] do

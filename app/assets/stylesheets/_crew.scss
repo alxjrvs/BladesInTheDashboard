@@ -11,6 +11,18 @@
   }
 }
 
+#heat {
+  display: flex;
+}
+
+#reputation {
+  display: flex;
+}
+
+#wanted_level {
+  display: flex;
+}
+
 #claims {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -20,38 +32,101 @@
   .claim-container {
     margin: 5px;
     position: relative;
+    background-color: $gray;
+
+    .custom-checkbox-container {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: 5;
+      .claim-box {
+        height: 100%;
+        width: 100%;
+        background: transparent;
+
+        &:checked {
+          background: transparent;
+        }
+      }
+    }
+
+    &:has(.claim-box:checked),
+    &:hover {
+      color: $lightgray;
+      background-color: $darkgray;
+
+      .top,
+      .right,
+      .bottom,
+      .left {
+        background-color: $darkgray;
+        z-index: 3;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
 
     .claim {
-      background-color: $gray;
       height: 150px;
       z-index: 4;
       position: relative;
+      height: calc(100% - 20px);
+      width: calc(100% - 20px);
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 10px;
+      align-self: center;
+      text-align: center;
+
+      h2 {
+        font-size: 17px;
+      }
+
+      h2:has(+ p:empty) {
+        font-size: 20px;
+      }
+
+      p {
+        font-family: "Zilla Slab";
+        font-size: 14px;
+      }
+
+      p:empty {
+        display: none;
+      }
     }
 
     .top,
     .bottom {
       width: 50px;
-      height: 25px;
+      height: 20px;
       left: calc(50% - 25px);
     }
 
     .top {
-      top: -25px;
+      top: -20px;
+    }
+
+    .bottom {
+      bottom: -20px;
     }
 
     .right,
     .left {
       height: 50px;
-      width: 25px;
+      width: 20px;
       top: calc(50% - 25px);
     }
 
     .right {
-      right: -25px;
+      right: -20px;
     }
 
     .left {
-      left: -25px;
+      left: -20px;
     }
 
     .connector {
