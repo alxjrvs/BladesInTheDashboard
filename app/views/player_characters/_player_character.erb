@@ -25,6 +25,11 @@
     </div>
     <div class="row">
       <div id="info" class="cell col-2 order-2 desk-order-1">
+
+        <div id="player-crew" class="info-cell">
+          <h2>Crew</h2>
+          <%= link_to player_character.crew.name, crew_path(player_character.crew),  data: {turbo: false} %>
+        </div>
         <div class="info-cell inverted">
           <h2>Look</h2>
           <p> <%= player_character.look %></p>
@@ -40,10 +45,6 @@
         <div class="info-cell inverted">
           <h2>Vice: <%= player_character.vice %></h2>
           <p><%= player_character.vice_description %></p>
-        </div>
-        <div id="player-crew" class="info-cell">
-          <h2>Crew</h2>
-          <%= link_to player_character.crew.name, crew_path(player_character.crew),  data: {turbo: false} %>
         </div>
         <%= render 'shared/contacts', source: player_character %>
       </div>

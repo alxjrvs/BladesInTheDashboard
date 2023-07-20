@@ -113,6 +113,17 @@
     text-align: left;
   }
 
+  a {
+    margin: 10px;
+    text-align: left;
+    display: block;
+    color: $black;
+
+    &:hover {
+      color: $darkgray;
+    }
+  }
+
   span {
     border-bottom: 2px solid $black;
     border-top: 0;
