@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GamesController < AuthenticatedController
+class GamesController < ApplicationController
   before_action :set_game, only: %i[show edit update destroy join]
 
   # GET /games or /games.json

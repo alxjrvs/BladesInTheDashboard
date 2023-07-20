@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ClaimsController < AuthenticatedController
+class ClaimsController < ApplicationController
   before_action :set_claim, only: %i[update]
 
   def update

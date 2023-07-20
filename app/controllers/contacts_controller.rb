@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ContactsController < AuthenticatedController
+class ContactsController < ApplicationController
   before_action :set_contact, only: %i[update]
 
   def update

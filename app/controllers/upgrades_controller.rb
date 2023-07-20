@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UpgradesController < AuthenticatedController
+class UpgradesController < ApplicationController
   before_action :set_upgrade, only: %i[update]
 
   def update

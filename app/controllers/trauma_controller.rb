@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TraumaController < AuthenticatedController
+class TraumaController < ApplicationController
   before_action :set_trauma, only: %i[update]
 
   def update

@@ -1,11 +1,10 @@
 class CrewsController < ApplicationController
   before_action :set_crew, only: %i[show update]
   def default
-    redirect_to crew_path(Crew.first)
+    redirect_to player_character_path(PlayerCharacter.first)
   end
 
-  def show
-  end
+  def show; end
 
   def update
     respond_to do |format|
