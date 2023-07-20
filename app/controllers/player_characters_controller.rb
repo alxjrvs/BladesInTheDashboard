@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PlayerCharactersController < AuthenticatedController
+class PlayerCharactersController < ApplicationController
   before_action :set_player_character, only: %i[show edit update destroy]
 
   def new

@@ -2,7 +2,7 @@
 
 class PlayerCharacter < ApplicationRecord
   extend StaticAssociation::AssociationHelpers
-  include BroadcastUpdateable
+  # include BroadcastUpdateable
   include HasContacts
 
   belongs_to :user
@@ -36,7 +36,7 @@ class PlayerCharacter < ApplicationRecord
   end
 
   def load_capacity
-    self.class.loads[load]
+    @load_capacity ||= self.class.loads[load]
   end
 
   def load_remaining

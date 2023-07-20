@@ -77,7 +77,7 @@
 }
 
 .custom-checkbox-container:hover,
-.custom-checkbox-container:hover ~ * {
+.custom-checkbox-container:hover~* {
   .xp:checked {
     background-color: $gray;
 
@@ -97,6 +97,17 @@
 
 .custom-checkbox-container:hover,
 .custom-checkbox-container:has(~ :hover) {
+  .xp:not(:checked) {
+    background-color: lighten($red, 25%);
+
+    &::before {
+      background-color: lighten($red, 25%);
+    }
+  }
+}
+
+.custom-checkbox-container:hover,
+.custom-checkbox-container:has(~ .custom-checkbox-container input:checked) {
   .xp:not(:checked) {
     background-color: lighten($red, 25%);
 
