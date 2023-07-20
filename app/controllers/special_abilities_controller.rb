@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SpecialAbilitiesController < AuthenticatedController
+class SpecialAbilitiesController < ApplicationController
   before_action :set_special_ability, only: %i[update]
 
   def update

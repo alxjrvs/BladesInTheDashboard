@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class HarmsController < AuthenticatedController
+class HarmsController < ApplicationController
   before_action :set_harm, only: %i[update]
 
   def create
