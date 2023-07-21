@@ -1,0 +1,12 @@
+<div id="vault">
+  <div class="vault-boxes">
+    <%= render(
+      CustomCheckboxListComponent.new(
+        size: 12,
+        model: crew,
+        field: :vaults,
+        classes: "vault-box"
+      )
+    ) %>
+  </div>
+</div>

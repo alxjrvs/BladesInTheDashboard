@@ -1,15 +1,12 @@
 <div id="stash">
-  <%- 4.times do |base_i|%>
-    <div class="stash-boxes">
-      <%= render(
-        CustomCheckboxListComponent.new(
-          size: 10,
-          iterator_prefix: base_i,
-          model: player_character,
-          field: :stash,
-          classes: "stash-box"
-        )
-      ) %>
-    </div>
-  <% end %>
+  <div class="stash-boxes">
+    <%= render(
+      CustomCheckboxListComponent.new(
+        size: 40,
+        model: player_character,
+        field: :stash,
+        classes: "stash-box"
+      )
+    ) %>
+  </div>
 </div>

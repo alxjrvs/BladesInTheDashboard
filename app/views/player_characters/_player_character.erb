@@ -30,7 +30,7 @@
           <h2>Crew</h2>
           <%= link_to player_character.crew.name, crew_path(player_character.crew),  data: {turbo: false} %>
         </div>
-        <div class="info-cell inverted">
+          <div class="info-cell inverted">
           <h2>Look</h2>
           <p> <%= player_character.look %></p>
         </div>
@@ -68,7 +68,7 @@
         </div>
         <div class="info-cell inverted">
           <h2>Coin </h2>
-          <%= render "player_characters/coin", player_character: %>
+          <%= render "shared/coin", source: player_character %>
         </div>
         <div class="info-cell inverted">
           <h2>Stash</h2>

@@ -11,8 +11,21 @@
   }
 }
 
-#heat {
+#heat,
+#rep {
   display: flex;
+
+  h2 {
+    font-family: "squada one";
+    display: flex;
+    align-items: center;
+    display: flex;
+    font-size: 1.3vw;
+    justify-content: space-between;
+    text-align: center;
+    color: $white;
+    border-bottom: 0px;
+  }
 }
 
 #reputation {
@@ -21,6 +34,299 @@
 
 #wanted_level {
   display: flex;
+  align-items: center;
+  height: 100%;
+
+  h2 {
+    font-family: "squada one";
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    color: $white;
+    border-bottom: 0px;
+  }
+
+  .star {
+    position: relative;
+
+    display: inline-block;
+    width: 0;
+    height: 0;
+
+    margin-left: 0.9em;
+    margin-right: 0.9em;
+    margin-bottom: 1.2em;
+
+    border-right: 0.3em solid transparent;
+    border-bottom: 0.7em solid $gray;
+    border-left: 0.3em solid transparent;
+
+    /* Controlls the size of the stars. */
+    font-size: 10px;
+
+    &:before,
+    &:after {
+      content: "";
+
+      display: block;
+      width: 0;
+      height: 0;
+
+      position: absolute;
+      top: 0.6em;
+      left: -1em;
+
+      border-right: 1em solid transparent;
+      border-bottom: 0.7em solid $gray;
+      border-left: 1em solid transparent;
+
+      transform: rotate(-35deg);
+    }
+
+    &:after {
+      transform: rotate(35deg);
+    }
+
+    &.active {
+      border-bottom-color: $white;
+      &:before,
+      &:after {
+        border-bottom-color: $white;
+      }
+    }
+  }
+
+  .custom-checkbox-container .custom-checkbox:checked {
+    background-color: transparent;
+    border-bottom-color: $white;
+
+    &::before,
+    &::after {
+      background-color: transparent;
+      border-bottom-color: $white;
+    }
+  }
+
+  .custom-checkbox-container {
+    background-color: transparent;
+    &::before,
+    &::after {
+      background-color: transparent;
+    }
+  }
+
+  .custom-checkbox-container .custom-checkbox:not(:checked) {
+    background: transparent;
+    border-bottom-color: $gray;
+    &::before,
+    &::after {
+      background-color: transparent;
+      border-bottom-color: $gray;
+    }
+  }
+
+  .custom-checkbox-container:has(
+      ~ .custom-checkbox-container .custom-checkbox:checked
+    ) {
+    .custom-checkbox:not(:checked) {
+      background-color: transparent;
+      border-bottom-color: $white;
+
+      &::before,
+      &::after {
+        background-color: transparent;
+        border-bottom-color: $white;
+      }
+    }
+  }
+
+  .custom-checkbox-container:has(
+      ~ .custom-checkbox-container .custom-checkbox:checked
+    ) {
+    .custom-checkbox:not(:checked) {
+      background-color: transparent;
+      border-bottom-color: $white;
+
+      &::before,
+      &::after {
+        background-color: transparent;
+        border-bottom-color: $white;
+      }
+    }
+  }
+
+  .custom-checkbox-container:hover,
+  .custom-checkbox-container:hover ~ * {
+    .custom-checkbox:checked {
+      background-color: transparent;
+      border-bottom-color: $gray;
+
+      &::before,
+      &::after {
+        background-color: transparent;
+        border-bottom-color: $gray;
+      }
+    }
+  }
+
+  .custom-checkbox-container .custom-checkbox:not(:checked),
+  .custom-checkbox-container .custom-checkbox:not(:checked) ~ * {
+    .custom-checkbox:checked {
+      background-color: transparent;
+      border-bottom-color: $gray;
+
+      &::before,
+      &::after {
+        background-color: transparent;
+        border-bottom-color: $gray;
+      }
+    }
+  }
+
+  .custom-checkbox:checked {
+    background-color: transparent;
+    border-bottom-color: $white;
+
+    &::before,
+    &::after {
+      background-color: transparent;
+      border-bottom-color: $white;
+    }
+  }
+}
+
+#vault {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  padding-top: 4px;
+
+  .vault-boxes {
+    display: flex;
+    padding-bottom: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 50%;
+
+    form {
+      .vault-box {
+        border-radius: 15px;
+        margin-top: 2px;
+        position: relative;
+
+        &::after {
+          align-items: center;
+          color: $darkgray;
+          content: attr(data);
+          display: flex;
+          font-size: 12px;
+          height: 100%;
+          justify-content: center;
+          position: absolute;
+          width: 100%;
+        }
+
+        &:checked {
+          background-color: $red;
+
+          &::after {
+            color: $white;
+          }
+        }
+      }
+    }
+
+    .custom-checkbox-container:nth-child(4n + 4) {
+      .vault-box {
+        background-color: $darkgray;
+
+        &::after {
+          color: $white;
+        }
+
+        &:checked {
+          background-color: darken($red, 20%);
+        }
+      }
+    }
+  }
+}
+
+#upgrades {
+  margin: 2px;
+
+  span {
+    width: 100%;
+    display: block;
+    padding: 0;
+    text-align: center;
+    font-style: italic;
+    border: 0;
+    flex: 1;
+    font-size: inherit;
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+
+  span + span {
+    margin-bottom: 2px;
+  }
+
+  .playbook {
+    background-color: $gray;
+  }
+
+  .upgrades-row {
+    display: flex;
+    margin-bottom: 3px;
+  }
+
+  .upgrades-boxes {
+    display: flex;
+  }
+
+  .upgrade-box {
+    border: 2px solid $black;
+    flex: 1;
+    height: 20px;
+    width: 20px;
+
+    &:disabled {
+      background-color: $darkgray;
+    }
+
+    &:hover {
+      background-color: $red;
+    }
+
+    &:checked {
+      background-color: $red;
+    }
+  }
+
+  .custom-checkbox-container + .custom-checkbox-container {
+    .upgrade-box {
+      margin-left: 5px;
+
+      &::before {
+        background-color: $black;
+        content: "";
+        display: block;
+        height: 2px;
+        left: -12px;
+        position: relative;
+        width: 6px;
+      }
+    }
+  }
+
+  label {
+    flex: 1;
+    font-family: "Zilla Slab";
+    padding-left: 5px;
+  }
 }
 
 #claims {

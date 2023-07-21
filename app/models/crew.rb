@@ -11,6 +11,7 @@ class Crew < ApplicationRecord
   has_many :claims, as: :source, dependent: :destroy
 
   enum reputation: { ambitious: 0, brutal: 1, daring: 2, honorable: 3, professional: 4, savvy: 5, subtle: 6, strange: 7 }
+  enum hunting_ground: { burglary: 0, espionage: 1, robbery: 2, sabotage: 3 }
   enum lair: {
     whitecrown: 0,
     brightstone: 1,
@@ -26,8 +27,8 @@ class Crew < ApplicationRecord
     dunslough: 11
   }
 
-  enum hunting_ground: { burglary: 0, espionage: 1, robbery: 2, sabotage: 3 }
-  enum hold: { weak: 0, strong: 1}
+  DEFAULT_UPGRADES = JSON.parse(File.read('app/models/rules/default_upgrades.json'))
+  enum hold: { weak: 0, strong: 1 }
 
   after_create :set_playbook_defaults
 
@@ -43,5 +44,11 @@ class Crew < ApplicationRecord
 
   def set_playbook_defaults
     playbook.create_crew_assets(self)
+
+    DEFAULT_UPGRADES.each do |type|
+      type['upgrades'].each.with_index do |upgrade, order|
+        Upgrade.create(upgrade.merge({ order:, type: nil, playbook_id: nil, crew: self }))
+      end
+    end
   end
 end

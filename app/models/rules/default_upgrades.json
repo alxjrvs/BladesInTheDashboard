@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Training",
+    "upgrades": [
+      {
+        "name": "Insight"
+      },
+      {
+        "name": "Prowess"
+      },
+      {
+        "name": "Resolve"
+      },
+      {
+        "name": "Personal"
+      }
+    ]
+  },
+  {
+    "name": "Lair",
+    "upgrades": [
+      {
+        "name": "Carriage",
+        "cost": 2
+      },
+      {
+        "name": "Boat",
+        "cost": 2
+      },
+      {
+        "name": "Hidden"
+      },
+      {
+        "name": "Quarters"
+      },
+      {
+        "name": "Secure",
+        "cost": 2
+      },
+      {
+        "name": "Vault",
+        "cost": 2
+      },
+      {
+        "name": "Workshop"
+      }
+    ]
+  },
+  {
+    "name": "Quality",
+    "upgrades": [
+      {
+        "name": "Documents"
+      },
+      {
+        "name": "Gear"
+      },
+      {
+        "name": "Implements"
+      },
+      {
+        "name": "Supplies"
+      },
+      {
+        "name": "Tools"
+      },
+      {
+        "name": "Weapons"
+      }
+    ]
+  },
+  {
+    "name": "Mastery",
+    "upgrades": [
+      {
+        "name": "Mastery",
+        "cost": 4
+      }
+    ]
+  }
+]

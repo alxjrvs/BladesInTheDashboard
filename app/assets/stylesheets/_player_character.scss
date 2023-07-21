@@ -257,8 +257,6 @@
     }
 
     .xp-row {
-      margin-left: 25%;
-
       &::before {
         content: "playbook xp";
       }
@@ -306,12 +304,15 @@
 
   .inactive {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
     .info-cell {
       margin-bottom: 10px;
+      min-width: calc(100% - 5px);
 
       @include for-desktop-up {
+        min-width: calc(50% - 5px);
         width: calc(50% - 5px);
       }
 
@@ -328,7 +329,6 @@
 
     @include for-desktop-up {
       flex-wrap: wrap;
-      max-height: 600px;
     }
   }
 }
@@ -341,8 +341,9 @@
 
   .stash-boxes {
     display: flex;
-    flex-direction: column-reverse;
     padding-bottom: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
 
     form {
       .stash-box {
@@ -372,7 +373,7 @@
       }
     }
 
-    form:last-child {
+    .custom-checkbox-container:nth-child(10n + 10) {
       .stash-box {
         background-color: $darkgray;
 
@@ -721,46 +722,6 @@
 
   h1 {
     font-size: 69px; // Nice
-  }
-}
-
-#bio {
-  align-items: center;
-  text-align: center;
-
-  h2 {
-    border-bottom: 2px solid $white;
-    font-family: "Zilla Slab";
-    text-align: center;
-    width: 100%;
-
-    @include for-desktop-up {
-      font-size: 1.3vw;
-      width: auto;
-    }
-  }
-
-  label {
-    background: $gray;
-    color: $darkgray;
-    font-size: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
-    border-bottom: 2px solid $black;
-  }
-
-  .upper {
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  @include for-desktop-up {
-    align-items: flex-start;
-    justify-content: end;
-    text-align: left;
-    width: auto;
   }
 }
 

@@ -1,0 +1,36 @@
+<div id="upgrades">
+  <div class="playbook">
+    <% crew.upgrades.playbook.each do |upgrade| %>
+      <div class="upgrades-row">
+        <div class="upgrades-boxes">
+          <%= render(
+            CustomCheckboxListComponent.new(
+              size: upgrade.cost,
+              model: upgrade,
+              field: :points,
+              classes: "upgrade-box"
+            )
+          ) %>
+        </div>
+        <label> <%= upgrade.name %> </label>
+      </div>
+    <% end %>
+  </div>
+  <div class="default">
+    <% crew.upgrades.default.each do |upgrade| %>
+      <div class="upgrades-row">
+        <div class="upgrades-boxes">
+          <%= render(
+            CustomCheckboxListComponent.new(
+              size: upgrade.cost,
+              model: upgrade,
+              field: :points,
+              classes: "upgrade-box"
+            )
+          ) %>
+        </div>
+        <label> <%= upgrade.name %> </label>
+      </div>
+    <% end %>
+  </div>
+</div>
