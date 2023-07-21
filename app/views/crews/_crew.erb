@@ -3,8 +3,34 @@
     <div class="row initial">
       <div id="bio" class="cell col-1">
         <div class="upper">
+          <div id="wanted_level">
+            <h2>
+              <%= render(CustomCheckboxListComponent.new(
+                field: :wanted_level,
+                model: crew,
+                size: 4,
+                classes: "star",
+              ))%>
+            </h2>
+          </div>
           <h1 id="name"><%= crew.name %></h1>
-          <label id="playbook_name">The <%= crew.playbook.name %> </label>
+          <label id="playbook_name">The <%= crew.playbook.name %> [<%= crew.tier %>]</label>
+        </div>
+        <div class="lower">
+          <div id="reputation">
+            <h2>Reputation: <%= crew.reputation %> </h2>
+          </div>
+          <div id="lair">
+            <h2>Lair: <%= crew.lair_description %> (<%= crew.lair.titleize %>, <%= crew.hold.upcase %> Hold) </h2>
+          </div>
+          <div id="method">
+            <h2>Method: <%= crew.hunting_ground %> in <%= crew.hunting_ground_description%> </h2>
+          </div>
+        </div>
+      </div>
+      <div id="info" class="cell col-1">
+        <div class="upper">
+          <p>Foo</p>
         </div>
         <div class="lower">
           <div id="heat">
@@ -18,24 +44,6 @@
               ))%>
             </h2>
           </div>
-          <div id="wanted_level">
-            <h2> Wanted Level:
-              <%= render(CustomCheckboxListComponent.new(
-                field: :wanted_level,
-                model: crew,
-                size: 4,
-                classes: "star",
-              ))%>
-            </h2>
-          </div>
-          <h2 id="hold">Hold: <%= crew.hold %></h2>
-          <h2 id="tier">Tier: <%= crew.tier %></h2>
-        </div>
-      </div>
-      <div id="info" class="cell col-1">
-        <div class="upper">
-        </div>
-        <div class="lower">
           <div id="rep">
             <h2>
               Rep
@@ -44,8 +52,31 @@
                   model: crew,
                   size: crew.max_rep,
                   classes: "rep xp",
+                  constraint: crew.turf,
+                  constrained_classes: "turf-rep"
                 ))%>
             </h2>
+            <div id="turf">
+              <h2>
+                <%= render(CustomCheckboxComponent.new(
+                  field: :turf,
+                  model: crew,
+                  value: (crew.turf - 1),
+                  disabled: crew.turf === 0,
+                  checked: false,
+                  classes: "turf minus #{crew.turf === 0 ? 'disabled' : ''}",
+                ))%>
+                Turf
+                <%= render(CustomCheckboxComponent.new(
+                  field: :turf,
+                  model: crew,
+                  value: (crew.turf + 1),
+                  disabled: crew.turf === 5,
+                  checked: false,
+                  classes: "turf plus #{crew.turf === 5 ? 'disabled' : ''}",
+                ))%>
+              </h2>
+            </div>
           </div>
         </div>
       </div>
@@ -56,18 +87,7 @@
         <%= render 'shared/contacts', source: crew %>
       </div>
       <div class="cell col-4">
-        <div class="info-cell inverted">
-          <h2>Reputation: <%= crew.reputation %> </h2>
-          <p><%= crew.reputation_description%></p>
-        </div>
-        <div class="info-cell inverted">
-          <h2>Method: <%= crew.hunting_ground %> </h2>
-          <p><%= crew.hunting_ground_description%></p>
-        </div>
-        <div class="info-cell inverted">
-          <h2>Lair: <%= crew.lair %> </h2>
-          <p><%= crew.lair_description%></p>
-        </div>
+
         <%= render "shared/special_abilities", source: crew %>
       </div>
       <div class="cell col-2">

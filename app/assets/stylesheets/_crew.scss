@@ -11,7 +11,57 @@
   }
 }
 
+#info {
+  .lower {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+#turf {
+  .custom-checkbox {
+    background-color: transparent;
+  }
+
+  .turf {
+    &::after {
+      color: $white;
+    }
+
+    &:disabled {
+      &::after {
+        color: $gray;
+      }
+    }
+  }
+
+  .plus {
+    &::after {
+      content: "+";
+    }
+  }
+  .minus {
+    &::after {
+      content: "-";
+    }
+  }
+
+  .custom-checkbox-container:hover,
+  .custom-checkbox-container:has(~ :hover) {
+    .custom-checkbox:not(:checked) {
+      background-color: inherit;
+
+      &::before {
+        background-color: inherit;
+      }
+    }
+  }
+}
+
 #heat,
+#lair,
+#reputation,
+#method,
 #rep {
   display: flex;
 
@@ -20,11 +70,20 @@
     display: flex;
     align-items: center;
     display: flex;
-    font-size: 1.3vw;
     justify-content: space-between;
     text-align: center;
     color: $white;
     border-bottom: 0px;
+  }
+}
+
+#rep {
+  .rep.turf-rep {
+    background-color: $green;
+
+    &::before {
+      background-color: $green;
+    }
   }
 }
 
