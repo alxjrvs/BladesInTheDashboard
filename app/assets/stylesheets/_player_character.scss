@@ -675,11 +675,13 @@
         .stat-number {
           display: flex;
 
+          .custom-checkbox-container {
+            display: flex;
+          }
+
           .stat-cell {
-            height: 17px;
-            padding: 5px;
             position: relative;
-            width: 17px;
+            background-color: transparent;
 
             &:first-child {
               border-right: 2px solid $faded;
@@ -699,7 +701,7 @@
               width: 12px;
             }
 
-            &.acquired {
+            &:checked {
               display: block;
 
               &::before {
